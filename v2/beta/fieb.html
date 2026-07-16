@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FIEB — v2.1</title>
+<title>FIEB — beta (v2.0)</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="system.css">
-<link rel="stylesheet" href="motifs.css">
+<link rel="stylesheet" href="../system.css">
+<link rel="stylesheet" href="../motifs.css">
 <style>
   body {
     background: var(--fieb-bg);
@@ -49,11 +49,9 @@
     text-align: center;
     padding: 7rem 1.5rem 4rem;
     overflow: hidden;
-    /* Foto: eufonio en ensayo — Wikimedia Commons, CC BY-SA 4.0
-       https://commons.wikimedia.org/wiki/File:Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg */
     background:
       linear-gradient(to bottom, rgba(244,237,224,0.78) 0%, rgba(244,237,224,0.95) 100%),
-      url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg/1920px-Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg') center 35%/cover;
+      url('https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
     border-bottom: 1px solid rgba(26, 39, 68, 0.06);
   }
   .hero::before {
@@ -237,126 +235,90 @@
   .linea-card h3 { font-size: 1.25rem; color: var(--fieb-primary); margin-bottom: 0.5rem; }
   .linea-card p { color: #4A5168; font-size: 0.95rem; margin: 0; }
 
-  /* ============ Evolución — línea de tiempo interactiva ============ */
+  /* ============ Evolución (acordeones por año) ============ */
   .timeline-section { background: var(--fieb-silver); border-top: 1px solid rgba(26,39,68,0.06); border-bottom: 1px solid rgba(26,39,68,0.06); }
-
-  .timeline-nav {
-    position: relative;
-    max-width: 880px;
-    margin: 3.5rem auto 0;
-  }
-  .timeline-nav::before {
-    content: '';
-    position: absolute;
-    left: 3%; right: 3%; top: 11px;
-    height: 2px;
-    background: linear-gradient(to right, rgba(212,154,46,0.12), rgba(212,154,46,0.55) 50%, rgba(212,154,46,0.12));
-  }
-  .timeline-track { display: flex; justify-content: space-between; position: relative; }
-  .year-node {
-    background: none; border: 0; cursor: pointer;
-    display: flex; flex-direction: column; align-items: center; gap: 0.55rem;
-    font-family: inherit;
-    padding: 0;
-    min-width: 72px;
-  }
-  .year-node .dot {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    background: var(--fieb-silver);
-    border: 2px solid rgba(212,154,46,0.5);
-    position: relative;
-    transition: var(--transition);
-  }
-  .year-node .dot::after {
-    content: '';
-    position: absolute; inset: 5px;
-    border-radius: 50%;
-    background: var(--gold-fieb);
-    opacity: 0;
-    transition: var(--transition);
-  }
-  .year-node .y {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    color: #6B7288;
-    line-height: 1;
-    transition: var(--transition);
-  }
-  .year-node .tag {
-    font-size: 0.62rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: rgba(107, 114, 136, 0.75);
-    transition: var(--transition);
-  }
-  .year-node:hover .y { color: var(--fieb-primary); }
-  .year-node:hover .dot { border-color: var(--gold-fieb); }
-  .year-node.active .dot { border-color: var(--gold-fieb); box-shadow: 0 0 0 5px rgba(212,154,46,0.16); }
-  .year-node.active .dot::after { opacity: 1; }
-  .year-node.active .y { color: var(--fieb-primary); font-size: 1.5rem; }
-  .year-node.active .tag { color: var(--gold-fieb); }
-
-  .edition-panel {
-    max-width: 980px;
-    margin: 2.5rem auto 0;
+  .editions { max-width: 920px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+  .acc-year {
     background: #fff;
     border: 1px solid rgba(26,39,68,0.08);
-    border-top: 3px solid var(--gold-fieb);
     border-radius: var(--radius-md);
-    box-shadow: 0 18px 50px rgba(26,39,68,0.08);
-    padding: 2.5rem;
-    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+    overflow: hidden;
+    transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
   }
-  .edition-panel.switching { opacity: 0; transform: translateY(10px); }
-  .panel-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  .acc-year:hover { border-color: rgba(212,154,46,0.4); }
+  .acc-year.open {
+    border-color: var(--gold-fieb);
+    box-shadow: 0 14px 40px rgba(26,39,68,0.1);
+  }
+  .acc-head {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    align-items: center;
     gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.25rem;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
   }
-  .panel-edition {
+  .acc-head .year {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--gold-fieb);
+    line-height: 1;
+  }
+  .acc-head .meta-edition {
     font-size: 0.72rem;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gold-fieb);
+    margin-bottom: 0.35rem;
     font-weight: 600;
-    margin-bottom: 0.4rem;
   }
-  .panel-year {
+  .acc-head .meta-title {
     font-family: var(--font-display);
-    font-size: 2.6rem;
+    font-size: 1.25rem;
     color: var(--fieb-primary);
-    line-height: 1;
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
   }
-  .panel-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.75rem;
-    padding: 0.42rem 0.9rem;
-    border-radius: var(--radius-pill);
-    background: var(--fieb-bg);
-    border: 1px solid rgba(26,39,68,0.1);
-    color: var(--fieb-primary);
-    white-space: nowrap;
+  .acc-head .meta-place {
+    font-size: 0.88rem;
+    color: #4A5168;
   }
-  .chip svg { width: 13px; height: 13px; color: var(--gold-fieb); }
-  .panel-desc {
+  .acc-head .chev {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(212,154,46,0.12);
+    color: var(--gold-fieb);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+    flex-shrink: 0;
+  }
+  .acc-year.open .acc-head .chev {
+    transform: rotate(180deg);
+    background: var(--gold-fieb); color: #fff;
+  }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease);
+  }
+  .acc-year.open .acc-body { max-height: 4000px; }
+  .acc-body-inner {
+    padding: 0 2rem 2rem;
+  }
+  .acc-divider {
+    height: 1px;
+    background: rgba(26,39,68,0.08);
+    margin-bottom: 1.75rem;
+  }
+  .acc-desc {
     color: #3F4258;
     font-size: 1.02rem;
-    margin-bottom: 1.5rem;
-    max-width: 72ch;
-  }
-  .panel-empty { color: #6B7288; font-style: italic; text-align: center; padding: 2rem 0; }
-
-  @media (max-width: 640px) {
-    .timeline-nav { overflow-x: auto; padding-bottom: 0.75rem; }
-    .timeline-track { min-width: 500px; padding: 0 0.5rem; }
-    .edition-panel { padding: 1.5rem; }
-    .panel-chips { justify-content: flex-start; }
+    margin-bottom: 1.75rem;
   }
 
   /* Subgroup titles inside accordion */
@@ -439,7 +401,18 @@
     color: rgba(74, 81, 104, 0.6);
   }
 
-  /* Patrocinadores y estados */
+  /* Fechas, patrocinadores y estados */
+  .acc-dates {
+    display: none;
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+  }
+  .acc-dates.show { display: inline-flex; align-items: center; gap: 8px; }
+  .acc-dates::before { content: ''; width: 18px; height: 1px; background: var(--gold-fieb); opacity: 0.7; }
   .acc-sponsors {
     display: none;
     margin-top: 1.75rem;
@@ -708,6 +681,9 @@
   }
   @media (max-width: 640px) {
     .form-grid { grid-template-columns: 1fr; }
+    .acc-head { grid-template-columns: 80px 1fr auto; gap: 1rem; padding: 1.25rem; }
+    .acc-head .year { font-size: 1.8rem; }
+    .acc-body-inner { padding: 0 1.25rem 1.5rem; }
     .form-card { padding: 1.5rem; }
   }
 
@@ -794,7 +770,7 @@
   </svg>
 
   <nav class="nav" id="nav">
-    <a href="#top" class="brand"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></a>
+    <a href="#top" class="brand"><img src="../../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></a>
     <div class="actions">
       <a href="#historia">Historia</a>
       <a href="#lineas">Líneas</a>
@@ -807,7 +783,7 @@
     <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
     <div class="hero-content reveal">
       <div class="eyebrow eyebrow-line hero-eyebrow"><span>Formación · Circulación · Inspiración</span></div>
-      <img src="../assets/logos/fieb_logo_light.png" alt="FIEB" class="hero-logo">
+      <img src="../../assets/logos/fieb_logo_light.png" alt="FIEB" class="hero-logo">
       <p class="hero-quote">"Un espacio internacional para el eufonio y el bombardino, nacido desde Colombia."</p>
       <div class="hero-actions">
         <a href="#inscripcion" class="btn btn-primary">Inscríbete <i data-lucide="arrow-right"></i></a>
@@ -899,18 +875,129 @@
   <section class="timeline-section" id="evolucion">
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>2020 — 2025</span></div>
-        <h2 class="section-title" style="text-align: center;">Trayectoria del festival.</h2>
-        <p class="section-lead" style="margin: 0 auto; text-align: center;">Recorre la línea de tiempo: cada año reúne sus maestros invitados, el programa, el concurso y la memoria de la edición.</p>
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Cinco ediciones</span></div>
+        <h2 class="section-title" style="text-align: center;">Evolución del festival.</h2>
+        <p class="section-lead" style="margin: 0 auto; text-align: center;">Haz clic en cada año para ver los maestros invitados, el programa y la memoria de cada edición.</p>
       </div>
 
-      <div class="timeline-nav reveal delay-1" role="tablist" aria-label="Ediciones del festival">
-        <div class="timeline-track" id="timelineTrack"></div>
-      </div>
+      <div class="editions reveal delay-1">
 
-      <article class="edition-panel reveal delay-2" id="editionPanel" aria-live="polite">
-        <p class="panel-empty">Cargando la memoria del festival…</p>
-      </article>
+        <article class="acc-year" data-year="2020">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2020</div>
+            <div>
+              <div class="meta-edition">I Edición · Virtual</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Virtual Colombia 2020</div>
+              <div class="meta-place">Formato 100% online · Colombia y el mundo</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2021">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2021</div>
+            <div>
+              <div class="meta-edition">II Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Funza 2021</div>
+              <div class="meta-place">Funza · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2022">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2022</div>
+            <div>
+              <div class="meta-edition">III Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Funza 2022</div>
+              <div class="meta-place">Funza · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2023">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2023</div>
+            <div>
+              <div class="meta-edition">IV Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Funza 2023</div>
+              <div class="meta-place">Funza · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2025">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2025</div>
+            <div>
+              <div class="meta-edition">V Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Cota 2025</div>
+              <div class="meta-place">Cota · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -1009,19 +1096,19 @@
       <p class="title">Una raíz, tres latidos.</p>
     </div>
     <div class="ecosistema-grid">
-      <a class="ecosistema-card reveal delay-1" href="johnferlaverde-1.1.html">
-        <div class="logo-wrap" style="background: var(--jhonfer-dark, #1A140F); border-radius: 10px; padding: 8px 18px;"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></div>
+      <a class="ecosistema-card reveal delay-1" href="johnferlaverde.html">
+        <div class="logo-wrap"><img src="../../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde" style="filter: invert(1) brightness(0.4) sepia(1) hue-rotate(180deg) saturate(2);"></div>
         <div class="role">Marca personal</div>
         <div class="name">Johnfer Laverde</div>
         <span class="arrow" style="color: var(--gold-johnfer);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
       </a>
       <a class="ecosistema-card reveal delay-2" href="#" style="background: var(--fieb-primary); color: #F4EDE0; border-color: transparent;">
-        <div class="logo-wrap" style="background: #F4EDE0; border-radius: 10px; padding: 8px 14px;"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+        <div class="logo-wrap"><img src="../../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
         <div class="role" style="color: var(--gold-fieb);">Estás aquí</div>
         <div class="name">FIEB</div>
       </a>
-      <a class="ecosistema-card reveal delay-3" href="fundacion-1.1.html">
-        <div class="logo-wrap"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+      <a class="ecosistema-card reveal delay-3" href="fundacion.html">
+        <div class="logo-wrap"><img src="../../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
         <div class="role">Fundación</div>
         <div class="name">Latido Panches</div>
         <span class="arrow" style="color: var(--gold-latido);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
@@ -1048,7 +1135,7 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js"></script>
+  <script src="../supabase-config.js"></script>
   <script>
     lucide.createIcons();
     const nav = document.getElementById('nav');
@@ -1074,6 +1161,15 @@
         if (id === '#top') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
         const tgt = document.querySelector(id);
         if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Accordion ediciones
+    document.querySelectorAll('.acc-head').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-year');
+        const open = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     });
 
@@ -1163,92 +1259,62 @@
       return `<div class="sub-title">Concurso</div>${intro}${cats}${winners}${finalistLabel}${finalists}`;
     };
 
-    const editionTag = e => {
-      if (/virtual/i.test(e.heading || '')) return 'Virtual';
-      return String(e.place || '').split('·')[0].trim();
-    };
+    const renderFiebEditions = editions => {
+      editions.forEach(edition => {
+        const article = document.querySelector(`.acc-year[data-year="${edition.year}"]`);
+        if (!article) return;
 
-    const countMasters = e => (e.masterGroups || []).reduce((n, g) => n + (g.masters || []).length, 0);
+        const head = article.querySelector('.acc-head');
+        const yearEl = article.querySelector('.year');
+        const editionEl = article.querySelector('.meta-edition');
+        const titleEl = article.querySelector('.meta-title');
+        const placeEl = article.querySelector('.meta-place');
+        const datesEl = article.querySelector('.acc-dates');
+        const descEl = article.querySelector('.acc-desc');
+        const bodyEl = article.querySelector('.edition-body');
+        const sponsorsEl = article.querySelector('.acc-sponsors');
 
-    const renderPanel = edition => {
-      const panel = document.getElementById('editionPanel');
-      if (!panel || !edition) return;
-      const masters = countMasters(edition);
-      const withMasters = (edition.masterGroups || []).filter(g => (g.masters || []).length);
-      const body = withMasters.map(createMasterGroup).join('')
-        + createHighlights(edition.highlights)
-        + createContest(edition.contest)
-        + createProgram(edition.program);
-      const chips = [
-        edition.place ? `<span class="chip"><i data-lucide="map-pin"></i>${escapeHtml(String(edition.place).replace(/\s*·\s*Colombia.*$/i, ''))}</span>` : '',
-        edition.dates ? `<span class="chip"><i data-lucide="calendar"></i>${escapeHtml(edition.dates)}</span>` : '',
-        masters ? `<span class="chip"><i data-lucide="users"></i>${masters} maestros</span>` : '',
-        edition.contest ? `<span class="chip"><i data-lucide="award"></i>Concurso</span>` : ''
-      ].join('');
-      panel.innerHTML = `
-        <div class="panel-head">
-          <div>
-            <div class="panel-edition">${escapeHtml(edition.heading || '')}</div>
-            <div class="panel-year">${edition.year}</div>
-          </div>
-          <div class="panel-chips">${chips}</div>
-        </div>
-        ${edition.description ? `<p class="panel-desc">${escapeHtml(edition.description)}</p>` : ''}
-        <div class="edition-body">${body || '<p class="edition-empty">Información de esta edición pendiente por publicar.</p>'}</div>
-        ${edition.sponsors ? `<p class="acc-sponsors show">${escapeHtml(edition.sponsors)}</p>` : ''}
-      `;
+        if (yearEl) yearEl.textContent = String(edition.year);
+        if (editionEl) editionEl.textContent = edition.heading || '';
+        if (titleEl) titleEl.textContent = edition.title || '';
+        if (placeEl) placeEl.textContent = edition.place || '';
+        if (descEl) descEl.textContent = edition.description || '';
+        if (datesEl) {
+          datesEl.textContent = edition.dates || '';
+          datesEl.classList.toggle('show', Boolean(edition.dates));
+        }
+
+        const groups = edition.masterGroups || (edition.masters ? [{ label: '', masters: edition.masters }] : []);
+        const withMasters = groups.filter(g => (g.masters || []).length);
+        if (bodyEl) {
+          const html = withMasters.map(createMasterGroup).join('')
+            + createHighlights(edition.highlights)
+            + createContest(edition.contest)
+            + createProgram(edition.program);
+          bodyEl.innerHTML = html ||
+            '<p class="edition-empty">Información de esta edición pendiente por publicar.</p>';
+        }
+        if (sponsorsEl) {
+          sponsorsEl.textContent = edition.sponsors || '';
+          sponsorsEl.classList.toggle('show', Boolean(edition.sponsors));
+        }
+
+        article.classList.toggle('open', Boolean(edition.open));
+        if (head) head.setAttribute('aria-expanded', edition.open ? 'true' : 'false');
+      });
       lucide.createIcons();
     };
 
-    let fiebEditions = [];
-    const selectEdition = index => {
-      document.querySelectorAll('.year-node').forEach((n, i) => {
-        n.classList.toggle('active', i === index);
-        n.setAttribute('aria-selected', i === index ? 'true' : 'false');
-      });
-      const panel = document.getElementById('editionPanel');
-      if (!panel) return;
-      panel.classList.add('switching');
-      setTimeout(() => {
-        renderPanel(fiebEditions[index]);
-        panel.classList.remove('switching');
-      }, 180);
-    };
-
-    const buildTimeline = editions => {
-      fiebEditions = editions;
-      const track = document.getElementById('timelineTrack');
-      if (!track) return;
-      track.innerHTML = editions.map((e, i) => `
-        <button class="year-node" role="tab" aria-selected="false" data-index="${i}">
-          <span class="dot"></span>
-          <span class="y">${e.year}</span>
-          <span class="tag">${escapeHtml(editionTag(e))}</span>
-        </button>
-      `).join('');
-      track.querySelectorAll('.year-node').forEach(btn => {
-        btn.addEventListener('click', () => selectEdition(Number(btn.dataset.index)));
-      });
-      const openIdx = editions.findIndex(e => e.open);
-      const start = openIdx >= 0 ? openIdx : editions.length - 1;
-      track.querySelectorAll('.year-node').forEach((n, i) => {
-        n.classList.toggle('active', i === start);
-        n.setAttribute('aria-selected', i === start ? 'true' : 'false');
-      });
-      renderPanel(editions[start]);
-    };
-
-    fetch('fieb-data.txt')
+    fetch('../fieb-data.txt')
       .then(response => {
         if (!response.ok) throw new Error(`No se pudo cargar fieb-data.txt (${response.status})`);
         return response.json();
       })
       .then(data => {
-        if (data && Array.isArray(data.editions)) buildTimeline(data.editions);
+        if (data && Array.isArray(data.editions)) renderFiebEditions(data.editions);
       })
       .catch(() => {
-        const panel = document.getElementById('editionPanel');
-        if (panel) panel.innerHTML = '<p class="panel-empty">No se pudo cargar la memoria del festival. Abre la página desde el servidor local (dev-server.js).</p>';
+        console.warn('No se pudo cargar el archivo de datos de FIEB. La página seguirá mostrando el contenido estático.');
       });
 
     const form = document.getElementById('inscripcionForm');

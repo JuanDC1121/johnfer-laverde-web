@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Johnfer Laverde — v2.1</title>
+<title>Johnfer Laverde — beta (v2.0)</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="system.css">
-<link rel="stylesheet" href="motifs.css">
+<link rel="stylesheet" href="../system.css">
+<link rel="stylesheet" href="../motifs.css">
 <style>
   body {
     background: var(--jhonfer-cream);
@@ -156,36 +156,6 @@
     z-index: -1;
   }
   .about p { font-size: 1.05rem; margin-bottom: 1rem; color: #3A3026; }
-
-  /* v2.1 — Franja de cifras de trayectoria */
-  .stats-band {
-    background: var(--jhonfer-cream);
-    padding: 3.5rem 5%;
-    border-bottom: 1px solid rgba(160, 122, 80, 0.12);
-  }
-  .stats-grid {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem;
-    text-align: center;
-  }
-  .stat .num {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    color: var(--jhonfer-primary);
-    line-height: 1;
-  }
-  .stat .num span { color: var(--gold-johnfer); }
-  .stat .label {
-    margin-top: 0.5rem;
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #7A6A55;
-  }
 
   /* Idea #5 — Polaridad B: una sección oscura en mitad del flujo */
   .inversion {
@@ -406,7 +376,7 @@
 
   <!-- Navbar -->
   <nav class="nav" id="nav">
-    <a href="#top" class="brand"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></a>
+    <a href="#top" class="brand"><img src="../../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></a>
     <ul class="links">
       <li><a href="#sobre-mi">Sobre Mí</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
@@ -420,7 +390,7 @@
     <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
     <div class="hero-content reveal">
       <div class="eyebrow eyebrow-line hero-eyebrow"><span>Músico · Director · Gestor cultural</span></div>
-      <img src="../assets/logos/jhonfer_logo_white.png" alt="Johnfer Laverde" class="hero-logo">
+      <img src="../../assets/logos/jhonfer_logo_white.png" alt="Johnfer Laverde" class="hero-logo">
       <p class="hero-quote">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
       <div class="hero-actions">
         <a href="#proyectos" class="btn btn-primary">Conoce mi trabajo <i data-lucide="arrow-right"></i></a>
@@ -441,16 +411,6 @@
       </div>
     </div>
   </section>
-
-  <!-- v2.1 — Trayectoria en cifras -->
-  <div class="stats-band">
-    <div class="stats-grid reveal">
-      <div class="stat"><div class="num">5</div><div class="label">Ediciones del FIEB</div></div>
-      <div class="stat"><div class="num">18</div><div class="label">Maestros e invitados</div></div>
-      <div class="stat"><div class="num">6</div><div class="label">Países representados</div></div>
-      <div class="stat"><div class="num">3</div><div class="label">Plataformas culturales</div></div>
-    </div>
-  </div>
 
   <!-- Idea #5 — Sección de inversión polar -->
   <section class="inversion">
@@ -485,14 +445,14 @@
       </div>
 
       <div class="projects-grid">
-        <a class="project-card reveal delay-1" href="fieb-1.1.html" data-brand="fieb">
-          <div class="logo-block"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+        <a class="project-card reveal delay-1" href="fieb.html" data-brand="fieb">
+          <div class="logo-block"><img src="../../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
           <h3>Festival Internacional de Eufonios y Bombardinos</h3>
           <p>Plataforma académica y artística de eufonio y bombardino en Colombia. Desde 2020, reúne maestros nacionales e internacionales.</p>
           <span class="arrow">Ver festival <i data-lucide="arrow-up-right"></i></span>
         </a>
-        <a class="project-card reveal delay-2" href="fundacion-1.1.html" data-brand="latido">
-          <div class="logo-block"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+        <a class="project-card reveal delay-2" href="fundacion.html" data-brand="latido">
+          <div class="logo-block"><img src="../../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
           <h3>Fundación Cultural Raíces Panches</h3>
           <p>Plataforma de transformación social que conecta identidad ancestral, música, tecnología, deporte y medio ambiente.</p>
           <span class="arrow">Ver fundación <i data-lucide="arrow-up-right"></i></span>
@@ -515,18 +475,18 @@
     </div>
     <div class="ecosistema-grid">
       <a class="ecosistema-card reveal delay-1" href="#" style="background: var(--jhonfer-dark); color: #F4EDE0; border-color: transparent;">
-        <div class="logo-wrap"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></div>
+        <div class="logo-wrap"><img src="../../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></div>
         <div class="role" style="color: var(--gold-johnfer);">Estás aquí</div>
         <div class="name">Johnfer Laverde</div>
       </a>
-      <a class="ecosistema-card reveal delay-2" href="fieb-1.1.html">
-        <div class="logo-wrap"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+      <a class="ecosistema-card reveal delay-2" href="fieb.html">
+        <div class="logo-wrap"><img src="../../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
         <div class="role">Festival</div>
         <div class="name">FIEB</div>
         <span class="arrow" style="color: var(--gold-fieb);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
       </a>
-      <a class="ecosistema-card reveal delay-3" href="fundacion-1.1.html">
-        <div class="logo-wrap"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+      <a class="ecosistema-card reveal delay-3" href="fundacion.html">
+        <div class="logo-wrap"><img src="../../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
         <div class="role">Fundación</div>
         <div class="name">Latido Panches</div>
         <span class="arrow" style="color: var(--gold-latido);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
@@ -549,7 +509,7 @@
       <div class="geo-line"><span>Nocaima</span><span>·</span><span>Cundinamarca</span></div>
       <div class="coord">5°04′N · 74°23′W</div>
     </div>
-    <div class="footer-bottom">© 2026 Johnfer Laverde — Músico · Director · Gestor Cultural</div>
+    <div class="footer-bottom">© 2025 Johnfer Laverde — Músico · Director · Gestor Cultural</div>
   </footer>
 
   <script src="https://unpkg.com/lucide@latest"></script>
