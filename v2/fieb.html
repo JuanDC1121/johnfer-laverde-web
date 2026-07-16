@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FIEB — v2.1</title>
+<title>FIEB — Festival Internacional de Eufonios y Bombardinos</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="system.css">
 <link rel="stylesheet" href="motifs.css">
@@ -41,7 +41,7 @@
   }
   .nav .actions a:hover { color: var(--gold-fieb); }
 
-  /* ============ Idea #4 — Hero foto + lavado tonal ============ */
+  /* ============ Hero foto + lavado tonal ============ */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -61,7 +61,7 @@
     position: absolute; inset: 0;
     background: radial-gradient(circle at 50% 40%, rgba(26,39,68,0.05) 0%, transparent 60%);
   }
-  /* Idea #3 — rayos panche */
+  /* rayos panche */
   .hero .motif-rays { color: var(--gold-fieb); opacity: 0.45; }
   .hero-content { position: relative; z-index: 2; max-width: 1100px; }
   .hero-eyebrow {
@@ -157,7 +157,7 @@
   .mv-card h3 { font-size: 1.6rem; color: var(--fieb-primary); margin-bottom: 0.75rem; }
   .mv-card p { color: #4A5168; margin: 0; }
 
-  /* ============ Idea #5 — Sección de inversión polar (Objetivo General oscuro) ============ */
+  /* ============ Sección de inversión polar (Objetivo General oscuro) ============ */
   .inversion {
     background: var(--latido-primary);
     color: #F4EDE0;
@@ -657,17 +657,6 @@
     cursor: pointer;
   }
   .form-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.75rem; flex-wrap: wrap; }
-  .form-note {
-    margin-top: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: rgba(212,154,46,0.08);
-    border-left: 3px solid var(--gold-fieb);
-    border-radius: var(--radius-sm);
-    font-size: 0.82rem;
-    color: #4A5168;
-    line-height: 1.55;
-  }
-  .form-note strong { color: var(--fieb-primary); }
   .form-status {
     display: none;
     margin-top: 1rem;
@@ -711,7 +700,7 @@
     .form-card { padding: 1.5rem; }
   }
 
-  /* Idea #8 — Ecosistema */
+  /* Ecosistema */
   .ecosistema { background: var(--fieb-bg); border-top: 1px solid rgba(26,39,68,0.06); color: #3A3026; }
   .ecosistema .eyebrow { color: var(--gold-fieb); }
   .ecosistema-card { color: var(--fieb-primary); border-color: rgba(26, 39, 68, 0.15); background: #fff; }
@@ -850,7 +839,7 @@
     </div>
   </section>
 
-  <!-- Idea #5 — Inversión polar: Objetivo General en oscuro -->
+  <!-- Inversión polar: Objetivo General en oscuro -->
   <section class="inversion">
     <div class="motif-dots"></div>
     <div class="motif-rays top-right" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
@@ -988,18 +977,13 @@
 
         <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
 
-        <div class="form-note">
-          <strong>Base de datos Supabase:</strong>
-          este formulario guarda las inscripciones en la tabla <code>fieb_inscripciones</code>. Pega tu <code>SUPABASE_URL</code> y tu <code>SUPABASE_ANON_KEY</code> en <code>supabase-config.js</code> y ejecuta el SQL incluido en la carpeta <code>supabase</code>.
-        </div>
       </form>
 
       <div class="form-success" id="formSuccess">
         <div class="check"><i data-lucide="check"></i></div>
         <h3 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--fieb-primary); margin-bottom: 0.5rem;">¡Inscripción recibida!</h3>
         <p style="color: #4A5168;">Tus datos fueron guardados correctamente en la base de datos de FIEB.</p>
-        <pre id="formPreview" style="margin-top: 1.25rem; padding: 1rem; background: var(--fieb-bg); border-radius: var(--radius-sm); text-align: left; font-size: 0.78rem; color: #2A2520; overflow-x: auto;"></pre>
-      </div>
+        </div>
     </div>
   </section>
 
@@ -1253,7 +1237,6 @@
 
     const form = document.getElementById('inscripcionForm');
     const success = document.getElementById('formSuccess');
-    const preview = document.getElementById('formPreview');
     const statusBox = document.getElementById('formStatus');
     const submitButton = document.getElementById('submitInscripcion');
     const supabaseConfig = window.FIEB_SUPABASE || {};
@@ -1319,12 +1302,6 @@
           return;
         }
 
-        preview.textContent = JSON.stringify({
-          fecha: new Date().toISOString(),
-          nombre: data.nombre,
-          correo: data.correo,
-          instrumento: data.instrumento
-        }, null, 2);
         form.style.display = 'none';
         success.classList.add('show');
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
