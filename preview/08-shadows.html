@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; background: #FAFAF8; }
+  .shadow-row { display: flex; gap: 16px; margin-top: 14px; }
+  .shadow-box {
+    flex: 1; aspect-ratio: 1.2; background: #fff; border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #325591;
+  }
+  .shadow-box .v { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1; }
+  .shadow-box .n { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-top: 4px; }
+  .sm { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .md { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .lg { box-shadow: 0 16px 48px rgba(0,0,0,0.18); }
+  .glow { box-shadow: 0 0 20px rgba(245,200,66,0.5); background: #0D1B2A; color: #F5C842; border: 1px solid rgba(245,200,66,0.3); }
+</style>
+</head>
+<body>
+  <div class="row" style="justify-content: space-between; align-items: baseline;">
+    <span class="label">Elevation · shadows</span>
+    <span class="mono">--shadow-*</span>
+  </div>
+
+  <div class="shadow-row">
+    <div class="shadow-box sm"><span class="v">sm</span><span class="n">2 / 8 / .08</span></div>
+    <div class="shadow-box md"><span class="v">md</span><span class="n">8 / 24 / .12</span></div>
+    <div class="shadow-box lg"><span class="v">lg</span><span class="n">16 / 48 / .18</span></div>
+    <div class="shadow-box glow"><span class="v" style="color: #F5C842;">glow</span><span class="n" style="color:#E8B84B;">fundación only</span></div>
+  </div>
+
+  <div style="margin-top: 14px; font-size: 11px; color: #666; line-height: 1.5;">
+    Golden glow shadows are <strong>exclusive to the Fundación theme</strong>. Other themes stick to soft neutral drop shadows.
+  </div>
+</body>
+</html>

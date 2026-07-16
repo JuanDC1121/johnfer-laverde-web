@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .logo-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .logo-cell {
+    border-radius: 12px; padding: 16px; aspect-ratio: 1.1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  }
+  .logo-cell img { max-width: 100%; max-height: 80px; object-fit: contain; }
+  .role { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+  .lj { background: #325591; }
+  .lj .role { color: #B6CBE8; }
+  .lf { background: #F4F4F2; border: 1px solid #ddd; }
+  .lf .role { color: #1A2744; }
+  .lu { background: #0D1B2A; }
+  .lu .role { color: #F5C842; }
+</style>
+</head>
+<body>
+  <div class="label">Logos · primary lockups</div>
+  <div class="logo-row">
+    <div class="logo-cell lj">
+      <img src="../assets/logos/jhonfer_logo_white.png" alt="Johnfer Laverde">
+      <span class="role">Johnfer · on primary</span>
+    </div>
+    <div class="logo-cell lf">
+      <img src="../assets/logos/fieb_logo_light.png" alt="FIEB">
+      <span class="role">FIEB · on light bg</span>
+    </div>
+    <div class="logo-cell lu">
+      <img src="../assets/logos/fundacion_logo_gold.png" alt="Latido Panches">
+      <span class="role">Latido Panches · on dark</span>
+    </div>
+  </div>
+  <div style="margin-top: 12px; font-size: 11px; color: #666; line-height: 1.5;">
+    Only PNG raster supplied — no SVG. Johnfer wordmark is light-only (requires dark background to read).
+  </div>
+</body>
+</html>

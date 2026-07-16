@@ -1,0 +1,479 @@
+{
+  "editions": [
+    {
+      "year": 2020,
+      "heading": "I Edición · Virtual",
+      "title": "Festival Internacional de Eufonios y Bombardinos · Virtual Colombia 2020",
+      "place": "Formato 100% online · Colombia y el mundo",
+      "dates": "Del 24 al 27 de noviembre",
+      "description": "Primera versión del Festival, nacida en plena pandemia y desarrollada íntegramente en línea. Reunió a maestros internacionales y colombianos en clases de calentamiento, clases magistrales, talleres de improvisación y conciertos con transmisión online, sentando las bases pedagógicas del proyecto.",
+      "open": false,
+      "sponsors": "Apoyan: Funza Centro Cultural Bacatá · Funza Ciudad Líder · Buffet Crampon Paris · Euphonium.com Store · Adams · Batuta Radio",
+      "masterGroups": [
+        {
+          "label": "Maestros internacionales",
+          "masters": [
+            {
+              "name": "Fernando Deddos",
+              "role": "Bombardino · Brasil",
+              "bio": "Compositor y bombardinista de la región sur de Brasil, reconocido por su extensa investigación y producción para el instrumento. Director artístico de la Conferencia de Tuba/Bombardino del Sur de Brasil; su CD debut, «EuFonium Brasileiro» (2009), fue la primera grabación de bombardino en Brasil y recibió el premio Roger Bobo de la ITEA. Licenciado en Dirección y Composición (Paraná) y máster en Interpretación (Duquesne University). Ganador de dos premios de composición de la ITEA (Harvey Phillips); sus obras han sido interpretadas por artistas como Steven Mead y Sergio Carolino."
+            },
+            {
+              "name": "Bastien Baumet",
+              "role": "Bombardino · Francia",
+              "bio": "Comenzó a los seis años y obtuvo medallas de oro de bombardino por unanimidad en los conservatorios de Nîmes y Villeurbanne. Ingresó al Conservatoire National Supérieur de Musique et de Danse de París (1er premio, 2009). Ganó el Concurso Europeo de Jóvenes Solistas (Luxemburgo, 2006) y el concurso internacional JEJU (Corea del Sur, 2008). Bombardino solista de la Brass Band de París (campeona de Francia 2012–2017) y colaborador de las grandes orquestas parisinas. Discos: «Art of the Euphonium», «Portraits», «Romance» y «Radiance». Profesor en el Conservatorio Nacional de Música de Lyon y artista Besson (Buffet-Crampon)."
+            },
+            {
+              "name": "Adam Frey",
+              "role": "Eufonio · EE. UU.",
+              "bio": "Uno de los solistas de metal de élite del mundo y gran embajador del bombardino, con más de 140 obras compuestas o arregladas para él. Durante 16 años fue anfitrión del International Euphonium Tuba Festival (IET) en la Universidad de Emory. Solista invitado en festivales de todo el mundo —Midwest Clinic (EE. UU.), WASBE (Singapur), Trombonanza (Argentina), Tubmania (Tailandia)— y solista con orquestas como los Boston Pops y la US Army Orchestra. Es profesor asociado de música en la University of North Georgia, donde dirige el UNG Low Brass Collective."
+            },
+            {
+              "name": "Juan José Munera",
+              "role": "Bombardino · España",
+              "bio": "Formado en el Conservatorio Superior «Joaquín Rodrigo» de Valencia (premio fin de grado y mención de honor) y en el ISEB de Trento con Steven Mead. Miembro de la European Union Youth Wind Orchestra y la Worldwide Wind Orchestra. Ha actuado con la Orquesta Sinfónica de Galicia, la RTVE y bandas municipales de Barcelona, Sevilla y Madrid. Profesor y solista en festivales internacionales (FESNOJIV en Venezuela, Tatuí en Brasil, ITEC 2012 en Linz). Desde 2005 es bombardino solista de la Banda Sinfónica Municipal de Bilbao. Publicó «Spainphonic» (2012) y «Two Friends» (2013)."
+            }
+          ]
+        },
+        {
+          "label": "Maestros colombianos invitados",
+          "masters": [
+            {
+              "name": "César Augusto Grajales Suárez",
+              "role": "Eufonio · Colombia",
+              "bio": "Nació en Apia, Risaralda (1990). Inició en la Banda Sinfónica de Santuario y se formó como Licenciado en Música en la Universidad Tecnológica de Pereira. Integró la Banda Sinfónica Especial de Pereira e instructor de bronces bajos en el plan departamental de música de Risaralda. Ha recibido clases magistrales de maestros como Bastien Baumet, Hélène Escriva, Jason Ham, Thomas Rüedi, Steven Mead y Roland Szentpali. Actualmente es instrumentista y docente de bronces en la Banda Sinfónica de Pereira (Secretaría de Cultura)."
+            },
+            {
+              "name": "John Carlos Ramos Muñoz",
+              "role": "Eufonio · Colombia",
+              "bio": "Nació en Guatavita, Cundinamarca. Licenciado en Música con énfasis en Pedagogía Instrumental de la Universidad Pedagógica Nacional (2010). Eufonista de la Banda Sinfónica de Cundinamarca, la Banda Filarmónica de Bogotá y la Orquesta Sinfónica Nacional de Colombia (supernumerario), entre otras agrupaciones. En 2012 recibió la Medalla al Mérito Antonio Nariño del Congreso de la República. Ha estudiado con Adam Frey, Bastien Baumet, David Thornton, Steven Mead y Brian Bowman, entre otros. Docente de la cátedra de Eufonio en la Universidad Pedagógica Nacional y la Universidad de Cundinamarca."
+            },
+            {
+              "name": "John Fernando Laverde R.",
+              "role": "Eufonio · Organizador · Colombia",
+              "bio": "Nació en Nocaima, Cundinamarca. Se graduó como músico eufonista de la Universidad Nacional de Colombia (2015), tras iniciar estudios de dirección orquestal. Instrumentista principal como eufonista en la Banda Sinfónica de Cundinamarca (2014–2015) y participante en la gira por Cataluña con la Orquesta Sinfónica del Conservatorio de la U. Nacional. Creador del Cuarteto de Eufonios de la Escuela de Formación Artística de Tocancipá, que se presentó en el International Tuba Euphonium Festival de la Universidad de Emory (Atlanta, 2019). Fundador y organizador del FIEB."
+            },
+            {
+              "name": "Santiago Arango Díaz",
+              "role": "Barítono / Eufonio · Colombia",
+              "bio": "Inició sus estudios en Copacabana (Antioquia) en 1990 e ingresó a la Universidad de Antioquia, donde recibió el grado de «Maestro en Barítono» (2013) y el título de «Magíster en Interpretación e Investigación Musical» de la Universidad de Valencia, España (2016). Bombardinista principal y solista de la Banda Sinfónica de la Universidad de Antioquia, e integrante del cuarteto «a 4TUBAS» desde 2012. Profesor de eufonio y ensambles de cámara en la Universidad de Antioquia (desde 2014) y en la Red de Escuelas de Música de Medellín. Ha recibido clases de Adam Frey, Fernando Deddos, Steven Mead y Hélène Escriva."
+            }
+          ]
+        },
+        {
+          "label": "Maestros colombianos invitados · Improvisación",
+          "masters": [
+            {
+              "name": "Eder Hernández Martínez",
+              "role": "Bombardino · Improvisación · Colombia",
+              "bio": "Licenciado en Música de la Facultad de Bellas Artes de la Universidad del Atlántico, con diplomado en arreglo y composición en músicas populares. Presidente fundador de la Fundación Bombardinos de Colombia, profesor e investigador del bombardino. Ha coordinado el área de música de la Escuela Distrital de Arte (EDA) de Barranquilla y el proyecto Atlántico Música y Vida. Premiado como mejor bombardinista en la categoría improvisación del Primer Concurso Nacional de Euphonium y Bombardinos (Tocancipá 2010) y mejor instrumentista del Carnaval de Barranquilla 2015."
+            },
+            {
+              "name": "Juan Carlos Jiménez Argel",
+              "role": "Bombardino · Improvisación · Colombia",
+              "bio": "Nació en Manguelito, Cereté (Córdoba), en 1981. Licenciado en Educación Artística – Música (Universidad de Córdoba) y magíster en Músicas Colombianas (Universidad El Bosque). Se formó en el bombardino y la improvisación junto a su padre, el maestro Reinaldo Jiménez, y con intérpretes del formato pelayero como Ramón Benítez, Hernán Contreras y Clemente Montalvo. Fundó la escuela de formación musical «Nuestra Generación Reinaldo Jiménez» (2008). Docente de dirección musical y énfasis instrumental en la Universidad de Córdoba y director de la banda 11 de Noviembre de Rabolargo."
+            },
+            {
+              "name": "Diego Moya",
+              "role": "Bombardino · Improvisación · Colombia",
+              "bio": "Maestro invitado del festival; impartió la clase de iniciación en improvisación al bombardino en música colombiana. Biografía por ampliar con la información oficial del invitado."
+            }
+          ]
+        },
+        {
+          "label": "Clases magistrales y talleres",
+          "masters": [
+            {
+              "name": "Sergio Casas Santos",
+              "role": "Bombardino · Clase magistral",
+              "bio": "Maestro invitado del festival; ofreció la clase magistral «Función del bombardino en la banda». Biografía por ampliar con la información oficial del invitado."
+            },
+            {
+              "name": "Steven Sastoque",
+              "role": "Tecnologías de audio y mezcla",
+              "bio": "Impartió el taller de tecnologías de audio y mezcla del festival. Biografía por ampliar con la información oficial del invitado."
+            }
+          ]
+        }
+      ],
+      "program": [
+        {
+          "day": "Martes",
+          "date": "24 nov",
+          "items": [
+            { "time": "8:30 – 9:00", "activity": "Charla e instrucciones a los participantes sobre el desarrollo del festival" },
+            { "time": "9:00 – 10:15", "activity": "Bastien Baumet · Clase de calentamiento" },
+            { "time": "10:30 – 11:30", "activity": "Clase magistral: el eufonio en los conjuntos orquestales · Bastien Baumet" },
+            { "time": "11:30 – 14:00", "activity": "Receso · almuerzo" },
+            { "time": "14:00 – 15:15", "activity": "César Augusto Grajales · Calentamiento enfocado a la iniciación del eufonio" },
+            { "time": "15:30 – 16:45", "activity": "Diego Moya · Iniciación en improvisación al bombardino en música colombiana" },
+            { "time": "18:00 – 19:00", "activity": "Concierto en vivo con transmisión online" }
+          ]
+        },
+        {
+          "day": "Miércoles",
+          "date": "25 nov",
+          "items": [
+            { "time": "9:00 – 10:15", "activity": "Juan José Munera · Clase de calentamiento" },
+            { "time": "10:30 – 11:30", "activity": "Clase magistral: función del bombardino en la banda · Sergio Casas Santos" },
+            { "time": "11:30 – 14:00", "activity": "Receso · almuerzo" },
+            { "time": "14:00 – 15:15", "activity": "John Carlos Ramos · Ejercicios de Rochut y bel canto en el eufonio" },
+            { "time": "15:30 – 16:45", "activity": "Eder Hernández · Improvisación: el bombardino en la música colombiana del Caribe" },
+            { "time": "18:00 – 19:00", "activity": "Concierto virtual" }
+          ]
+        },
+        {
+          "day": "Jueves",
+          "date": "26 nov",
+          "items": [
+            { "time": "9:00 – 10:15", "activity": "Fernando Deddos · Clase de calentamiento" },
+            { "time": "10:30 – 11:30", "activity": "Clase magistral: música latinoamericana y composición para el eufonio · Fernando Deddos" },
+            { "time": "11:30 – 14:00", "activity": "Receso · almuerzo" },
+            { "time": "14:00 – 15:15", "activity": "John Fernando Laverde · Clase enfocada a la pedagogía del eufonio" },
+            { "time": "15:30 – 16:45", "activity": "Juan Carlos Argel · Improvisación en música colombiana del Caribe" },
+            { "time": "18:00 – 19:00", "activity": "Concierto virtual" }
+          ]
+        },
+        {
+          "day": "Viernes",
+          "date": "27 nov",
+          "items": [
+            { "time": "9:00 – 10:15", "activity": "Adam Frey · Clase de calentamiento" },
+            { "time": "10:30 – 11:30", "activity": "Clase magistral · Adam Frey" },
+            { "time": "11:30 – 14:00", "activity": "Receso · almuerzo" },
+            { "time": "14:00 – 15:15", "activity": "Santiago Arango · Repertorio del eufonio: estudio e interpretación desde cero" },
+            { "time": "15:30 – 16:45", "activity": "Steven Sastoque · Taller de tecnologías de audio y mezcla" },
+            { "time": "18:00 – 19:00", "activity": "Concierto en vivo con transmisión online" }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "heading": "II Edición · Presencial",
+      "title": "II Festival Internacional de Eufonios y Bombardinos · Funza 2021",
+      "place": "Funza · Cundinamarca · Colombia",
+      "dates": "Del 1 al 6 de noviembre",
+      "description": "Primera edición presencial, celebrada en el marco de la VIII Semana de la Música. Reunió a maestros internacionales y nacionales, una conferencia sobre biomecánica aplicada al eufonio, un concierto central y la primera edición del concurso de eufonio y bombardino. Proyecto ganador de la convocatoria #ComparteLoQueSomos 2021 del Ministerio de Cultura.",
+      "open": false,
+      "sponsors": "Organiza: Johnfer Laverde · Apoyan: Ministerio de Cultura · Centro Cultural Bacatá · Alcaldía de Funza · Funza Ciudad Líder · Buffet Crampon Paris · Yamaha · World Band Music · Euphonium.com Store · Denis Wick London · Ultimate Brass · BrassOn",
+      "masterGroups": [
+        {
+          "label": "Maestros internacionales",
+          "masters": [
+            {
+              "name": "Adam Frey",
+              "role": "Eufonio · EE. UU.",
+              "bio": "Uno de los solistas de metal de élite del mundo y gran embajador del bombardino, con más de 140 obras compuestas o arregladas para él. Durante 16 años fue anfitrión del International Euphonium Tuba Festival (IET) en la Universidad de Emory. Solista invitado en festivales de todo el mundo y con orquestas como los Boston Pops y la US Army Orchestra. Es profesor asociado de música en la University of North Georgia."
+            },
+            {
+              "name": "Bastien Baumet",
+              "role": "Bombardino · Francia",
+              "bio": "Obtuvo medallas de oro de bombardino por unanimidad en los conservatorios de Nîmes y Villeurbanne e ingresó al Conservatoire National Supérieur de Musique et de Danse de París (1er premio, 2009). Ganó el Concurso Europeo de Jóvenes Solistas (Luxemburgo, 2006) y el concurso internacional JEJU (Corea del Sur, 2008). Bombardino solista de la Brass Band de París (campeona de Francia 2012–2017). Profesor en el Conservatorio Nacional de Música de Lyon y artista Besson (Buffet-Crampon)."
+            }
+          ]
+        },
+        {
+          "label": "Maestros colombianos invitados",
+          "masters": [
+            {
+              "name": "Juan Carlos Jiménez Argel",
+              "role": "Bombardino · Colombia",
+              "bio": "Nació en Manguelito, Cereté (Córdoba), en 1981. Licenciado en Educación Artística – Música (Universidad de Córdoba) y magíster en Músicas Colombianas (Universidad El Bosque). Se formó en el bombardino y la improvisación junto a su padre, el maestro Reinaldo Jiménez (q. e. p. d.), y con intérpretes del formato pelayero como Ramón Darío Benítez y Hernán Contreras. Docente de énfasis instrumental de bombardino y trombón en la Universidad de Córdoba, director de su cuarteto de bombardinos y fundador de la escuela «Nuestra Generación Reinaldo Jiménez»."
+            }
+          ]
+        },
+        {
+          "label": "Invitada especial",
+          "masters": [
+            {
+              "name": "Laura Delgado",
+              "role": "Fisioterapeuta · Colombia",
+              "bio": "Fisioterapeuta egresada de la Universidad de La Sabana, con enfoque terapéutico en terapia manual ortopédica. En el II Festival ofreció la conferencia sobre la biomecánica del cuerpo aplicada a la interpretación del eufonio."
+            }
+          ]
+        }
+      ],
+      "highlights": [
+        {
+          "title": "Concierto central",
+          "meta": "Jueves 4 de noviembre · 7:00 p. m. · Auditorio Biblioparque Marqués de San Jorge",
+          "text": "Adam Frey, Bastien Baumet y el Cuarteto de Eufonios de Tocancipá, con el pianista Óscar González. Transmisión en vivo por la página del festival."
+        },
+        {
+          "title": "Final · Concurso de Eufonio",
+          "meta": "Viernes 5 de noviembre · 9:30 a. m. · Auditorio Biblioparque Marqués de San Jorge",
+          "text": "Finalistas de la categoría avanzada: Óscar Mayorga (Sibaté), Felipe Ríos (San Pedro de los Milagros), Juan Naranjo (Manizales) y Julián Lamar (Santuario). Pianista: Óscar González."
+        }
+      ],
+      "contest": {
+        "intro": "Primera edición presencial con concurso, desarrollado en dos rondas eliminatorias y con repertorio obligatorio por categoría.",
+        "categories": ["Infantil", "Juvenil / Universitaria", "Avanzada", "Bombardino", "Música Colombiana", "Improvisación"],
+        "winners": [
+          { "place": "1er puesto", "name": "Óscar Mayorga", "city": "Sibaté · Cundinamarca" },
+          { "place": "2º puesto", "name": "Julián Lamar", "city": "Santuario · Risaralda" }
+        ]
+      }
+    },
+    {
+      "year": 2022,
+      "heading": "III Edición · Presencial",
+      "title": "III Festival Internacional de Eufonios y Bombardinos · Funza 2022",
+      "place": "Funza · Cundinamarca · Colombia",
+      "dates": "Del 7 al 12 de noviembre",
+      "description": "Edición celebrada en el Auditorio Biblioparque Marqués de San Jorge, con dos grandes eufonistas invitados —Adam Frey y Glenn Van Looy—, clases magistrales, el concurso de eufonio y bombardino, conciertos de gala y de cierre, y el estreno de obras y del estudio «Funky Octaves».",
+      "open": false,
+      "sponsors": "Organiza: Johnfer Laverde · Apoyan: Geneva Group · University of North Georgia · Euphonium.com Store · Besson · Buffet Crampon Paris · Music Mart · Yamaha · BrassOn · John Packer · Centro Cultural Bacatá · Funza Ciudad Líder",
+      "masterGroups": [
+        {
+          "label": "Maestros internacionales",
+          "masters": [
+            {
+              "name": "Adam Frey",
+              "role": "Eufonio · EE. UU.",
+              "bio": "Uno de los solistas de metal de élite del mundo y gran embajador del bombardino, con más de 140 obras compuestas o arregladas para él. Durante 16 años fue anfitrión del International Euphonium Tuba Festival (IET) en la Universidad de Emory. Solista invitado en festivales de todo el mundo —Midwest Clinic, WASBE (Singapur), Trombonanza (Argentina), Tubmania (Tailandia)— y solista con orquestas como los Boston Pops y la US Army Orchestra. Es profesor asociado de música en la University of North Georgia, donde dirige el UNG Low Brass Collective."
+            },
+            {
+              "name": "Dr. Glenn Van Looy",
+              "role": "Eufonio · Bélgica",
+              "bio": "Nacido en Bonheiden (Amberes, Bélgica), es uno de los principales eufonistas del siglo XXI. Se formó en el Instituto Lemmens de Lovaina con Nick Ost. Bombardino solista de la Brass Band Heist y, desde 2013, de la Brass Band Buizingen. Ganador de los campeonatos en solitario de Bélgica, el European Solo Championship (Linz), el British Open Solo Championship —su ganador más joven— y el título de Solista Internacional del Año (Ern Keller, Sídney), entre otros. Grabó los álbumes «Move Their Mind», «Stories of Life» y «Lost Treasure». En junio de 2021 obtuvo el Doctorado en Artes Musicales por la Universidad de Salford (Reino Unido). Profesor de bombardino y tuba en el Conservatoire cantonal du Valais (Sion, Suiza)."
+            }
+          ]
+        },
+        {
+          "label": "Maestros colombianos invitados",
+          "masters": [
+            {
+              "name": "Sebastián Rozo",
+              "role": "Eufonio · Colombia",
+              "bio": "Maestro colombiano invitado; ofreció clases magistrales durante el festival. Biografía por ampliar con la información oficial del invitado."
+            }
+          ]
+        }
+      ],
+      "highlights": [
+        {
+          "title": "Concierto de gala",
+          "meta": "Jueves 10 de noviembre · 8:15 p. m. · Auditorio Biblioparque Marqués de San Jorge",
+          "text": "Adam Frey y Glenn Van Looy, con el pianista Óscar González."
+        },
+        {
+          "title": "Concierto de cierre",
+          "meta": "Viernes 11 de noviembre · 7:00 p. m. · Auditorio Biblioparque Marqués de San Jorge",
+          "text": "Banda Fiestera de Subachoque y Dueto Stradibass."
+        },
+        {
+          "title": "Estrenos y estudio «Funky Octaves»",
+          "meta": "Estrenos de la serie «Cool Exercises Vol. I» de EufoX",
+          "text": "Los eufonistas inscritos recibieron gratis el estudio «Funky Octaves», con una sesión de muestra y análisis. Se estrenaron tres obras: «El rincón del olvido» (porro · eufonio solo), «Duodenum» (porro chocoano fusión · dúo de eufonios) y «Febrero 25» (porro paliteao · trío de eufonios)."
+        }
+      ],
+      "contest": {
+        "intro": "Concurso en dos rondas eliminatorias con repertorio obligatorio por categoría, ampliado según las recomendaciones de los maestros y los pénsum universitarios.",
+        "categories": ["Infantil", "Juvenil / Universitaria", "Avanzada / Profesional", "Bombardino · Música Colombiana e Improvisación"],
+        "finalistGroups": [
+          {
+            "category": "Profesional",
+            "names": ["Óscar Mayorga · Sibaté (Cund.)", "Yeison Bernal · Guayabal de Síquima (Cund.)"]
+          },
+          {
+            "category": "Infantil",
+            "names": ["María Fernanda León · Cajicá (Cund.)", "Ángel Hernando Alfonso · Funza (Cund.)", "Juan Esteban Espinosa · Tunja (Boy.)"]
+          },
+          {
+            "category": "Juvenil",
+            "names": ["Sergio Cuevas Henao · El Colegio (Cund.)", "Honathan Mateo Meza · Imués (Nari.)", "Cristhian Flórez Muñoz · Ricaurte (Nari.)", "Edier Silva Rojas · Beteitiva (Boy.)"]
+          }
+        ]
+      },
+      "program": [
+        {
+          "day": "Lunes",
+          "date": "7 nov",
+          "items": [
+            { "time": "", "activity": "Recibimiento a la comunidad eufonística" }
+          ]
+        },
+        {
+          "day": "Martes",
+          "date": "8 nov",
+          "items": [
+            { "time": "8:00 – 9:00", "activity": "Bienvenida" },
+            { "time": "9:00 – 10:40", "activity": "Calentamiento · Adam Frey" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Adam Frey" },
+            { "time": "12:15 – 14:00", "activity": "Almuerzo" },
+            { "time": "14:00 – 16:00", "activity": "Primera ronda · Concurso de eufonios" }
+          ]
+        },
+        {
+          "day": "Miércoles",
+          "date": "9 nov",
+          "items": [
+            { "time": "9:00 – 10:40", "activity": "Calentamiento · Glenn Van Looy" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Glenn Van Looy" },
+            { "time": "12:15 – 14:00", "activity": "Almuerzo" },
+            { "time": "14:00 – 16:00", "activity": "Clase magistral · Sebastián Rozo" },
+            { "time": "16:00 – 17:00", "activity": "Clase magistral · Adam Frey" }
+          ]
+        },
+        {
+          "day": "Jueves",
+          "date": "10 nov",
+          "items": [
+            { "time": "9:00 – 10:40", "activity": "Calentamiento · Adam Frey" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Adam Frey" },
+            { "time": "12:15 – 14:00", "activity": "Almuerzo" },
+            { "time": "14:00 – 16:00", "activity": "Final · Concurso de eufonios" },
+            { "time": "16:00 – 17:00", "activity": "Clase magistral · Adam Frey" },
+            { "time": "20:15", "activity": "Concierto de gala · Adam Frey y Glenn Van Looy" }
+          ]
+        },
+        {
+          "day": "Viernes",
+          "date": "11 nov",
+          "items": [
+            { "time": "9:00 – 10:40", "activity": "Calentamiento · Glenn Van Looy" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Glenn Van Looy" },
+            { "time": "12:15 – 14:00", "activity": "Almuerzo" },
+            { "time": "14:00 – 16:00", "activity": "Clase magistral · Sebastián Rozo" },
+            { "time": "16:00 – 17:00", "activity": "Clase magistral · Adam Frey" },
+            { "time": "19:00", "activity": "Concierto de cierre · Banda Fiestera de Subachoque y Dueto Stradibass" }
+          ]
+        },
+        {
+          "day": "Sábado",
+          "date": "12 nov",
+          "items": [
+            { "time": "9:00 – 10:30", "activity": "Calentamiento · Glenn Van Looy" },
+            { "time": "10:30", "activity": "Entrega de diplomas y marcha final" }
+          ]
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "heading": "IV Edición · Presencial",
+      "title": "IV Festival Internacional de Eufonios y Bombardinos · Funza 2023",
+      "place": "Funza · Cundinamarca · Colombia",
+      "dates": "Del 6 al 9 de noviembre",
+      "description": "Edición con marcado enfoque pedagógico —clases magistrales y clases personalizadas— para motivar a niños y jóvenes intérpretes del eufonio y el bombardino a crecer y perfeccionar su arte. Contó con el maestro internacional Adam Frey y los maestros colombianos Juan Carlos Jiménez y Sebastián Rozo, además del concurso de eufonio y bombardino, que estrenó la categoría Pre-infantil.",
+      "open": false,
+      "sponsors": "Organiza: Johnfer Laverde · Patrocinan: Yamaha · WSH Music · John Packer · BrassOn · University of North Georgia · Euphonium.com Store · Apoyan: Centro Cultural Bacatá · Alcaldía de Funza · Funza Ciudad Líder",
+      "masterGroups": [
+        {
+          "label": "Maestro internacional",
+          "masters": [
+            {
+              "name": "Adam Frey",
+              "role": "Eufonio · EE. UU.",
+              "bio": "Uno de los solistas de metal de élite del mundo y gran embajador del bombardino, con más de 140 obras compuestas o arregladas para él. Durante 16 años fue anfitrión del International Euphonium Tuba Festival (IET) en la Universidad de Emory. Solista invitado en festivales de todo el mundo y con orquestas como los Boston Pops y la US Army Orchestra. Es profesor asociado de música en la University of North Georgia, donde dirige el UNG Low Brass Collective."
+            }
+          ]
+        },
+        {
+          "label": "Maestros colombianos invitados",
+          "masters": [
+            {
+              "name": "Juan Carlos Jiménez Argel",
+              "role": "Bombardino · Colombia",
+              "bio": "Nació en Manguelito, Cereté (Córdoba), en 1981. Licenciado en Educación Artística – Música (Universidad de Córdoba) y magíster en Músicas Colombianas (Universidad El Bosque). Se formó en el bombardino y la improvisación junto a su padre, el maestro Reinaldo Jiménez (q. e. p. d.), y con intérpretes del formato pelayero como Ramón Darío Benítez y Hernán Contreras. Docente de énfasis instrumental de bombardino y trombón en la Universidad de Córdoba, director de su cuarteto de bombardinos y fundador de la escuela «Nuestra Generación Reinaldo Jiménez»."
+            },
+            {
+              "name": "Sebastián Rozo",
+              "role": "Eufonio · Colombia",
+              "bio": "Maestro colombiano invitado; ofreció clases magistrales y personalizadas durante el festival. Biografía por ampliar con la información oficial del invitado."
+            }
+          ]
+        }
+      ],
+      "contest": {
+        "intro": "Concurso en dos rondas eliminatorias con repertorio obligatorio por categoría. Esta edición amplió la oferta con la nueva categoría Pre-infantil (hasta los 12 años).",
+        "categories": ["Pre-infantil", "Infantil", "Juvenil / Universitaria", "Avanzada", "Bombardino · Música Colombiana e Improvisación"]
+      }
+    },
+    {
+      "year": 2025,
+      "heading": "V Edición · Presencial",
+      "title": "V Festival Internacional de Eufonios y Bombardinos · Cota 2025",
+      "place": "Cota · Cundinamarca · Colombia",
+      "dates": "Del 25 al 30 de noviembre",
+      "description": "Edición organizada por Eufonistas Unidas por Colombia junto a John Fernando Laverde, en el marco de la convocatoria Jóvenes por el Cambio 2025 del Ministerio de las Culturas. Con inscripción gratuita, reunió clases de calentamiento, clases magistrales y charlas sobre pedagogía, preparación para concursos y aplicación a becas en el exterior, además del Encuentro de Escuelas de Formación.",
+      "open": true,
+      "sponsors": "Organiza: Eufonistas Unidas por Colombia y John Fernando Laverde · Apoyan: Ministerio de las Culturas (Jóvenes por el Cambio 2025) · Alcaldía de Cota — Secretaría de Cultura y Juventudes · Buffet Crampon Paris · Willson",
+      "masterGroups": [
+        {
+          "label": "Maestro internacional",
+          "masters": [
+            {
+              "name": "Corentin Morvan",
+              "role": "Eufonio · Francia",
+              "bio": "Eufonista y saxhornista francés. Inició en el conservatorio de Nantes y se perfeccionó en el CNSM de París, donde obtuvo el máster en interpretación (2014) y en música de cámara con el cuarteto Opus 333, además de un diploma superior de investigación sobre el repertorio del saxhorn (2016). Ganó el primer premio del Concurso Internacional de Tours (2011) y del Concurso Internacional de Jeju, Corea del Sur (2018). Es profesor en el Conservatorio Maurice Ravel de Levallois-Perret y ofrece clases magistrales en Francia y el extranjero. Artista Willson, especializado en la historia y la práctica histórica de su instrumento."
+            }
+          ]
+        },
+        {
+          "label": "Maestro colombiano invitado",
+          "masters": [
+            {
+              "name": "Julián Lamar",
+              "role": "Eufonio · Colombia",
+              "bio": "Eufonista colombiano, natural de Santuario (Risaralda). Fue finalista y segundo puesto del concurso del FIEB en la edición de 2021 y en 2025 regresa como maestro invitado. En el festival dirigió clases de calentamiento, una clase magistral y la charla «Herramientas para la preparación física y mental para concursos». Biografía por ampliar con la información oficial del invitado."
+            }
+          ]
+        }
+      ],
+      "highlights": [
+        {
+          "title": "Encuentro de Escuelas de Formación",
+          "meta": "Sábado 29 y domingo 30 de noviembre",
+          "text": "Espacio de intercambio para fortalecer conocimientos entre eufonistas, trombonistas, tubistas y trompetistas de los distintos municipios."
+        }
+      ],
+      "program": [
+        {
+          "day": "Martes",
+          "date": "25 nov",
+          "items": [
+            { "time": "9:00 – 10:00", "activity": "Recibimiento a los participantes del V FIEB" },
+            { "time": "10:00 – 12:00", "activity": "Calentamiento · Corentin Morvan" },
+            { "time": "14:00 – 16:00", "activity": "Charla «El eufonio en Francia y Colombia»" }
+          ]
+        },
+        {
+          "day": "Miércoles",
+          "date": "26 nov",
+          "items": [
+            { "time": "9:00 – 11:00", "activity": "Calentamiento · Corentin Morvan" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Corentin Morvan" },
+            { "time": "14:00 – 16:00", "activity": "«Características pedagógicas de una clase en el Conservatorio Superior de Lyon»" }
+          ]
+        },
+        {
+          "day": "Jueves",
+          "date": "27 nov",
+          "items": [
+            { "time": "9:00 – 11:00", "activity": "Calentamiento · Julián Lamar" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Julián Lamar" },
+            { "time": "14:00 – 16:00", "activity": "«Herramientas para la preparación física y mental para concursos»" }
+          ]
+        },
+        {
+          "day": "Viernes",
+          "date": "28 nov",
+          "items": [
+            { "time": "9:00 – 11:00", "activity": "Calentamiento · Corentin Morvan" },
+            { "time": "11:00 – 12:15", "activity": "Clase magistral · Corentin Morvan" },
+            { "time": "14:00 – 16:00", "activity": "«Consejos y procedimientos para aplicar a becas en el exterior»" }
+          ]
+        },
+        {
+          "day": "Sábado y domingo",
+          "date": "29 – 30 nov",
+          "items": [
+            { "time": "", "activity": "Encuentro de Escuelas de Formación" }
+          ]
+        }
+      ]
+    }
+  ]
+}

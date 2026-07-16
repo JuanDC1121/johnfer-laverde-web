@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .title-demo {
+    font-family: 'DM Serif Display', serif; color: #325591; font-size: 32px; line-height: 1.1; text-align: center;
+    margin-top: 16px;
+  }
+  .title-demo::after {
+    content: ''; display: block; width: 80px; height: 3px; background: #8B6D4B; margin: 14px auto 0;
+  }
+  .alt-fieb { color: #1A2744; }
+  .alt-fieb::after { background: #E8A800; height: 2px; width: 100px; }
+  .alt-fund { color: #F5C842; }
+  .alt-fund::after { background: #E8B84B; height: 1px; width: 150px; box-shadow: 0 0 10px rgba(232,184,75,0.3); }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .panel { padding: 18px 12px 22px; border-radius: 10px; text-align: center; }
+  .pj { background: #fff; border: 1px solid #eee; }
+  .pf { background: #F4F4F2; }
+  .pu { background: #0D1B2A; }
+  .role { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; }
+  .pu .role { color: #E8B84B; }
+</style>
+</head>
+<body>
+  <div class="label">Section title · underline accent</div>
+  <div class="three" style="margin-top:14px;">
+    <div class="panel pj">
+      <div class="role">Johnfer · bronze 3px</div>
+      <div class="title-demo" style="font-size: 22px;">Mis Proyectos</div>
+    </div>
+    <div class="panel pf">
+      <div class="role">FIEB · gold 2px</div>
+      <div class="title-demo alt-fieb" style="font-size: 22px;">Nuestra Historia</div>
+    </div>
+    <div class="panel pu">
+      <div class="role">Fundación · gold glow 1px</div>
+      <div class="title-demo alt-fund" style="font-size: 22px;">Quiénes Somos</div>
+    </div>
+  </div>
+</body>
+</html>

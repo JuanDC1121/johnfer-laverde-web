@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Johnfer Laverde — v2.1</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="system.css">
+<link rel="stylesheet" href="motifs.css">
+<style>
+  body {
+    background: var(--jhonfer-cream);
+    color: #2A2520;
+    line-height: 1.7;
+  }
+
+  /* ============ Navbar ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 1.25rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    background: transparent;
+    transition: var(--transition);
+  }
+  .nav.scrolled {
+    background: rgba(31, 53, 92, 0.95);
+    backdrop-filter: blur(14px);
+    padding: 0.875rem 5%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .nav .brand img { height: 42px; }
+  .nav .links { display: flex; gap: 2rem; list-style: none; }
+  .nav .links a {
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    padding-bottom: 4px;
+    position: relative;
+    transition: var(--transition);
+  }
+  .nav .links a::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px;
+    background: var(--gold-johnfer);
+    transition: width 0.3s var(--ease);
+  }
+  .nav .links a:hover { color: var(--gold-johnfer); }
+  .nav .links a:hover::after { width: 100%; }
+
+  /* ============ Idea #4 — Hero foto + lavado tonal ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 6rem 1.5rem 4rem;
+    color: #fff;
+    background-color: var(--jhonfer-dark);
+    background-image:
+      linear-gradient(135deg, rgba(50,85,145,0.88) 0%, rgba(31,53,92,0.95) 55%, rgba(26,20,15,0.92) 100%),
+      url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+  /* Idea #3 — rayos panche reemplazando los círculos */
+  .hero .motif-rays { color: rgba(255, 235, 200, 0.35); }
+  .hero-content { position: relative; z-index: 2; max-width: 920px; }
+  .hero-logo {
+    width: 78%;
+    max-width: 720px;
+    margin: 0 auto 1.25rem;
+    filter: drop-shadow(0 6px 24px rgba(0,0,0,0.35));
+  }
+  .hero-quote {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(255, 235, 200, 0.92);
+    margin-bottom: 2.5rem;
+    max-width: 580px; margin-left: auto; margin-right: auto;
+  }
+  .hero-eyebrow {
+    color: var(--gold-johnfer);
+    margin-bottom: 1.25rem;
+    justify-content: center;
+  }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold-johnfer);
+    color: #1F1610;
+    border-color: var(--gold-johnfer);
+    box-shadow: 0 6px 24px rgba(224, 180, 104, 0.45);
+  }
+  .btn-primary:hover { background: #F2C880; box-shadow: 0 10px 30px rgba(224, 180, 104, 0.6); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255, 235, 200, 0.95);
+    border-color: rgba(255, 235, 200, 0.5);
+  }
+  .btn-outline:hover { background: rgba(255, 235, 200, 0.12); border-color: rgba(255, 235, 200, 0.85); }
+
+  /* ============ Sections ============ */
+  section { padding: 6rem 5%; position: relative; }
+  .container { max-width: var(--max-width); margin: 0 auto; }
+
+  /* Idea #7 — eyebrow + título de sección */
+  .eyebrow-light { color: var(--gold-johnfer); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--jhonfer-primary);
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+  }
+  .section-lead {
+    font-size: 1.05rem;
+    color: #4A4138;
+    max-width: 620px;
+  }
+
+  /* Sobre Mí — Idea #2: paleta Panches en cards y bordes */
+  .about {
+    background: var(--panches-crudo);
+    border-top: 1px solid rgba(160, 122, 80, 0.12);
+    border-bottom: 1px solid rgba(160, 122, 80, 0.12);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-photo {
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(31,53,92,0.15), rgba(160,122,80,0.25)),
+      url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80') center/cover;
+    box-shadow: 0 24px 60px rgba(31, 22, 16, 0.18);
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute;
+    inset: auto -16px -16px auto;
+    width: 120px; height: 120px;
+    border: 1px solid var(--gold-johnfer);
+    border-radius: var(--radius-sm);
+    z-index: -1;
+  }
+  .about p { font-size: 1.05rem; margin-bottom: 1rem; color: #3A3026; }
+
+  /* v2.1 — Franja de cifras de trayectoria */
+  .stats-band {
+    background: var(--jhonfer-cream);
+    padding: 3.5rem 5%;
+    border-bottom: 1px solid rgba(160, 122, 80, 0.12);
+  }
+  .stats-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat .num {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    color: var(--jhonfer-primary);
+    line-height: 1;
+  }
+  .stat .num span { color: var(--gold-johnfer); }
+  .stat .label {
+    margin-top: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #7A6A55;
+  }
+
+  /* Idea #5 — Polaridad B: una sección oscura en mitad del flujo */
+  .inversion {
+    background: var(--panches-negro);
+    color: #E8DECF;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .inversion .motif-dots {
+    inset: 0;
+    color: var(--gold-johnfer);
+    opacity: 0.14;
+  }
+  .inversion .container { position: relative; z-index: 2; }
+  .inversion .eyebrow { color: var(--gold-johnfer); justify-content: center; }
+  .inversion-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    margin-top: 2.5rem;
+  }
+  .ideal {
+    text-align: left;
+    padding: 2rem;
+    background: rgba(255, 235, 200, 0.04);
+    border: 1px solid rgba(255, 235, 200, 0.1);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+  }
+  .ideal:hover {
+    border-color: var(--gold-johnfer);
+    background: rgba(160, 122, 80, 0.1);
+    transform: translateY(-4px);
+  }
+  .ideal .icon-wrap {
+    width: 48px; height: 48px;
+    border-radius: var(--radius-pill);
+    background: rgba(160, 122, 80, 0.18);
+    color: var(--gold-johnfer);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 22px;
+  }
+  .ideal h3 {
+    font-size: 1.4rem; color: #F4EDE0; margin-bottom: 0.5rem;
+  }
+  .ideal p {
+    color: rgba(244, 237, 224, 0.78);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Proyectos */
+  .projects { background: var(--jhonfer-cream); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .project-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 2.25rem 1.75rem;
+    border: 1px solid rgba(160, 122, 80, 0.15);
+    box-shadow: 0 8px 28px rgba(31, 22, 16, 0.06);
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent-color, var(--gold-johnfer));
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 48px rgba(31, 22, 16, 0.12);
+    border-color: var(--accent-color, var(--gold-johnfer));
+  }
+  .project-card .logo-block {
+    height: 64px;
+    display: flex; align-items: center;
+  }
+  .project-card .logo-block img { max-height: 56px; max-width: 160px; }
+  .project-card h3 {
+    font-size: 1.4rem; color: var(--jhonfer-primary);
+    line-height: 1.2;
+  }
+  .project-card p {
+    color: #4A4138; font-size: 0.95rem; flex: 1;
+  }
+  .project-card .arrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--accent-color, var(--gold-johnfer));
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .project-card[data-brand="fieb"] { --accent-color: var(--gold-fieb); }
+  .project-card[data-brand="latido"] { --accent-color: var(--gold-latido); }
+  .project-card[data-brand="banda"] { --accent-color: var(--panches-terracota); }
+
+  /* Idea #8 — Ecosistema footer module */
+  .ecosistema {
+    background: var(--panches-crudo);
+    border-top: 1px solid rgba(160, 122, 80, 0.15);
+    color: #3A3026;
+  }
+  .ecosistema .eyebrow { color: var(--gold-johnfer); }
+  .ecosistema-card { color: var(--jhonfer-primary); border-color: rgba(31,53,92,0.15); }
+  .ecosistema-card:hover {
+    border-color: var(--gold-johnfer);
+    color: var(--jhonfer-primary);
+    box-shadow: 0 14px 36px rgba(31, 22, 16, 0.08);
+  }
+  .ecosistema-card .role { color: var(--gold-johnfer); opacity: 1; }
+
+  /* Footer */
+  footer {
+    background: var(--jhonfer-dark);
+    color: rgba(244, 237, 224, 0.85);
+    padding: 4.5rem 5% 2rem;
+    text-align: center;
+    position: relative;
+  }
+  footer .wordmark {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  footer .tagline {
+    font-family: var(--font-italic);
+    font-style: italic;
+    color: rgba(244, 237, 224, 0.7);
+    margin-bottom: 2rem;
+  }
+  /* Idea #9 — Geographic signal */
+  .geo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem auto;
+    color: var(--gold-johnfer);
+  }
+  .geo .topo {
+    width: 200px; height: 80px;
+    color: var(--gold-johnfer);
+    opacity: 0.85;
+  }
+  .geo .topo svg { width: 100%; height: 100%; }
+  .geo .coord {
+    color: rgba(244, 237, 224, 0.6);
+    font-family: 'SFMono-Regular', Menlo, Monaco, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+  .socials {
+    display: flex; gap: 1rem; justify-content: center;
+    margin: 1.5rem 0;
+  }
+  .socials a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: rgba(244, 237, 224, 0.9);
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+    text-decoration: none;
+    font-size: 16px;
+  }
+  .socials a:hover {
+    background: var(--gold-johnfer);
+    color: #1F1610;
+    transform: translateY(-3px);
+  }
+  .footer-bottom {
+    margin-top: 2.5rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(244, 237, 224, 0.1);
+    font-size: 0.78rem;
+    color: rgba(244, 237, 224, 0.5);
+  }
+
+  @media (max-width: 860px) {
+    .about-grid, .inversion-grid { grid-template-columns: 1fr; }
+    .nav .links { display: none; }
+  }
+</style>
+</head>
+<body>
+  <!-- Motivos SVG compartidos -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="rays" viewBox="0 0 280 280">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M 40 140 Q 100 140 140 80" stroke-width="2" opacity="0.9"/>
+        <path d="M 30 140 Q 110 140 150 60" stroke-width="2" opacity="0.7"/>
+        <path d="M 20 140 Q 120 140 160 40" stroke-width="2" opacity="0.5"/>
+        <path d="M 10 140 Q 130 140 170 20" stroke-width="2" opacity="0.35"/>
+        <path d="M 0 140 Q 140 140 180 0" stroke-width="2" opacity="0.2"/>
+        <circle cx="56" cy="140" r="3" fill="currentColor" stroke="none" opacity="0.9"/>
+        <circle cx="142" cy="80" r="3" fill="currentColor" stroke="none" opacity="0.6"/>
+      </g>
+    </symbol>
+    <symbol id="topo" viewBox="0 0 200 80">
+      <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.8">
+        <path d="M 0 60 Q 30 50, 60 55 T 120 50 T 200 45"/>
+        <path d="M 0 50 Q 30 38, 60 42 T 120 36 T 200 30"/>
+        <path d="M 0 38 Q 30 22, 60 28 T 120 18 T 200 12"/>
+        <circle cx="100" cy="40" r="3" fill="currentColor" stroke="none"/>
+        <line x1="100" y1="40" x2="100" y2="78" stroke-dasharray="2 3"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- Navbar -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="brand"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></a>
+    <ul class="links">
+      <li><a href="#sobre-mi">Sobre Mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="motif-rays top-left"><svg><use href="#rays"/></svg></div>
+    <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
+    <div class="hero-content reveal">
+      <div class="eyebrow eyebrow-line hero-eyebrow"><span>Músico · Director · Gestor cultural</span></div>
+      <img src="../assets/logos/jhonfer_logo_white.png" alt="Johnfer Laverde" class="hero-logo">
+      <p class="hero-quote">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-primary">Conoce mi trabajo <i data-lucide="arrow-right"></i></a>
+        <a href="#contacto" class="btn btn-outline">Contactar</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sobre Mí -->
+  <section class="about" id="sobre-mi">
+    <div class="container about-grid">
+      <div class="about-photo reveal"></div>
+      <div class="reveal delay-1">
+        <div class="eyebrow eyebrow-line eyebrow-light"><span>Trayectoria</span></div>
+        <h2 class="section-title">Una vida<br>al servicio de la música.</h2>
+        <p>Johnfer Laverde es músico eufonista, director de banda sinfónica y gestor cultural. Su carrera articula la formación musical, la gestión de proyectos culturales y la dirección artística, con impacto a nivel municipal, departamental y nacional en Colombia.</p>
+        <p>Su pasión por la música tradicional colombiana y los procesos pedagógicos lo ha llevado a crear plataformas de gran impacto que transforman comunidades a través del arte sonoro.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- v2.1 — Trayectoria en cifras -->
+  <div class="stats-band">
+    <div class="stats-grid reveal">
+      <div class="stat"><div class="num">5</div><div class="label">Ediciones del FIEB</div></div>
+      <div class="stat"><div class="num">18</div><div class="label">Maestros e invitados</div></div>
+      <div class="stat"><div class="num">6</div><div class="label">Países representados</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Plataformas culturales</div></div>
+    </div>
+  </div>
+
+  <!-- Idea #5 — Sección de inversión polar -->
+  <section class="inversion">
+    <div class="motif-dots"></div>
+    <div class="container">
+      <div class="reveal" style="max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line"><span>Lo que persigo</span></div>
+        <h2 class="section-title" style="color: #F4EDE0;">Misión y Visión.</h2>
+      </div>
+      <div class="inversion-grid">
+        <article class="ideal reveal delay-1">
+          <div class="icon-wrap"><i data-lucide="target"></i></div>
+          <h3>Misión</h3>
+          <p>Brindar herramientas, formación y espacios de desarrollo que fortalezcan la carrera de músicos y agrupaciones, promoviendo la profesionalización, la disciplina y la visibilidad del talento artístico colombiano.</p>
+        </article>
+        <article class="ideal reveal delay-2">
+          <div class="icon-wrap"><i data-lucide="eye"></i></div>
+          <h3>Visión</h3>
+          <p>Consolidar una red de formación, intercambio y gestión cultural que conecte a artistas e instituciones a nivel nacional e internacional, fomentando la interculturalidad y el reconocimiento del arte colombiano.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section class="projects" id="proyectos">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-light" style="justify-content: center;"><span>Mis proyectos</span></div>
+        <h2 class="section-title" style="text-align: center;">Plataformas que he creado.</h2>
+        <p class="section-lead" style="margin: 0 auto;">Tres frentes complementarios: festival internacional, fundación cultural y banda tradicional. Diferentes públicos, una misma raíz panche.</p>
+      </div>
+
+      <div class="projects-grid">
+        <a class="project-card reveal delay-1" href="fieb-1.1.html" data-brand="fieb">
+          <div class="logo-block"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+          <h3>Festival Internacional de Eufonios y Bombardinos</h3>
+          <p>Plataforma académica y artística de eufonio y bombardino en Colombia. Desde 2020, reúne maestros nacionales e internacionales.</p>
+          <span class="arrow">Ver festival <i data-lucide="arrow-up-right"></i></span>
+        </a>
+        <a class="project-card reveal delay-2" href="fundacion-1.1.html" data-brand="latido">
+          <div class="logo-block"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+          <h3>Fundación Cultural Raíces Panches</h3>
+          <p>Plataforma de transformación social que conecta identidad ancestral, música, tecnología, deporte y medio ambiente.</p>
+          <span class="arrow">Ver fundación <i data-lucide="arrow-up-right"></i></span>
+        </a>
+        <a class="project-card reveal delay-3" href="#" data-brand="banda">
+          <div class="logo-block" style="font-family: var(--font-display); font-size: 1.8rem; color: var(--panches-terracota);">16 de Julio</div>
+          <h3>Banda Fiestera 16 de Julio</h3>
+          <p>Banda de la Virgen del Carmen de Nocaima — formación y circulación musical con identidad tradicional.</p>
+          <span class="arrow">Próximamente <i data-lucide="hourglass"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Idea #8 — Ecosistema -->
+  <section class="ecosistema" id="contacto">
+    <div class="reveal">
+      <div class="eyebrow eyebrow-line"><span>Ecosistema</span></div>
+      <p class="title">Una raíz, tres latidos.</p>
+    </div>
+    <div class="ecosistema-grid">
+      <a class="ecosistema-card reveal delay-1" href="#" style="background: var(--jhonfer-dark); color: #F4EDE0; border-color: transparent;">
+        <div class="logo-wrap"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></div>
+        <div class="role" style="color: var(--gold-johnfer);">Estás aquí</div>
+        <div class="name">Johnfer Laverde</div>
+      </a>
+      <a class="ecosistema-card reveal delay-2" href="fieb-1.1.html">
+        <div class="logo-wrap"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+        <div class="role">Festival</div>
+        <div class="name">FIEB</div>
+        <span class="arrow" style="color: var(--gold-fieb);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
+      </a>
+      <a class="ecosistema-card reveal delay-3" href="fundacion-1.1.html">
+        <div class="logo-wrap"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+        <div class="role">Fundación</div>
+        <div class="name">Latido Panches</div>
+        <span class="arrow" style="color: var(--gold-latido);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wordmark">Johnfer Laverde</div>
+    <p class="tagline">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <div class="geo">
+      <div class="topo"><svg><use href="#topo"/></svg></div>
+      <div class="geo-line"><span>Nocaima</span><span>·</span><span>Cundinamarca</span></div>
+      <div class="coord">5°04′N · 74°23′W</div>
+    </div>
+    <div class="footer-bottom">© 2026 Johnfer Laverde — Músico · Director · Gestor Cultural</div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    // Navbar scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll); onScroll();
+    // Reveal observer
+    // Enable reveal animations only when this page is the top frame.
+    // When embedded as an iframe, Chrome may throttle transitions, so
+    // we keep content visible by default.
+    if (window.self === window.top) {
+      document.body.classList.add('js-anim');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      // belt and suspenders
+      setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+        });
+      }, 100);
+    }
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        if (id === '#top') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const tgt = document.querySelector(id);
+        if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+</html>

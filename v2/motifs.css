@@ -1,0 +1,65 @@
+/* ============================================================
+   Motifs v2 — ADN visual extraído del logo de Latido Panches.
+   3 ornamentos compartidos por los tres sitios:
+
+   1. .motif-rays  — líneas radiantes (como las ondas alrededor
+      del corazón panche). Reemplaza los círculos decorativos
+      de Johnfer.
+   2. .motif-dots  — constelación de puntos (como el patrón
+      interior de la máscara). Fondo sutil de sección.
+   3. .motif-chevrons — patrón geométrico inferior de la máscara
+      panche, usado como divisor entre secciones.
+   ============================================================ */
+
+/* ============ Idea #3 — Rayos radiantes (reemplazo de círculos) ============ */
+.motif-rays {
+  position: absolute;
+  pointer-events: none;
+  width: 280px;
+  height: 280px;
+  color: currentColor;
+}
+.motif-rays svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.motif-rays.top-left  { top: -40px;    left: -40px;    transform: rotate(180deg); }
+.motif-rays.top-right { top: -40px;    right: -40px;   transform: rotate(270deg); }
+.motif-rays.bot-left  { bottom: -40px; left: -40px;    transform: rotate(90deg);  }
+.motif-rays.bot-right { bottom: -40px; right: -40px;   transform: rotate(0deg);   }
+
+/* ============ Constellación de puntos ============ */
+.motif-dots {
+  position: absolute;
+  pointer-events: none;
+  background-image: radial-gradient(circle, currentColor 1.2px, transparent 1.5px);
+  background-size: 22px 22px;
+  background-position: 0 0;
+  opacity: 0.18;
+}
+
+/* ============ Chevrons divider — patrón de barras inferior del logo ============ */
+.motif-chevrons {
+  position: relative;
+  height: 28px;
+  width: 100%;
+  color: currentColor;
+  opacity: 0.5;
+}
+.motif-chevrons svg {
+  width: 100%; height: 100%;
+  display: block;
+}
+
+/* ============ Heart watermark — silueta del corazón panche ============ */
+.motif-heart {
+  position: absolute;
+  pointer-events: none;
+  color: currentColor;
+  opacity: 0.05;
+}
+.motif-heart svg {
+  width: 100%; height: 100%;
+  display: block;
+}

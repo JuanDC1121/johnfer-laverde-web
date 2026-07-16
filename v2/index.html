@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecosistema v2 — Comparativa</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="system.css">
+<link rel="stylesheet" href="motifs.css">
+<style>
+  body {
+    background: var(--panches-crudo);
+    color: #2A2520;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .top {
+    padding: 4rem 5% 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at top, rgba(201, 145, 43, 0.08), transparent 60%),
+      var(--panches-crudo);
+    border-bottom: 1px solid rgba(160, 122, 80, 0.15);
+  }
+  .top .motif-rays {
+    color: var(--gold-system);
+    opacity: 0.12;
+    width: 360px; height: 360px;
+  }
+  .top .motif-rays.tl { top: -80px; left: 5%; transform: rotate(180deg); }
+  .top .motif-rays.tr { top: -80px; right: 5%; transform: rotate(270deg); }
+  .top .eyebrow {
+    color: var(--gold-system);
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .top h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    color: #1A140F;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0 auto 1.25rem;
+    position: relative;
+  }
+  .top p {
+    color: #3F362C;
+    font-size: 1.1rem;
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Diez ideas chips */
+  .ideas {
+    max-width: 1100px;
+    margin: 2.5rem auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.6rem 1rem;
+    position: relative;
+  }
+  .idea-chip {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(160, 122, 80, 0.18);
+    border-radius: var(--radius-md);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #2A2520;
+  }
+  .idea-chip .num {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--gold-system);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .idea-chip .txt { line-height: 1.2; }
+
+  /* Comparison area */
+  .compare {
+    padding: 3rem 2rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 1100px) { .compare-grid { grid-template-columns: 1fr; } }
+
+  .site-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 18px 60px rgba(31, 22, 16, 0.12);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    border: 1px solid rgba(160, 122, 80, 0.15);
+  }
+  .site-card:hover { transform: translateY(-6px); box-shadow: 0 28px 70px rgba(31, 22, 16, 0.18); }
+
+  .site-head {
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0.95));
+  }
+  .site-head .top-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1rem;
+  }
+  .site-head .swatches { display: flex; gap: 6px; }
+  .site-head .swatch {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .site-head .eyebrow-mini {
+    font-size: 0.65rem; letter-spacing: 2px;
+    text-transform: uppercase; font-weight: 700;
+    color: var(--gold-system);
+  }
+  .site-head h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem; line-height: 1.1;
+    color: #1A140F; margin-bottom: 0.4rem;
+  }
+  .site-head p { color: #555; font-size: 0.88rem; margin: 0; }
+
+  .site-frame {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    height: 540px;
+  }
+  .site-frame iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    display: block;
+    background: #fff;
+  }
+
+  .site-actions {
+    padding: 1rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: #FAFAF8;
+  }
+  .site-actions a {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--gold-system);
+    text-decoration: none;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .site-actions a:hover { color: #1A140F; }
+  .site-actions .meta {
+    font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #888;
+  }
+
+  /* Site card brand stripes */
+  .site-card[data-brand="johnfer"] .site-head { border-top: 4px solid var(--gold-johnfer); }
+  .site-card[data-brand="fieb"] .site-head { border-top: 4px solid var(--gold-fieb); }
+  .site-card[data-brand="latido"] .site-head { border-top: 4px solid var(--gold-latido); }
+
+  /* Footer info */
+  .legend {
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(160, 122, 80, 0.18);
+    border-radius: var(--radius-md);
+  }
+  .legend h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: #1A140F;
+    margin-bottom: 1rem;
+  }
+  .legend .palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem 1.5rem;
+  }
+  .legend .palette div {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.85rem; color: #3F362C;
+  }
+  .legend .palette span.dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+
+  /* Reveal stagger */
+  .reveal { transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), filter 0.7s var(--ease); }
+</style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="rays" viewBox="0 0 280 280">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M 40 140 Q 100 140 140 80" stroke-width="2" opacity="0.9"/>
+        <path d="M 30 140 Q 110 140 150 60" stroke-width="2" opacity="0.7"/>
+        <path d="M 20 140 Q 120 140 160 40" stroke-width="2" opacity="0.5"/>
+        <path d="M 10 140 Q 130 140 170 20" stroke-width="2" opacity="0.35"/>
+        <path d="M 0 140 Q 140 140 180 0" stroke-width="2" opacity="0.2"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <header class="top">
+    <div class="motif-rays tl"><svg><use href="#rays"/></svg></div>
+    <div class="motif-rays tr"><svg><use href="#rays"/></svg></div>
+    <div class="reveal">
+      <div class="eyebrow eyebrow-line"><span>Diseño v2 · ecosistema</span></div>
+      <h1>Una raíz, tres latidos.</h1>
+      <p>Aplicación de las 10 ideas a los tres sitios. Mismo ADN visual derivado del logo de Latido Panches, oro–tierra unificado, paleta Panches compartida — pero cada marca conserva su atmósfera.</p>
+    </div>
+
+    <div class="ideas">
+      <div class="idea-chip"><span class="num">1</span><span class="txt">Oro unificado por marca</span></div>
+      <div class="idea-chip"><span class="num">2</span><span class="txt">Paleta Panches secundaria</span></div>
+      <div class="idea-chip"><span class="num">3</span><span class="txt">ADN del logo Latido</span></div>
+      <div class="idea-chip"><span class="num">4</span><span class="txt">Heros con foto + lavado</span></div>
+      <div class="idea-chip"><span class="num">5</span><span class="txt">Inversión polar por sitio</span></div>
+      <div class="idea-chip"><span class="num">6</span><span class="txt">Iconos Lucide</span></div>
+      <div class="idea-chip"><span class="num">7</span><span class="txt">Eyebrow compartido</span></div>
+      <div class="idea-chip"><span class="num">8</span><span class="txt">Footer ecosistema</span></div>
+      <div class="idea-chip"><span class="num">9</span><span class="txt">Señal geográfica</span></div>
+      <div class="idea-chip"><span class="num">10</span><span class="txt">Gesto de entrada respirado</span></div>
+    </div>
+  </header>
+
+  <div class="compare">
+    <div class="compare-grid">
+      <article class="site-card" data-brand="johnfer">
+        <div class="site-head">
+          <div class="top-row">
+            <span class="eyebrow-mini" style="color: var(--gold-johnfer);">Marca personal</span>
+            <div class="swatches">
+              <div class="swatch" style="background: #325591;"></div>
+              <div class="swatch" style="background: var(--gold-johnfer);"></div>
+              <div class="swatch" style="background: var(--panches-terracota);"></div>
+              <div class="swatch" style="background: var(--panches-crudo);"></div>
+            </div>
+          </div>
+          <h2>Johnfer Laverde</h2>
+          <p>Portfolio profesional con sección de inversión polar (oscura) en mitad del flujo.</p>
+        </div>
+        <div class="site-frame"><iframe src="johnferlaverde.html" title="Johnfer Laverde v2"></iframe></div>
+        <div class="site-actions">
+          <a href="johnferlaverde.html" target="_blank">Abrir en pantalla completa <i class="fas fa-arrow-up-right-from-square"></i></a>
+          <span class="meta">v2.html</span>
+        </div>
+      </article>
+
+      <article class="site-card" data-brand="fieb">
+        <div class="site-head">
+          <div class="top-row">
+            <span class="eyebrow-mini" style="color: var(--gold-fieb);">Festival</span>
+            <div class="swatches">
+              <div class="swatch" style="background: #1A2744;"></div>
+              <div class="swatch" style="background: var(--gold-fieb);"></div>
+              <div class="swatch" style="background: var(--panches-arcilla);"></div>
+              <div class="swatch" style="background: var(--panches-crudo);"></div>
+            </div>
+          </div>
+          <h2>FIEB</h2>
+          <p>Festival editorial claro con Objetivo General en bloque oscuro como inversión polar.</p>
+        </div>
+        <div class="site-frame"><iframe src="fieb.html" title="FIEB v2"></iframe></div>
+        <div class="site-actions">
+          <a href="fieb.html" target="_blank">Abrir en pantalla completa <i class="fas fa-arrow-up-right-from-square"></i></a>
+          <span class="meta">v2.html</span>
+        </div>
+      </article>
+
+      <article class="site-card" data-brand="latido">
+        <div class="site-head">
+          <div class="top-row">
+            <span class="eyebrow-mini" style="color: var(--gold-latido);">Fundación</span>
+            <div class="swatches">
+              <div class="swatch" style="background: #0D1B2A;"></div>
+              <div class="swatch" style="background: var(--gold-latido);"></div>
+              <div class="swatch" style="background: var(--panches-terracota);"></div>
+              <div class="swatch" style="background: var(--panches-arcilla);"></div>
+            </div>
+          </div>
+          <h2>Latido Panches</h2>
+          <p>Fundación cinemática oscura con Quiénes Somos en bloque claro (arcilla Panches).</p>
+        </div>
+        <div class="site-frame"><iframe src="fundacion.html" title="Latido Panches v2"></iframe></div>
+        <div class="site-actions">
+          <a href="fundacion.html" target="_blank">Abrir en pantalla completa <i class="fas fa-arrow-up-right-from-square"></i></a>
+          <span class="meta">v2.html</span>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="legend">
+    <h3>Paleta compartida del ecosistema</h3>
+    <div class="palette">
+      <div><span class="dot" style="background: var(--gold-johnfer);"></span><span><strong>Bronce Johnfer</strong> #E0B468</span></div>
+      <div><span class="dot" style="background: var(--panches-verde-vivo);"></span><span><strong>Verde vivo · Latido Verde</strong> #7DC242</span></div>
+      <div><span class="dot" style="background: var(--gold-fieb);"></span><span><strong>Oro FIEB</strong> #D49A2E</span></div>
+      <div><span class="dot" style="background: var(--gold-latido);"></span><span><strong>Oro Latido</strong> #F5C842</span></div>
+      <div><span class="dot" style="background: var(--gold-system);"></span><span><strong>Oro sistema</strong> #C9912B</span></div>
+      <div><span class="dot" style="background: var(--panches-terracota);"></span><span><strong>Terracota</strong> #B8543A</span></div>
+      <div><span class="dot" style="background: var(--panches-verde);"></span><span><strong>Verde andino</strong> #3A5C3A</span></div>
+      <div><span class="dot" style="background: var(--panches-arcilla);"></span><span><strong>Arcilla</strong> #D9C2A7</span></div>
+      <div><span class="dot" style="background: var(--panches-crudo);"></span><span><strong>Crudo</strong> #F4EDE0</span></div>
+      <div><span class="dot" style="background: var(--panches-negro);"></span><span><strong>Tierra profunda</strong> #1A140F</span></div>
+    </div>
+  </div>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

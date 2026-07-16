@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+  .field label { font-size: 11px; font-weight: 600; color: #325591; font-family: 'Raleway', sans-serif; }
+  .field input, .field textarea {
+    width: 100%; padding: 11px 14px; font-family: 'Raleway', sans-serif; font-size: 13px;
+    border: 1px solid #BBBBBB; border-radius: 8px; background: #fff;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none; border-color: #325591; box-shadow: 0 0 0 3px rgba(50,85,145,0.1);
+  }
+  .field.focused input { border-color: #325591; box-shadow: 0 0 0 3px rgba(50,85,145,0.1); }
+  .row-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+</head>
+<body>
+  <div class="label">Form controls</div>
+
+  <div class="row-fields">
+    <div class="field">
+      <label>Nombre Completo</label>
+      <input value="John Fernando Laverde">
+    </div>
+    <div class="field focused">
+      <label>Instrumento</label>
+      <input value="Eufonio">
+    </div>
+  </div>
+  <div class="field">
+    <label>Mensaje o Consulta</label>
+    <textarea rows="2" style="resize:none;">Quiero participar en la próxima edición del festival.</textarea>
+  </div>
+
+  <div style="margin-top: 12px; font-size: 11px; color: #666; line-height: 1.5;">
+    Inputs: 1px neutral border, 8px radius, focus ring <span class="mono">0 0 0 3px rgba(50,85,145,.1)</span> + primary border.
+  </div>
+</body>
+</html>

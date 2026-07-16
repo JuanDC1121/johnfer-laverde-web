@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .demo {
+    border-radius: 10px; padding: 18px; font-size: 11px; color: #fff;
+    background: linear-gradient(135deg, #325591 0%, #1F355C 100%);
+    position: relative; overflow: hidden; min-height: 130px;
+  }
+  .demo .lbl { font-family: 'DM Serif Display', serif; font-size: 18px; line-height: 1.1; }
+  .demo .role { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); font-weight: 600; }
+  .fieb-bg {
+    background: linear-gradient(rgba(244,244,242,0.85), rgba(244,244,242,0.97)),
+                radial-gradient(circle at 30% 40%, rgba(26,39,68,0.15), transparent 60%);
+    color: #1A2744;
+  }
+  .fieb-bg .role { color: rgba(26,39,68,0.5); }
+  .fund-bg {
+    background: linear-gradient(to bottom, rgba(13,27,42,0.75), rgba(13,27,42,0.97)),
+                radial-gradient(ellipse at center, rgba(245,200,66,0.18), transparent 70%);
+    color: #FAF4E4;
+  }
+  .fund-bg .role { color: #E8B84B; }
+  .circles { position: absolute; inset: 0; overflow: hidden; opacity: 0.12; pointer-events: none; }
+  .circles span { position: absolute; border: 2px solid #fff; border-radius: 50%; }
+  .c1 { width: 100px; height: 100px; top: -30px; left: -20px; }
+  .c2 { width: 180px; height: 180px; bottom: -80px; right: -60px; border-width: 3px; }
+  .c3 { width: 60px; height: 60px; top: 40%; right: 35%; }
+</style>
+</head>
+<body>
+  <div class="label">Background treatments · hero backdrops</div>
+  <div class="row2">
+    <div class="demo">
+      <div class="circles"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>
+      <div class="role">Johnfer</div>
+      <div class="lbl">Gradient + decorative circles</div>
+      <div style="margin-top:auto;">135° primary→dark · 3 stroke circles @ .1 opacity</div>
+    </div>
+    <div class="demo fieb-bg">
+      <div class="role">FIEB</div>
+      <div class="lbl">Light wash over image</div>
+      <div>Off-white gradient over a faint musical photo · soft radial glow center</div>
+    </div>
+    <div class="demo fund-bg" style="grid-column: 1 / -1;">
+      <div class="role">Latido Panches</div>
+      <div class="lbl">Cinematic dark wash</div>
+      <div>Deep navy gradient (0.75 → 0.97) over heritage imagery · golden radial inner glow</div>
+    </div>
+  </div>
+</body>
+</html>

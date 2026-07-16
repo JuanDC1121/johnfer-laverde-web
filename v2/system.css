@@ -1,0 +1,233 @@
+/* ============================================================
+   System v2 — Ecosistema Johnfer / FIEB / Latido Panches
+   Aplicación de las 10 ideas: oro unificado, paleta Panches,
+   eyebrow, fade-in respirado, polaridad coherente.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ============ Idea #1 — oro unificado, variantes por marca ============ */
+  --gold-system:       #C9912B;     /* anchor — ya existía en Latido Panches */
+  --gold-johnfer:      #E0B468;     /* bronce-dorado claro — latón pulido, luminoso sobre azul */
+  --gold-johnfer-deep: #B68748;     /* bronce envejecido para texto sobre claro */
+  --gold-fieb:         #D49A2E;     /* oro institucional medio */
+  --gold-latido:       #F5C842;     /* oro brillante (se queda) */
+
+  /* ============ Idea #2 — paleta secundaria Raíces Panches ============ */
+  --panches-terracota: #B8543A;     /* cerámica, calidez */
+  --panches-verde:     #3A5C3A;     /* selva andina, ambiente */
+  --panches-verde-vivo:#7DC242;     /* verde luminoso — diferencial Latido Verde, vibrante */
+  --panches-arcilla:   #D9C2A7;     /* fondos cálidos sutiles */
+  --panches-negro:     #1A140F;     /* tierra profunda */
+  --panches-crudo:     #F4EDE0;     /* crudo neutro */
+
+  /* ============ Bases por marca (primarios se quedan) ============ */
+  --jhonfer-primary:   #325591;
+  --jhonfer-dark:      #1F355C;
+  --jhonfer-cream:     #F4EDE0;     /* nuevo — reemplaza f8fafd con tono Panches */
+
+  --fieb-primary:      #1A2744;
+  --fieb-bg:           #F4EDE0;     /* el mismo crudo unificado */
+  --fieb-silver:       #E8E6DD;
+
+  --latido-primary:    #0D1B2A;
+  --latido-secondary:  #122233;
+  --latido-card-bg:    #1C3046;
+  --latido-cream:      #FAF4E4;
+
+  /* ============ Tipografía ============ */
+  --font-display:  'DM Serif Display', Georgia, serif;
+  --font-body:     'Raleway', system-ui, -apple-system, sans-serif;
+  --font-italic:   'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+
+  /* ============ Tokens compartidos ============ */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 50px;
+
+  --max-width: 1200px;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.3s var(--ease);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { display: block; max-width: 100%; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+p { text-wrap: pretty; }
+
+/* ============ Idea #7 — Eyebrow compartido ============ */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.eyebrow .dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.eyebrow .dots::before,
+.eyebrow .dots::after {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+.eyebrow .dots::after { opacity: 1; }
+
+.eyebrow-line::before {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 1px;
+  background: currentColor;
+  margin-right: 12px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
+/* ============ Idea #10 — Fade-in v2 (respirado: Y + scale + blur)
+   Visible by default; .js-anim on body enables the hidden initial state.
+   This way: iframes / no-JS / paused contexts always show content. ============ */
+.reveal {
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease),
+    filter 0.9s var(--ease);
+  will-change: opacity, transform, filter;
+}
+body.js-anim .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  filter: blur(4px);
+}
+.reveal.delay-1 { transition-delay: 100ms; }
+.reveal.delay-2 { transition-delay: 200ms; }
+.reveal.delay-3 { transition-delay: 300ms; }
+
+/* ============ Pill button shared base ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn:hover { transform: translateY(-3px); }
+.btn svg { width: 16px; height: 16px; }
+
+/* ============ Lucide icon defaults ============ */
+[data-lucide], svg.icon {
+  display: inline-block;
+  width: 1em; height: 1em;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  fill: none;
+  vertical-align: middle;
+}
+
+/* ============ Idea #8 — Ecosistema footer module (compartido) ============ */
+.ecosistema {
+  padding: 4rem 5%;
+  text-align: center;
+}
+.ecosistema .eyebrow { justify-content: center; }
+.ecosistema .title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  margin-bottom: 2.5rem;
+}
+.ecosistema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.ecosistema-card {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  padding: 1.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid currentColor;
+  text-decoration: none;
+  transition: var(--transition);
+  position: relative;
+}
+.ecosistema-card .logo-wrap {
+  height: 56px;
+  display: flex; align-items: center; justify-content: center;
+}
+.ecosistema-card img { max-height: 50px; width: auto; object-fit: contain; }
+.ecosistema-card .role {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.ecosistema-card .name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  text-align: center;
+  line-height: 1.2;
+}
+.ecosistema-card:hover {
+  transform: translateY(-4px);
+}
+.ecosistema-card .arrow {
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: var(--transition);
+}
+.ecosistema-card:hover .arrow { opacity: 1; }
+
+/* ============ Idea #9 — Geographic signal (compartido) ============ */
+.geo-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.65;
+}
+.geo-line svg {
+  width: 14px; height: 14px;
+  flex-shrink: 0;
+}
+.geo-coord {
+  font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}

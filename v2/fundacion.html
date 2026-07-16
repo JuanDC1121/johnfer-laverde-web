@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latido Panches — v2</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="system.css">
+<link rel="stylesheet" href="motifs.css">
+<style>
+  body {
+    background: var(--latido-primary);
+    color: var(--latido-cream);
+    line-height: 1.7;
+  }
+
+  /* Navbar */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 1.1rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    background: rgba(13, 27, 42, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(245, 200, 66, 0.12);
+    transition: var(--transition);
+  }
+  .nav.scrolled {
+    background: rgba(18, 34, 51, 0.97);
+    border-bottom: 1px solid rgba(245, 200, 66, 0.24);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+  }
+  .nav .brand img {
+    height: 44px;
+    filter: drop-shadow(0 0 10px rgba(245, 200, 66, 0.35));
+  }
+  .nav .actions { display: flex; gap: 1rem; align-items: center; }
+  .nav .actions a {
+    color: var(--latido-cream);
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .nav .actions a:hover { color: var(--gold-latido); }
+
+  /* ============ Hero — Idea #4: foto + lavado tonal ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 7rem 1.5rem 4rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(13,27,42,0.78) 0%, rgba(13,27,42,0.97) 100%),
+      radial-gradient(ellipse at center, rgba(245,200,66,0.12), transparent 70%),
+      url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    border-bottom: 1px solid rgba(245, 200, 66, 0.12);
+  }
+  /* Idea #3 — rayos */
+  .hero .motif-rays { color: var(--gold-latido); opacity: 0.45; }
+  .hero-content { position: relative; z-index: 2; max-width: 920px; }
+  .hero-eyebrow {
+    color: var(--gold-latido);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  .hero-logo {
+    max-height: 460px;
+    max-width: 90%;
+    margin: 0 auto 1rem;
+    filter: drop-shadow(0 0 48px rgba(245, 200, 66, 0.55));
+  }
+  .hero-actions { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+  .btn-primary {
+    background: var(--gold-system);
+    color: var(--latido-primary);
+    border-color: var(--gold-system);
+    box-shadow: 0 0 18px rgba(201, 145, 43, 0.32);
+  }
+  .btn-primary:hover {
+    background: var(--gold-latido);
+    color: var(--latido-primary);
+    border-color: var(--gold-latido);
+    box-shadow: 0 0 24px rgba(245, 200, 66, 0.5);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--latido-cream);
+    border-color: rgba(245, 200, 66, 0.45);
+  }
+  .btn-outline:hover {
+    background: rgba(245, 200, 66, 0.1);
+    color: var(--gold-latido);
+    border-color: var(--gold-latido);
+  }
+
+  /* Sections */
+  section { padding: 6rem 5%; position: relative; }
+  .container { max-width: var(--max-width); margin: 0 auto; }
+
+  .eyebrow-latido { color: var(--gold-latido); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--gold-latido);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    letter-spacing: 1px;
+  }
+
+  /* Latido manifesto block */
+  .latido-block { background: var(--latido-secondary); text-align: center; position: relative; overflow: hidden; }
+  .latido-block .motif-dots { inset: 0; color: var(--gold-latido); opacity: 0.16; }
+  .latido-block .motif-rays.top-left, .latido-block .motif-rays.bot-right {
+    color: var(--gold-latido); opacity: 0.3;
+  }
+  .latido-block .container { position: relative; z-index: 2; max-width: 900px; }
+  .latido-icon {
+    width: 76px; height: 76px;
+    border-radius: 50%;
+    background: rgba(245, 200, 66, 0.12);
+    color: var(--gold-latido);
+    margin: 0 auto 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 0 32px rgba(245, 200, 66, 0.18);
+  }
+  .latido-block .section-title { font-size: clamp(2.4rem, 5vw, 3.6rem); letter-spacing: 4px; }
+  .latido-block blockquote {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.85;
+    color: var(--latido-cream);
+    max-width: 760px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* ============ Idea #5 — Inversión polar: Quiénes en claro (Panches arcilla) ============ */
+  .quienes-light {
+    background: var(--panches-arcilla);
+    color: #2A2520;
+    position: relative;
+    overflow: hidden;
+  }
+  .quienes-light .motif-chevrons {
+    position: absolute; top: 0; left: 0; right: 0;
+    color: var(--panches-terracota); opacity: 0.4;
+  }
+  .quienes-light .motif-chevrons-b {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    transform: scaleY(-1);
+    color: var(--panches-terracota); opacity: 0.4;
+    height: 28px;
+  }
+  .quienes-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .quienes-light .section-title { color: var(--panches-negro); }
+  .quienes-light .eyebrow { color: var(--panches-terracota); }
+  .quienes-light p { color: #3A3026; margin-bottom: 1rem; font-size: 1.06rem; }
+  .quienes-card {
+    background: var(--panches-crudo);
+    border: 1px solid rgba(184, 84, 58, 0.18);
+    border-radius: var(--radius-md);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 18px 50px rgba(31, 22, 16, 0.12);
+    position: relative;
+  }
+  .quienes-card .motif-heart {
+    inset: -10% -10% auto auto;
+    width: 220px; height: 220px;
+    color: var(--panches-terracota);
+    opacity: 0.08;
+  }
+  .quienes-card .icon-wrap {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(184, 84, 58, 0.12);
+    color: var(--panches-terracota);
+    margin: 0 auto 1.25rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .quienes-card h3 {
+    font-size: 1.5rem;
+    color: var(--panches-negro);
+    margin-bottom: 0.75rem;
+  }
+  .quienes-card p { color: #3A3026; font-size: 0.95rem; margin: 0; }
+
+  /* Misión / Visión cards on dark */
+  .mv-section { background: var(--latido-primary); }
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .mv-card {
+    background: var(--latido-card-bg);
+    border: 1px solid rgba(245, 200, 66, 0.14);
+    border-radius: var(--radius-md);
+    padding: 3rem 2.5rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .mv-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 80px; height: 3px;
+    background: var(--gold-latido);
+  }
+  .mv-card:hover {
+    border-color: var(--gold-latido);
+    box-shadow: 0 18px 50px rgba(245, 200, 66, 0.18);
+    transform: translateY(-6px);
+  }
+  .mv-card .icon-wrap {
+    width: 48px; height: 48px;
+    border-radius: var(--radius-pill);
+    background: rgba(245, 200, 66, 0.14);
+    color: var(--gold-latido);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 22px;
+  }
+  .mv-card h3 { font-size: 1.65rem; color: var(--latido-cream); margin-bottom: 0.75rem; font-weight: 400; }
+  .mv-card p { color: var(--gold-latido); opacity: 0.85; margin: 0; }
+
+  /* Pilares (Objeto Social) */
+  .pilares-section { background: var(--latido-secondary); position: relative; overflow: hidden; }
+  .pilares-section .motif-dots { inset: 0; color: var(--gold-latido); opacity: 0.06; }
+  .pilares-section .container { position: relative; z-index: 2; }
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 992px) { .pilares-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 576px) { .pilares-grid { grid-template-columns: 1fr; } }
+
+  .pilar-card {
+    background: var(--latido-card-bg);
+    border: 1px solid rgba(245, 200, 66, 0.12);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 1.75rem;
+    text-align: center;
+    transition: var(--transition);
+  }
+  .pilar-card:hover {
+    border-color: var(--gold-latido);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 50px rgba(245, 200, 66, 0.18);
+  }
+  .pilar-card .icon-wrap {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(245, 200, 66, 0.12);
+    color: var(--gold-latido);
+    margin: 0 auto 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    transition: var(--transition);
+  }
+  .pilar-card:hover .icon-wrap {
+    background: var(--gold-latido); color: var(--latido-primary);
+    box-shadow: 0 0 28px rgba(245, 200, 66, 0.4);
+  }
+  .pilar-card h3 { color: var(--latido-cream); font-size: 1.35rem; font-weight: 400; letter-spacing: 1px; margin-bottom: 0.75rem; }
+  .pilar-card p { color: var(--gold-latido); opacity: 0.78; font-size: 0.95rem; margin: 0; }
+
+  /* ============ Latido Verde — diferencial para Medio Ambiente ============ */
+  .pilar-card.latido-verde {
+    background:
+      linear-gradient(160deg, rgba(125, 194, 66, 0.22) 0%, rgba(91, 140, 58, 0.08) 60%, transparent 100%),
+      var(--latido-card-bg);
+    border-color: rgba(125, 194, 66, 0.55);
+    position: relative;
+  }
+  .pilar-card.latido-verde::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--panches-verde-vivo, #7DC242), var(--panches-verde, #3A5C3A));
+  }
+  .pilar-card.latido-verde .icon-wrap {
+    background: rgba(125, 194, 66, 0.2);
+    color: var(--panches-verde-vivo, #7DC242);
+    box-shadow: 0 0 0 1px rgba(125, 194, 66, 0.4) inset;
+  }
+  .pilar-card.latido-verde:hover {
+    border-color: var(--panches-verde-vivo, #7DC242);
+    box-shadow: 0 18px 50px rgba(125, 194, 66, 0.32);
+  }
+  .pilar-card.latido-verde:hover .icon-wrap {
+    background: var(--panches-verde-vivo, #7DC242);
+    color: var(--latido-primary);
+    box-shadow: 0 0 32px rgba(125, 194, 66, 0.6);
+  }
+  .pilar-card.latido-verde .verde-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 1rem;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    background: rgba(91, 140, 58, 0.16);
+    border: 1px solid rgba(91, 140, 58, 0.4);
+    color: var(--panches-verde-vivo, #5B8C3A);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .pilar-card.latido-verde .verde-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--panches-verde-vivo, #5B8C3A);
+    box-shadow: 0 0 8px rgba(91, 140, 58, 0.8);
+  }
+  .pilar-card.latido-verde h3 { color: #DCEBC8; }
+  .pilar-card.latido-verde p { color: rgba(220, 235, 200, 0.85); opacity: 1; }
+
+  /* Contacto */
+  .contacto { background: var(--latido-primary); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 3rem auto 0;
+  }
+  .contact-card {
+    background: var(--latido-card-bg);
+    border: 1px solid rgba(245, 200, 66, 0.12);
+    border-radius: var(--radius-md);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+  }
+  .contact-card:hover {
+    border-color: var(--gold-latido);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(245, 200, 66, 0.14);
+  }
+  .contact-card .icon-wrap {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(245, 200, 66, 0.12);
+    color: var(--gold-latido);
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .contact-card .role {
+    font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-latido); opacity: 0.8;
+    margin-bottom: 0.5rem;
+  }
+  .contact-card .value { color: var(--latido-cream); font-size: 1rem; }
+
+  /* Idea #8 — Ecosistema */
+  .ecosistema { background: var(--latido-secondary); border-top: 1px solid rgba(245, 200, 66, 0.1); color: var(--latido-cream); }
+  .ecosistema .eyebrow { color: var(--gold-latido); }
+  .ecosistema-card { color: var(--latido-cream); border-color: rgba(245, 200, 66, 0.18); }
+  .ecosistema-card:hover { border-color: var(--gold-latido); box-shadow: 0 14px 36px rgba(245, 200, 66, 0.18); }
+  .ecosistema-card .role { color: var(--gold-latido); opacity: 1; }
+
+  /* Footer */
+  footer {
+    background: var(--latido-primary);
+    color: rgba(250, 244, 228, 0.85);
+    padding: 4.5rem 5% 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(245, 200, 66, 0.12);
+  }
+  footer .wordmark {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold-latido);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+  footer .tagline { color: rgba(250, 244, 228, 0.7); font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .geo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem auto;
+    color: var(--gold-latido);
+  }
+  .geo .topo { width: 200px; height: 80px; color: var(--gold-latido); opacity: 0.9; }
+  .geo .topo svg { width: 100%; height: 100%; }
+  .geo .coord { color: rgba(250, 244, 228, 0.55); font-family: 'SFMono-Regular', Menlo, Monaco, monospace; font-size: 0.7rem; letter-spacing: 2px; }
+  .socials { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; }
+  .socials a {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(245, 200, 66, 0.08);
+    border: 1px solid rgba(245, 200, 66, 0.22);
+    color: var(--gold-latido);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  .socials a:hover {
+    background: rgba(245, 200, 66, 0.18);
+    border-color: var(--gold-latido);
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px rgba(245, 200, 66, 0.3);
+  }
+  .footer-bottom {
+    margin-top: 2.5rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(245, 200, 66, 0.08);
+    font-size: 0.78rem;
+    color: rgba(250, 244, 228, 0.4);
+  }
+
+  @media (max-width: 860px) {
+    .quienes-grid, .mv-grid { grid-template-columns: 1fr; }
+    .nav .actions a:not(.btn) { display: none; }
+  }
+</style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="rays" viewBox="0 0 280 280">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M 40 140 Q 100 140 140 80" stroke-width="2" opacity="0.9"/>
+        <path d="M 30 140 Q 110 140 150 60" stroke-width="2" opacity="0.7"/>
+        <path d="M 20 140 Q 120 140 160 40" stroke-width="2" opacity="0.5"/>
+        <path d="M 10 140 Q 130 140 170 20" stroke-width="2" opacity="0.35"/>
+        <path d="M 0 140 Q 140 140 180 0" stroke-width="2" opacity="0.2"/>
+        <circle cx="56" cy="140" r="3" fill="currentColor" stroke="none" opacity="0.9"/>
+        <circle cx="142" cy="80" r="3" fill="currentColor" stroke="none" opacity="0.6"/>
+      </g>
+    </symbol>
+    <symbol id="chevrons" viewBox="0 0 400 28" preserveAspectRatio="none">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <polyline points="0,18 12,8 24,18 36,8 48,18 60,8 72,18 84,8 96,18 108,8 120,18 132,8 144,18 156,8 168,18 180,8 192,18 204,8 216,18 228,8 240,18 252,8 264,18 276,8 288,18 300,8 312,18 324,8 336,18 348,8 360,18 372,8 384,18 396,8"/>
+        <polyline points="0,26 12,16 24,26 36,16 48,26 60,16 72,26 84,16 96,26 108,16 120,26 132,16 144,26 156,16 168,26 180,16 192,26 204,16 216,26 228,16 240,26 252,16 264,26 276,16 288,26 300,16 312,26 324,16 336,26 348,16 360,26 372,16 384,26 396,16" opacity="0.4"/>
+      </g>
+    </symbol>
+    <symbol id="heart" viewBox="0 0 200 200">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M 100 175 C 50 145, 25 110, 25 78 C 25 50, 50 28, 75 28 C 88 28, 100 36, 100 50 C 100 36, 112 28, 125 28 C 150 28, 175 50, 175 78 C 175 110, 150 145, 100 175 Z"/>
+        <path d="M 75 80 Q 100 70 125 80" />
+        <path d="M 80 105 Q 100 115 120 105"/>
+        <circle cx="78" cy="92" r="2.5" fill="currentColor"/>
+        <circle cx="122" cy="92" r="2.5" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="topo" viewBox="0 0 200 80">
+      <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.8">
+        <path d="M 0 60 Q 30 50, 60 55 T 120 50 T 200 45"/>
+        <path d="M 0 50 Q 30 38, 60 42 T 120 36 T 200 30"/>
+        <path d="M 0 38 Q 30 22, 60 28 T 120 18 T 200 12"/>
+        <circle cx="100" cy="40" r="3" fill="currentColor" stroke="none"/>
+        <line x1="100" y1="40" x2="100" y2="78" stroke-dasharray="2 3"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <nav class="nav" id="nav">
+    <a href="#top" class="brand"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></a>
+    <div class="actions">
+      <a href="#manifesto">Manifesto</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto" class="btn btn-primary">Únete</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="motif-rays top-left"><svg><use href="#rays"/></svg></div>
+    <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
+    <div class="hero-content reveal">
+      <div class="eyebrow eyebrow-line hero-eyebrow"><span>Fundación Cultural Raíces Panches</span></div>
+      <img src="../assets/logos/fundacion_logo_gold.png" alt="Latido Panches" class="hero-logo">
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-primary">Conoce nuestros proyectos <i data-lucide="arrow-right"></i></a>
+        <a href="#contacto" class="btn btn-outline">Únete a nuestros procesos</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="latido-block" id="manifesto">
+    <div class="motif-dots"></div>
+    <div class="motif-rays top-left" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
+    <div class="motif-rays bot-right" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
+    <div class="container reveal">
+      <div class="eyebrow eyebrow-line"><span>Manifesto</span></div>
+      <div class="latido-icon"><i data-lucide="heart-pulse"></i></div>
+      <h2 class="section-title">LATIDO PANCHES</h2>
+      <blockquote>
+        "Latido Panches es una plataforma de transformación social que nace desde el territorio para conectar la identidad ancestral, la música, la tecnología, el deporte y el medio ambiente como herramientas de desarrollo comunitario."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Idea #5 — Inversión polar: Quiénes Somos en claro (paleta Panches) -->
+  <section class="quienes-light" id="quienes">
+    <div class="motif-chevrons"><svg><use href="#chevrons"/></svg></div>
+    <div class="motif-chevrons-b"><svg><use href="#chevrons"/></svg></div>
+    <div class="container quienes-grid">
+      <div class="reveal">
+        <div class="eyebrow eyebrow-line"><span>Quiénes somos</span></div>
+        <h2 class="section-title">Una raíz, muchas formas de florecer.</h2>
+        <p>Latido Panches es la plataforma de acción de la Fundación Cultural Raíces Panches, creada para impulsar procesos culturales integrales desde el territorio.</p>
+        <p>Articulamos la formación artística, la innovación tecnológica, el deporte, el cuidado del medio ambiente y la participación comunitaria para generar verdaderos procesos de transformación social con impacto duradero.</p>
+      </div>
+      <article class="quienes-card reveal delay-1">
+        <div class="motif-heart"><svg><use href="#heart"/></svg></div>
+        <div class="icon-wrap"><i data-lucide="users"></i></div>
+        <h3>Comunidad e identidad</h3>
+        <p>Tejiendo redes desde la raíz ancestral para el futuro.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mv-section">
+    <div class="container">
+      <div class="reveal" style="max-width: 720px; margin: 0 auto 3rem; text-align: center;">
+        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span>Hacia dónde vamos</span></div>
+        <h2 class="section-title" style="text-align: center;">Misión y Visión.</h2>
+      </div>
+      <div class="mv-grid">
+        <article class="mv-card reveal delay-1">
+          <div class="icon-wrap"><i data-lucide="target"></i></div>
+          <h3>Misión</h3>
+          <p>Fortalecer el tejido social y cultural del territorio mediante procesos de formación, creación y circulación artística que integren la identidad ancestral, la música, la tecnología, el deporte y el cuidado del medio ambiente como herramientas de transformación social.</p>
+        </article>
+        <article class="mv-card reveal delay-2">
+          <div class="icon-wrap"><i data-lucide="telescope"></i></div>
+          <h3>Visión</h3>
+          <p>Para el año 2035, la Fundación Cultural Raíces Panches será un referente en Colombia en el desarrollo de procesos integrales que articulen cultura, innovación, deporte y sostenibilidad ambiental.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pilares-section" id="proyectos">
+    <div class="motif-dots"></div>
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span>Objeto social</span></div>
+        <h2 class="section-title" style="text-align: center;">Cuatro frentes,<br>un mismo latido.</h2>
+        <p style="color: var(--gold-latido); opacity: 0.85; font-size: 1.1rem; max-width: 720px; margin: 0 auto;">Procesos culturales, tecnológicos, deportivos y ambientales que fortalecen la identidad territorial.</p>
+      </div>
+      <div class="pilares-grid">
+        <article class="pilar-card reveal delay-1">
+          <div class="icon-wrap"><i data-lucide="music-2"></i></div>
+          <h3>Cultura</h3>
+          <p>Formación artística, encuentros y creación colectiva desde la raíz ancestral.</p>
+        </article>
+        <article class="pilar-card reveal delay-2">
+          <div class="icon-wrap"><i data-lucide="cpu"></i></div>
+          <h3>Tecnología</h3>
+          <p>Alfabetización digital, herramientas creativas y nuevos formatos al servicio del territorio.</p>
+        </article>
+        <article class="pilar-card reveal delay-3">
+          <div class="icon-wrap"><i data-lucide="trophy"></i></div>
+          <h3>Deporte</h3>
+          <p>Actividad física y comunitaria como vehículo de convivencia y salud integral.</p>
+        </article>
+        <article class="pilar-card latido-verde reveal delay-3">
+          <div class="icon-wrap"><i data-lucide="sprout"></i></div>
+          <h3>Medio ambiente</h3>
+          <p>Cuidado del entorno, prácticas sostenibles y conciencia ecológica desde el territorio panche.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span>Únete</span></div>
+        <h2 class="section-title" style="text-align: center;">Hablemos.</h2>
+        <p style="color: var(--latido-cream); font-size: 1.05rem;">Escríbenos, síguenos o ven a un encuentro. Las puertas de la fundación están abiertas.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card reveal delay-1" href="mailto:contacto@latidopanches.org">
+          <div class="icon-wrap"><i data-lucide="mail"></i></div>
+          <div class="role">Correo</div>
+          <div class="value">contacto@latidopanches.org</div>
+        </a>
+        <a class="contact-card reveal delay-2" href="#">
+          <div class="icon-wrap"><i data-lucide="phone"></i></div>
+          <div class="role">Teléfono</div>
+          <div class="value">+57 (300) 000-0000</div>
+        </a>
+        <a class="contact-card reveal delay-3" href="#">
+          <div class="icon-wrap"><i class="fab fa-instagram"></i></div>
+          <div class="role">Instagram</div>
+          <div class="value">@latidopanches</div>
+        </a>
+        <a class="contact-card reveal delay-3" href="#">
+          <div class="icon-wrap"><i data-lucide="map-pin"></i></div>
+          <div class="role">Ubicación</div>
+          <div class="value">Nocaima, Cundinamarca</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ecosistema">
+    <div class="reveal">
+      <div class="eyebrow eyebrow-line"><span>Ecosistema</span></div>
+      <p class="title">Una raíz, tres latidos.</p>
+    </div>
+    <div class="ecosistema-grid">
+      <a class="ecosistema-card reveal delay-1" href="johnferlaverde.html">
+        <div class="logo-wrap"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></div>
+        <div class="role" style="color: var(--gold-johnfer);">Marca personal</div>
+        <div class="name">Johnfer Laverde</div>
+        <span class="arrow" style="color: var(--gold-johnfer);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
+      </a>
+      <a class="ecosistema-card reveal delay-2" href="fieb.html">
+        <div class="logo-wrap"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+        <div class="role" style="color: var(--gold-fieb);">Festival</div>
+        <div class="name">FIEB</div>
+        <span class="arrow" style="color: var(--gold-fieb);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
+      </a>
+      <a class="ecosistema-card reveal delay-3" href="#" style="background: var(--latido-card-bg); border-color: transparent;">
+        <div class="logo-wrap"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+        <div class="role">Estás aquí</div>
+        <div class="name">Latido Panches</div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wordmark">Latido Panches</div>
+    <p class="tagline">Fundación Cultural Raíces Panches</p>
+    <p class="tagline" style="font-size: 0.85rem; opacity: 0.55;">Nocaima, Cundinamarca · Colombia</p>
+    <div class="socials">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="geo">
+      <div class="topo"><svg><use href="#topo"/></svg></div>
+      <div class="geo-line"><span>Nocaima</span><span>·</span><span>Cundinamarca</span></div>
+      <div class="coord">5°04′N · 74°23′W</div>
+    </div>
+    <div class="footer-bottom">© 2025 Fundación Cultural Raíces Panches — Latido Panches</div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', onScroll); onScroll();
+    if (window.self === window.top) {
+      document.body.classList.add('js-anim');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+        });
+      }, 100);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        if (id === '#top') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const tgt = document.querySelector(id);
+        if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+</html>

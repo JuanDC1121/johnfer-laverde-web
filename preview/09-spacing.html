@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .spec-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px dashed #eee; }
+  .spec-row:last-child { border: none; }
+  .role { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; }
+  .bar { background: #B6CBE8; height: 14px; border-radius: 2px; }
+  .v { font-family: 'SFMono-Regular', Menlo, monospace; font-size: 10px; color: #325591; text-align: right; }
+</style>
+</head>
+<body>
+  <div class="row" style="justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+    <span class="label">Spacing & layout</span>
+    <span class="mono">section · card · gap</span>
+  </div>
+
+  <div class="spec-row"><span class="role">Section pad</span><span class="bar" style="width: 100%;"></span><span class="v">6rem 5%</span></div>
+  <div class="spec-row"><span class="role">Card pad</span><span class="bar" style="width: 60%; background:#8B6D4B;"></span><span class="v">3rem 2rem</span></div>
+  <div class="spec-row"><span class="role">Grid gap</span><span class="bar" style="width: 40%; background:#325591;"></span><span class="v">2 – 4rem</span></div>
+  <div class="spec-row"><span class="role">Container</span><span class="bar" style="width: 90%; background:#1F355C;"></span><span class="v">max 1200</span></div>
+  <div class="spec-row"><span class="role">Btn padding</span><span class="bar" style="width: 28%; background:#8B6D4B;"></span><span class="v">1 / 2.5</span></div>
+  <div class="spec-row"><span class="role">Letter spc btn</span><span class="bar" style="width: 8%; background:#325591;"></span><span class="v">1px</span></div>
+  <div class="spec-row"><span class="role">Letter spc eyebrow</span><span class="bar" style="width: 22%; background:#325591;"></span><span class="v">3 – 4px</span></div>
+</body>
+</html>

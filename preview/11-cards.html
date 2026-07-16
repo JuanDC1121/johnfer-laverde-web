@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .card-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .demo-card {
+    border-radius: 15px; padding: 22px 18px 20px; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+  .demo-card i { font-size: 28px; margin-bottom: 4px; }
+  .demo-card h3 { font-family: 'DM Serif Display', serif; font-size: 16px; font-weight: 400; line-height: 1.2; margin: 0; }
+  .demo-card p { font-size: 11px; line-height: 1.4; margin: 0; }
+
+  .jhonfer { background: #fff; color: #325591; border: 2px solid #325591; }
+  .jhonfer i { color: #325591; }
+  .fieb { background: #fff; color: #1A2744; border: 1px solid rgba(26,39,68,0.08); }
+  .fieb i { color: #E8A800; }
+  .fund { background: #1C3046; color: #FAF4E4; border: 1px solid rgba(245,200,66,0.12); box-shadow: 0 10px 40px rgba(0,0,0,0.25); }
+  .fund i { color: #F5C842; text-shadow: 0 0 15px rgba(245,200,66,0.2); }
+  .role { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="label">Card patterns · per theme</div>
+  <div class="card-row">
+    <div>
+      <div class="role" style="margin-bottom:8px;">Johnfer · card-white</div>
+      <div class="demo-card jhonfer">
+        <i class="fas fa-bullseye"></i>
+        <h3>Misión</h3>
+        <p>Brindar herramientas y formación para músicos colombianos.</p>
+      </div>
+    </div>
+    <div>
+      <div class="role" style="margin-bottom:8px;">FIEB · card</div>
+      <div class="demo-card fieb">
+        <i class="fas fa-graduation-cap"></i>
+        <h3>Formación</h3>
+        <p>Clases magistrales y talleres pedagógicos.</p>
+      </div>
+    </div>
+    <div>
+      <div class="role" style="margin-bottom:8px;">Fundación · card</div>
+      <div class="demo-card fund">
+        <i class="fas fa-heartbeat"></i>
+        <h3 style="color: #FAF4E4;">Latido Panches</h3>
+        <p style="color: #E8B84B;">Plataforma de transformación social.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

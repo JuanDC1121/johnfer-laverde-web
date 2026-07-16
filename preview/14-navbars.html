@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 0; width: 700px; }
+  .stack > * { display: block; }
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 28px; font-family: 'Raleway', sans-serif; font-weight: 600; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .nav .brand { font-family: 'DM Serif Display', serif; font-size: 18px; text-transform: none; letter-spacing: 0; }
+  .nav-jhonfer { background: #325591; color: #fff; }
+  .nav-fieb { background: rgba(244,244,242,0.98); color: #1A2744; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(26,39,68,0.1); }
+  .nav-fund { background: rgba(13,27,42,0.97); color: #FAF4E4; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(245,200,66,0.25); }
+  .nav-fund .brand { color: #F5C842; }
+  .nav-fieb .brand { color: #1A2744; }
+  .links { display: flex; gap: 24px; }
+  .label-strip { padding: 8px 28px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; font-weight: 600; background: #FAFAF8; }
+</style>
+</head>
+<body>
+  <div class="label-strip" style="padding-top: 16px;">Navbars · scrolled state · per theme</div>
+  <div class="stack">
+    <div class="nav nav-jhonfer">
+      <div class="brand">Johnfer Laverde</div>
+      <div class="links"><a>Sobre Mí</a><a>Proyectos</a><a>Contacto</a></div>
+    </div>
+    <div class="nav nav-fieb">
+      <div class="brand">FIEB</div>
+      <div class="links"><a>Historia</a><a>Líneas</a><a>Inscripción</a></div>
+    </div>
+    <div class="nav nav-fund">
+      <div class="brand">Latido Panches</div>
+      <div class="links"><a>Quiénes</a><a>Proyectos</a><a>Contacto</a></div>
+    </div>
+  </div>
+  <div class="label-strip" style="padding-bottom: 16px;">Fixed top · 12px backdrop blur · accent underline on hover</div>
+</body>
+</html>

@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIEB — v2</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="system.css">
+<link rel="stylesheet" href="motifs.css">
+<style>
+  body {
+    background: var(--fieb-bg);
+    color: #2A2520;
+    line-height: 1.7;
+  }
+
+  /* ============ Navbar ============ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 1.1rem 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100;
+    background: rgba(244, 237, 224, 0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+  }
+  .nav.scrolled {
+    background: rgba(244, 237, 224, 0.97);
+    border-bottom: 1px solid rgba(26, 39, 68, 0.08);
+    box-shadow: 0 4px 30px rgba(26, 39, 68, 0.06);
+  }
+  .nav .brand img { height: 52px; }
+  .nav .actions { display: flex; gap: 1rem; align-items: center; }
+  .nav .actions a {
+    color: var(--fieb-primary);
+    font-size: 0.78rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .nav .actions a:hover { color: var(--gold-fieb); }
+
+  /* ============ Idea #4 — Hero foto + lavado tonal ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 7rem 1.5rem 4rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(244,237,224,0.78) 0%, rgba(244,237,224,0.95) 100%),
+      url('https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    border-bottom: 1px solid rgba(26, 39, 68, 0.06);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 40%, rgba(26,39,68,0.05) 0%, transparent 60%);
+  }
+  /* Idea #3 — rayos panche */
+  .hero .motif-rays { color: var(--gold-fieb); opacity: 0.45; }
+  .hero-content { position: relative; z-index: 2; max-width: 1100px; }
+  .hero-eyebrow {
+    color: var(--gold-fieb);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  .hero-logo {
+    width: 75%;
+    max-width: 780px;
+    margin: 0 auto 2rem;
+    filter: drop-shadow(0 6px 20px rgba(26, 39, 68, 0.08));
+  }
+  .hero-quote {
+    font-family: var(--font-italic);
+    font-style: italic;
+    color: #4A5168;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold-fieb);
+    color: var(--fieb-primary);
+    border-color: var(--gold-fieb);
+    box-shadow: 0 6px 24px rgba(212, 154, 46, 0.3);
+  }
+  .btn-primary:hover {
+    background: var(--fieb-primary); color: #F4EDE0;
+    border-color: var(--fieb-primary);
+    box-shadow: 0 10px 32px rgba(26, 39, 68, 0.28);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--fieb-primary);
+    border-color: var(--fieb-primary);
+  }
+  .btn-outline:hover { background: rgba(26, 39, 68, 0.07); }
+
+  /* ============ Sections ============ */
+  section { padding: 6rem 5%; position: relative; }
+  .container { max-width: var(--max-width); margin: 0 auto; }
+
+  .eyebrow-fieb { color: var(--gold-fieb); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--fieb-primary);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .section-lead { color: #4A5168; font-size: 1.05rem; max-width: 720px; }
+
+  /* Historia */
+  .historia { background: var(--fieb-bg); }
+  .historia-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .historia p { color: #3F4258; margin-bottom: 1rem; font-size: 1.05rem; }
+
+  /* Misión / Visión cards */
+  .mv-section { background: var(--fieb-silver); border-top: 1px solid rgba(26,39,68,0.06); border-bottom: 1px solid rgba(26,39,68,0.06); }
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .mv-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(26,39,68,0.06);
+    box-shadow: 0 10px 30px rgba(26, 39, 68, 0.05);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 80px; height: 3px;
+    background: var(--gold-fieb);
+  }
+  .mv-card:hover {
+    border-color: var(--gold-fieb);
+    box-shadow: 0 16px 40px rgba(26, 39, 68, 0.1);
+    transform: translateY(-6px);
+  }
+  .mv-card .icon-wrap {
+    width: 48px; height: 48px;
+    border-radius: var(--radius-pill);
+    background: rgba(212, 154, 46, 0.12);
+    color: var(--gold-fieb);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 22px;
+  }
+  .mv-card h3 { font-size: 1.6rem; color: var(--fieb-primary); margin-bottom: 0.75rem; }
+  .mv-card p { color: #4A5168; margin: 0; }
+
+  /* ============ Idea #5 — Sección de inversión polar (Objetivo General oscuro) ============ */
+  .inversion {
+    background: var(--latido-primary);
+    color: #F4EDE0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .inversion .motif-dots {
+    inset: 0;
+    color: var(--gold-fieb);
+    opacity: 0.16;
+  }
+  .inversion .motif-rays.bot-left, .inversion .motif-rays.top-right {
+    color: var(--gold-fieb); opacity: 0.3;
+  }
+  .inversion .container {
+    position: relative; z-index: 2;
+    max-width: 880px;
+  }
+  .inversion .eyebrow { color: var(--gold-fieb); justify-content: center; }
+  .inversion-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(212, 154, 46, 0.18);
+    color: var(--gold-fieb);
+    margin: 0 auto 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .inversion .section-title { color: #F4EDE0; margin-bottom: 2rem; }
+  .inversion blockquote {
+    font-family: var(--font-italic);
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: rgba(244, 237, 224, 0.95);
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .inversion .credit {
+    margin-top: 2.5rem;
+    font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-fieb);
+  }
+
+  /* Líneas estratégicas */
+  .lineas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .linea-card {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 2.5rem 1.75rem;
+    border: 1px solid rgba(26,39,68,0.06);
+    box-shadow: 0 8px 24px rgba(26,39,68,0.04);
+    text-align: center;
+    transition: var(--transition);
+  }
+  .linea-card:hover {
+    border-color: var(--gold-fieb);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(26, 39, 68, 0.1);
+  }
+  .linea-card .icon-wrap {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(212, 154, 46, 0.12);
+    color: var(--gold-fieb);
+    margin: 0 auto 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .linea-card h3 { font-size: 1.25rem; color: var(--fieb-primary); margin-bottom: 0.5rem; }
+  .linea-card p { color: #4A5168; font-size: 0.95rem; margin: 0; }
+
+  /* ============ Evolución (acordeones por año) ============ */
+  .timeline-section { background: var(--fieb-silver); border-top: 1px solid rgba(26,39,68,0.06); border-bottom: 1px solid rgba(26,39,68,0.06); }
+  .editions { max-width: 920px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+  .acc-year {
+    background: #fff;
+    border: 1px solid rgba(26,39,68,0.08);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  }
+  .acc-year:hover { border-color: rgba(212,154,46,0.4); }
+  .acc-year.open {
+    border-color: var(--gold-fieb);
+    box-shadow: 0 14px 40px rgba(26,39,68,0.1);
+  }
+  .acc-head {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+  }
+  .acc-head .year {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--gold-fieb);
+    line-height: 1;
+  }
+  .acc-head .meta-edition {
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+  }
+  .acc-head .meta-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--fieb-primary);
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
+  }
+  .acc-head .meta-place {
+    font-size: 0.88rem;
+    color: #4A5168;
+  }
+  .acc-head .chev {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(212,154,46,0.12);
+    color: var(--gold-fieb);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+    flex-shrink: 0;
+  }
+  .acc-year.open .acc-head .chev {
+    transform: rotate(180deg);
+    background: var(--gold-fieb); color: #fff;
+  }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease);
+  }
+  .acc-year.open .acc-body { max-height: 4000px; }
+  .acc-body-inner {
+    padding: 0 2rem 2rem;
+  }
+  .acc-divider {
+    height: 1px;
+    background: rgba(26,39,68,0.08);
+    margin-bottom: 1.75rem;
+  }
+  .acc-desc {
+    color: #3F4258;
+    font-size: 1.02rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Subgroup titles inside accordion */
+  .sub-title {
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .sub-title::before {
+    content: ''; width: 24px; height: 1px; background: var(--gold-fieb); opacity: 0.6;
+  }
+
+  /* Maestros invitados */
+  .maestros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .maestro-card {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 1.1rem;
+    padding: 1.1rem;
+    background: var(--fieb-bg);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(26,39,68,0.06);
+    transition: var(--transition);
+  }
+  .maestro-card:hover {
+    border-color: var(--gold-fieb);
+    transform: translateY(-2px);
+  }
+  .maestro-photo {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background:
+      linear-gradient(135deg, rgba(212,154,46,0.85), rgba(26,39,68,0.92));
+    color: rgba(255,255,255,0.92);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.6rem; line-height: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(212,154,46,0.3);
+  }
+  .maestro-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .maestro-photo .ph-mark {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .maestro-name {
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+    color: var(--fieb-primary);
+    line-height: 1.15;
+    margin-bottom: 0.2rem;
+  }
+  .maestro-role {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .maestro-bio {
+    font-size: 0.85rem;
+    color: #4A5168;
+    line-height: 1.5;
+  }
+  .maestro-bio.placeholder {
+    font-style: italic;
+    color: rgba(74, 81, 104, 0.6);
+  }
+
+  /* Fechas, patrocinadores y estados */
+  .acc-dates {
+    display: none;
+    font-size: 0.72rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+  }
+  .acc-dates.show { display: inline-flex; align-items: center; gap: 8px; }
+  .acc-dates::before { content: ''; width: 18px; height: 1px; background: var(--gold-fieb); opacity: 0.7; }
+  .acc-sponsors {
+    display: none;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(26,39,68,0.08);
+    font-size: 0.8rem;
+    color: #4A5168;
+    line-height: 1.5;
+  }
+  .acc-sponsors.show { display: block; }
+  .edition-empty {
+    font-style: italic;
+    color: rgba(74, 81, 104, 0.65);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .master-group + .master-group { margin-top: 0.5rem; }
+
+  /* Programa semanal */
+  .program {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .program-day {
+    background: var(--fieb-bg);
+    border: 1px solid rgba(26,39,68,0.06);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.25rem;
+  }
+  .program-day-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(26,39,68,0.08);
+  }
+  .program-day-head .pd-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--fieb-primary);
+  }
+  .program-day-head .pd-date {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+  }
+  .program-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+  .program-list li { display: grid; grid-template-columns: 88px 1fr; gap: 0.6rem; align-items: baseline; }
+  .program-list .pt {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--gold-fieb);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .program-list .pa { font-size: 0.85rem; color: #3F4258; line-height: 1.45; }
+
+  /* Momentos destacados */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .highlight-card {
+    background: #fff;
+    border: 1px solid rgba(26,39,68,0.08);
+    border-left: 3px solid var(--gold-fieb);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.25rem;
+  }
+  .highlight-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--fieb-primary);
+    margin-bottom: 0.35rem;
+  }
+  .highlight-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  .highlight-text { font-size: 0.88rem; color: #3F4258; line-height: 1.5; margin: 0; }
+
+  /* Concurso */
+  .contest-intro { color: #3F4258; font-size: 0.95rem; margin-bottom: 1rem; }
+  .contest-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .contest-chip {
+    font-size: 0.72rem;
+    letter-spacing: 0.5px;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background: rgba(212,154,46,0.12);
+    color: var(--fieb-primary);
+    border: 1px solid rgba(212,154,46,0.3);
+  }
+  .contest-winners {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .winner-card {
+    background: var(--fieb-primary);
+    color: #F4EDE0;
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.25rem;
+    text-align: center;
+  }
+  .winner-place {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .winner-name { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.15rem; }
+  .winner-city { font-size: 0.78rem; color: rgba(244,237,224,0.7); }
+
+  .finalist-heading {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--fieb-primary);
+    margin-bottom: 1rem;
+  }
+  .finalist-groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .finalist-group {
+    background: var(--fieb-bg);
+    border: 1px solid rgba(26,39,68,0.06);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.15rem;
+  }
+  .finalist-cat {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-fieb);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .finalist-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .finalist-list li { font-size: 0.86rem; color: #3F4258; line-height: 1.4; }
+
+  /* ============ Inscripción ============ */
+  .inscripcion-section { background: #fff; padding: 6rem 5%; }
+  .form-card {
+    max-width: 720px;
+    margin: 3rem auto 0;
+    padding: 2.5rem;
+    background: var(--fieb-bg);
+    border: 1px solid rgba(26,39,68,0.08);
+    border-radius: var(--radius-md);
+    box-shadow: 0 14px 40px rgba(26,39,68,0.06);
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--fieb-primary);
+    font-weight: 600;
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(26,39,68,0.15);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #2A2520;
+    transition: var(--transition);
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--gold-fieb);
+    box-shadow: 0 0 0 3px rgba(212,154,46,0.16);
+  }
+  .form-field textarea { min-height: 110px; resize: vertical; }
+  .consent-label {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.8rem !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    font-weight: 400 !important;
+    color: #4A5168 !important;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  .consent-label input[type="checkbox"] {
+    margin-top: 3px;
+    width: 16px; height: 16px;
+    accent-color: var(--gold-fieb);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .form-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1.75rem; flex-wrap: wrap; }
+  .form-note {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(212,154,46,0.08);
+    border-left: 3px solid var(--gold-fieb);
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    color: #4A5168;
+    line-height: 1.55;
+  }
+  .form-note strong { color: var(--fieb-primary); }
+  .form-status {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .form-status.show { display: block; }
+  .form-status.is-error {
+    background: rgba(184, 84, 58, 0.1);
+    border: 1px solid rgba(184, 84, 58, 0.25);
+    color: #7B2F20;
+  }
+  .form-status.is-info {
+    background: rgba(26, 39, 68, 0.08);
+    border: 1px solid rgba(26, 39, 68, 0.14);
+    color: var(--fieb-primary);
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(58, 92, 58, 0.08);
+    border: 1px solid rgba(58, 92, 58, 0.25);
+    border-radius: var(--radius-md);
+    color: #3A5C3A;
+  }
+  .form-success.show { display: block; }
+  .form-success .check {
+    width: 56px; height: 56px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--panches-verde, #3A5C3A);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  @media (max-width: 640px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .acc-head { grid-template-columns: 80px 1fr auto; gap: 1rem; padding: 1.25rem; }
+    .acc-head .year { font-size: 1.8rem; }
+    .acc-body-inner { padding: 0 1.25rem 1.5rem; }
+    .form-card { padding: 1.5rem; }
+  }
+
+  /* Idea #8 — Ecosistema */
+  .ecosistema { background: var(--fieb-bg); border-top: 1px solid rgba(26,39,68,0.06); color: #3A3026; }
+  .ecosistema .eyebrow { color: var(--gold-fieb); }
+  .ecosistema-card { color: var(--fieb-primary); border-color: rgba(26, 39, 68, 0.15); background: #fff; }
+  .ecosistema-card:hover { border-color: var(--gold-fieb); box-shadow: 0 14px 36px rgba(26, 39, 68, 0.08); }
+  .ecosistema-card .role { color: var(--gold-fieb); opacity: 1; }
+
+  /* Footer */
+  footer {
+    background: var(--fieb-primary);
+    color: rgba(244, 237, 224, 0.85);
+    padding: 4.5rem 5% 2rem;
+    text-align: center;
+  }
+  footer .wordmark {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+  footer .tagline { color: rgba(244, 237, 224, 0.7); font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .geo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem auto;
+    color: var(--gold-fieb);
+  }
+  .geo .topo { width: 200px; height: 80px; color: var(--gold-fieb); opacity: 0.9; }
+  .geo .topo svg { width: 100%; height: 100%; }
+  .geo .coord { color: rgba(244, 237, 224, 0.55); font-family: 'SFMono-Regular', Menlo, Monaco, monospace; font-size: 0.7rem; letter-spacing: 2px; }
+  .socials { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; }
+  .socials a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: rgba(244, 237, 224, 0.9);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    transition: var(--transition);
+    text-decoration: none;
+  }
+  .socials a:hover { background: var(--gold-fieb); color: var(--fieb-primary); transform: translateY(-3px); }
+  .footer-bottom {
+    margin-top: 2.5rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(244, 237, 224, 0.1);
+    font-size: 0.78rem;
+    color: rgba(244, 237, 224, 0.45);
+  }
+
+  @media (max-width: 860px) {
+    .historia-grid, .mv-grid { grid-template-columns: 1fr; }
+    .nav .actions a:not(.btn) { display: none; }
+  }
+</style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="rays" viewBox="0 0 280 280">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path d="M 40 140 Q 100 140 140 80" stroke-width="2" opacity="0.9"/>
+        <path d="M 30 140 Q 110 140 150 60" stroke-width="2" opacity="0.7"/>
+        <path d="M 20 140 Q 120 140 160 40" stroke-width="2" opacity="0.5"/>
+        <path d="M 10 140 Q 130 140 170 20" stroke-width="2" opacity="0.35"/>
+        <path d="M 0 140 Q 140 140 180 0" stroke-width="2" opacity="0.2"/>
+        <circle cx="56" cy="140" r="3" fill="currentColor" stroke="none" opacity="0.9"/>
+        <circle cx="142" cy="80" r="3" fill="currentColor" stroke="none" opacity="0.6"/>
+      </g>
+    </symbol>
+    <symbol id="topo" viewBox="0 0 200 80">
+      <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.8">
+        <path d="M 0 60 Q 30 50, 60 55 T 120 50 T 200 45"/>
+        <path d="M 0 50 Q 30 38, 60 42 T 120 36 T 200 30"/>
+        <path d="M 0 38 Q 30 22, 60 28 T 120 18 T 200 12"/>
+        <circle cx="100" cy="40" r="3" fill="currentColor" stroke="none"/>
+        <line x1="100" y1="40" x2="100" y2="78" stroke-dasharray="2 3"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <nav class="nav" id="nav">
+    <a href="#top" class="brand"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></a>
+    <div class="actions">
+      <a href="#historia">Historia</a>
+      <a href="#lineas">Líneas</a>
+      <a href="#inscripcion" class="btn btn-primary">Inscríbete</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="motif-rays top-left"><svg><use href="#rays"/></svg></div>
+    <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
+    <div class="hero-content reveal">
+      <div class="eyebrow eyebrow-line hero-eyebrow"><span>Formación · Circulación · Inspiración</span></div>
+      <img src="../assets/logos/fieb_logo_light.png" alt="FIEB" class="hero-logo">
+      <p class="hero-quote">"Un espacio internacional para el eufonio y el bombardino, nacido desde Colombia."</p>
+      <div class="hero-actions">
+        <a href="#inscripcion" class="btn btn-primary">Inscríbete <i data-lucide="arrow-right"></i></a>
+        <a href="#historia" class="btn btn-outline">Más información</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="historia" id="historia">
+    <div class="container historia-grid">
+      <div class="reveal">
+        <div class="eyebrow eyebrow-line eyebrow-fieb"><span>Nuestra historia</span></div>
+        <h2 class="section-title">Desde 2020,<br>un festival internacional.</h2>
+      </div>
+      <div class="reveal delay-1">
+        <p>El Festival Internacional de Eufonios y Bombardinos (FIEB) es una iniciativa artística, pedagógica y cultural creada en 2020 por John Fernando Laverde Rodríguez, con el propósito de fortalecer los procesos de formación musical en Colombia y el mundo en torno al eufonio y el bombardino.</p>
+        <p>El FIEB surgió como respuesta a la crisis generada por la pandemia del COVID-19, desarrollándose inicialmente en formato virtual. Desde entonces ha evolucionado hacia un modelo presencial e híbrido, consolidándose como un espacio de alto impacto académico y artístico.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mv-section">
+    <div class="container">
+      <div class="reveal" style="max-width: 720px; margin: 0 auto 3rem; text-align: center;">
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Hacia dónde vamos</span></div>
+        <h2 class="section-title" style="text-align: center;">Misión y Visión.</h2>
+      </div>
+      <div class="mv-grid">
+        <article class="mv-card reveal delay-1">
+          <div class="icon-wrap"><i data-lucide="target"></i></div>
+          <h3>Misión</h3>
+          <p>Fortalecer los procesos de formación musical en eufonio y bombardino mediante espacios de enseñanza, circulación artística e intercambio internacional, promoviendo el desarrollo técnico, interpretativo y pedagógico en Colombia y el mundo.</p>
+        </article>
+        <article class="mv-card reveal delay-2">
+          <div class="icon-wrap"><i data-lucide="telescope"></i></div>
+          <h3>Visión</h3>
+          <p>Para el año 2030, el FIEB será reconocido como el principal festival y plataforma académica de eufonio y bombardino en Latinoamérica, articulando procesos formativos, investigación musical y circulación artística a nivel internacional.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Idea #5 — Inversión polar: Objetivo General en oscuro -->
+  <section class="inversion">
+    <div class="motif-dots"></div>
+    <div class="motif-rays top-right" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
+    <div class="container reveal">
+      <div class="eyebrow eyebrow-line"><span>Objetivo general</span></div>
+      <div class="inversion-icon"><i data-lucide="gem"></i></div>
+      <h2 class="section-title">Una voz para los instrumentos olvidados.</h2>
+      <blockquote>
+        "Generar espacios de formación, circulación e intercambio académico que fortalezcan el desarrollo técnico e interpretativo del eufonio y el bombardino."
+      </blockquote>
+      <div class="credit">— FIEB · Manifiesto fundacional</div>
+    </div>
+  </section>
+
+  <section id="lineas">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Cuatro frentes</span></div>
+        <h2 class="section-title" style="text-align: center;">Líneas estratégicas.</h2>
+      </div>
+      <div class="lineas-grid">
+        <article class="linea-card reveal delay-1">
+          <div class="icon-wrap"><i data-lucide="graduation-cap"></i></div>
+          <h3>Formación</h3>
+          <p>Clases magistrales, talleres y procesos pedagógicos continuos.</p>
+        </article>
+        <article class="linea-card reveal delay-2">
+          <div class="icon-wrap"><i data-lucide="music-2"></i></div>
+          <h3>Circulación</h3>
+          <p>Conciertos, recitales y muestras artísticas al público.</p>
+        </article>
+        <article class="linea-card reveal delay-3">
+          <div class="icon-wrap"><i data-lucide="globe-2"></i></div>
+          <h3>Internacionalización</h3>
+          <p>Intercambio con maestros y artistas de diferentes países.</p>
+        </article>
+        <article class="linea-card reveal delay-3">
+          <div class="icon-wrap"><i data-lucide="book-open"></i></div>
+          <h3>Investigación</h3>
+          <p>Desarrollo de metodologías y fortalecimiento técnico instrumental.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline-section" id="evolucion">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Cinco ediciones</span></div>
+        <h2 class="section-title" style="text-align: center;">Evolución del festival.</h2>
+        <p class="section-lead" style="margin: 0 auto; text-align: center;">Haz clic en cada año para ver los maestros invitados, el programa y la memoria de cada edición.</p>
+      </div>
+
+      <div class="editions reveal delay-1">
+
+        <article class="acc-year" data-year="2020">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2020</div>
+            <div>
+              <div class="meta-edition">I Edición · Virtual</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Virtual Colombia 2020</div>
+              <div class="meta-place">Formato 100% online · Colombia y el mundo</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2021">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2021</div>
+            <div>
+              <div class="meta-edition">II Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Funza 2021</div>
+              <div class="meta-place">Funza · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2022">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2022</div>
+            <div>
+              <div class="meta-edition">III Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Funza 2022</div>
+              <div class="meta-place">Funza · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2023">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2023</div>
+            <div>
+              <div class="meta-edition">IV Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Funza 2023</div>
+              <div class="meta-place">Funza · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+        <article class="acc-year" data-year="2025">
+          <button class="acc-head" aria-expanded="false">
+            <div class="year">2025</div>
+            <div>
+              <div class="meta-edition">V Edición · Presencial</div>
+              <div class="meta-title">Festival Internacional de Eufonios y Bombardinos · Cota 2025</div>
+              <div class="meta-place">Cota · Cundinamarca · Colombia</div>
+            </div>
+            <div class="chev"><i data-lucide="chevron-down"></i></div>
+          </button>
+          <div class="acc-body">
+            <div class="acc-body-inner">
+              <div class="acc-divider"></div>
+              <div class="acc-dates"></div>
+              <p class="acc-desc"></p>
+              <div class="edition-body">
+                <p class="edition-empty">Información de esta edición pendiente por publicar.</p>
+              </div>
+              <p class="acc-sponsors"></p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Inscripción — formulario conectado a Supabase -->
+  <section class="inscripcion-section" id="inscripcion">
+    <div class="container">
+      <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Inscríbete</span></div>
+        <h2 class="section-title" style="text-align: center;">Únete a la VI edición.</h2>
+        <p class="section-lead" style="margin: 0 auto; text-align: center;">El FIEB prepara su sexta edición. Déjanos tus datos y te contactaremos con las fechas, la sede, los niveles y los cupos disponibles.</p>
+      </div>
+
+      <form class="form-card reveal delay-1" id="inscripcionForm" autocomplete="off">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="f-nombre">Nombre completo *</label>
+            <input id="f-nombre" name="nombre" type="text" required>
+          </div>
+          <div class="form-field">
+            <label for="f-edad">Edad</label>
+            <input id="f-edad" name="edad" type="number" min="6" max="99">
+          </div>
+          <div class="form-field">
+            <label for="f-correo">Correo electrónico *</label>
+            <input id="f-correo" name="correo" type="email" required>
+          </div>
+          <div class="form-field">
+            <label for="f-telefono">Teléfono / WhatsApp</label>
+            <input id="f-telefono" name="telefono" type="tel">
+          </div>
+          <div class="form-field">
+            <label for="f-pais">País / Ciudad</label>
+            <input id="f-pais" name="pais" type="text" placeholder="Ej. Colombia, Bogotá">
+          </div>
+          <div class="form-field">
+            <label for="f-instrumento">Instrumento *</label>
+            <select id="f-instrumento" name="instrumento" required>
+              <option value="">Selecciona...</option>
+              <option>Eufonio</option>
+              <option>Bombardino</option>
+              <option>Tuba</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-nivel">Nivel</label>
+            <select id="f-nivel" name="nivel">
+              <option value="">Selecciona...</option>
+              <option>Iniciación</option>
+              <option>Intermedio</option>
+              <option>Avanzado</option>
+              <option>Profesional</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="f-institucion">Institución / Banda</label>
+            <input id="f-institucion" name="institucion" type="text">
+          </div>
+          <div class="form-field full">
+            <label for="f-mensaje">Mensaje o expectativas</label>
+            <textarea id="f-mensaje" name="mensaje" placeholder="Cuéntanos brevemente sobre tu proceso y qué esperas del festival..."></textarea>
+          </div>
+          <div class="form-field full">
+            <label class="consent-label" for="f-datos">
+              <input id="f-datos" name="acepta_datos" type="checkbox" required>
+              <span>Autorizo el tratamiento de mis datos personales y el envío de información sobre el festival, conforme a la Ley 1581 de 2012 (habeas data). *</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitInscripcion"><i data-lucide="send"></i> Enviar inscripción</button>
+          <a href="mailto:contacto@johnferlaverde.com" class="btn btn-outline"><i data-lucide="mail"></i> Escríbenos</a>
+        </div>
+
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+        <div class="form-note">
+          <strong>Base de datos Supabase:</strong>
+          este formulario guarda las inscripciones en la tabla <code>fieb_inscripciones</code>. Pega tu <code>SUPABASE_URL</code> y tu <code>SUPABASE_ANON_KEY</code> en <code>supabase-config.js</code> y ejecuta el SQL incluido en la carpeta <code>supabase</code>.
+        </div>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="check"><i data-lucide="check"></i></div>
+        <h3 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--fieb-primary); margin-bottom: 0.5rem;">¡Inscripción recibida!</h3>
+        <p style="color: #4A5168;">Tus datos fueron guardados correctamente en la base de datos de FIEB.</p>
+        <pre id="formPreview" style="margin-top: 1.25rem; padding: 1rem; background: var(--fieb-bg); border-radius: var(--radius-sm); text-align: left; font-size: 0.78rem; color: #2A2520; overflow-x: auto;"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="ecosistema">
+    <div class="reveal">
+      <div class="eyebrow eyebrow-line"><span>Ecosistema</span></div>
+      <p class="title">Una raíz, tres latidos.</p>
+    </div>
+    <div class="ecosistema-grid">
+      <a class="ecosistema-card reveal delay-1" href="johnferlaverde.html">
+        <div class="logo-wrap"><img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde" style="filter: invert(1) brightness(0.4) sepia(1) hue-rotate(180deg) saturate(2);"></div>
+        <div class="role">Marca personal</div>
+        <div class="name">Johnfer Laverde</div>
+        <span class="arrow" style="color: var(--gold-johnfer);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
+      </a>
+      <a class="ecosistema-card reveal delay-2" href="#" style="background: var(--fieb-primary); color: #F4EDE0; border-color: transparent;">
+        <div class="logo-wrap"><img src="../assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
+        <div class="role" style="color: var(--gold-fieb);">Estás aquí</div>
+        <div class="name">FIEB</div>
+      </a>
+      <a class="ecosistema-card reveal delay-3" href="fundacion.html">
+        <div class="logo-wrap"><img src="../assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
+        <div class="role">Fundación</div>
+        <div class="name">Latido Panches</div>
+        <span class="arrow" style="color: var(--gold-latido);">Ir al sitio <i data-lucide="arrow-up-right"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wordmark">FIEB</div>
+    <p class="tagline">Festival Internacional de Eufonios y Bombardinos</p>
+    <p class="tagline" style="font-size: 0.85rem; opacity: 0.55;">Colombia · creado en 2020 por John Fernando Laverde Rodríguez</p>
+    <div class="socials">
+      <a href="https://www.facebook.com/profile.php?id=100063724441664" target="_blank" rel="noopener" aria-label="Facebook FIEB"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram FIEB"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube FIEB"><i class="fab fa-youtube"></i></a>
+    </div>
+    <div class="geo">
+      <div class="topo"><svg><use href="#topo"/></svg></div>
+      <div class="geo-line"><span>Cota</span><span>·</span><span>Cundinamarca</span></div>
+      <div class="coord">4°48′N · 74°06′W</div>
+    </div>
+    <div class="footer-bottom">© 2020–2026 FIEB — Festival Internacional de Eufonios y Bombardinos</div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    lucide.createIcons();
+    const nav = document.getElementById('nav');
+    const onScroll = () => { if (nav) nav.classList.toggle('scrolled', window.scrollY > 60); };
+    window.addEventListener('scroll', onScroll); onScroll();
+    if (window.self === window.top) {
+      document.body.classList.add('js-anim');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+        });
+      }, 100);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        if (id === '#top') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const tgt = document.querySelector(id);
+        if (tgt) { e.preventDefault(); tgt.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // Accordion ediciones
+    document.querySelectorAll('.acc-head').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-year');
+        const open = item.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+
+    // ---- Render de ediciones FIEB (desde fieb-data.txt) ----
+    const escapeHtml = str => String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const initials = name => {
+      const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+      if (!parts.length) return 'M';
+      return (parts[0][0] + (parts[1] ? parts[1][0] : '')).toUpperCase();
+    };
+
+    const createMasterCard = master => `
+      <div class="maestro-card">
+        <div class="maestro-photo">${master.photo
+          ? `<img src="${escapeHtml(master.photo)}" alt="${escapeHtml(master.name)}">`
+          : `<span class="ph-mark">${escapeHtml(initials(master.name))}</span>`}</div>
+        <div>
+          <div class="maestro-name">${escapeHtml(master.name || 'Maestro / Maestra invitada')}</div>
+          <div class="maestro-role">${escapeHtml(master.role || 'Invitado especial')}</div>
+          <p class="maestro-bio ${master.bio ? '' : 'placeholder'}">${escapeHtml(master.bio || 'Biografía pendiente por completar.')}</p>
+        </div>
+      </div>
+    `;
+
+    const createMasterGroup = group => `
+      <div class="master-group">
+        ${group.label ? `<div class="sub-title">${escapeHtml(group.label)}</div>` : ''}
+        <div class="maestros-grid">
+          ${(group.masters || []).map(createMasterCard).join('')}
+        </div>
+      </div>
+    `;
+
+    const createProgram = program => {
+      if (!Array.isArray(program) || !program.length) return '';
+      const days = program.map(day => `
+        <div class="program-day">
+          <div class="program-day-head">
+            <span class="pd-name">${escapeHtml(day.day || '')}</span>
+            <span class="pd-date">${escapeHtml(day.date || '')}</span>
+          </div>
+          <ul class="program-list">
+            ${(day.items || []).map(it => `<li><span class="pt">${escapeHtml(it.time || '')}</span><span class="pa">${escapeHtml(it.activity || '')}</span></li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+      return `<div class="sub-title">Programa</div><div class="program">${days}</div>`;
+    };
+
+    const createHighlights = highlights => {
+      if (!Array.isArray(highlights) || !highlights.length) return '';
+      const cards = highlights.map(h => `
+        <div class="highlight-card">
+          <div class="highlight-title">${escapeHtml(h.title || '')}</div>
+          ${h.meta ? `<div class="highlight-meta">${escapeHtml(h.meta)}</div>` : ''}
+          ${h.text ? `<p class="highlight-text">${escapeHtml(h.text)}</p>` : ''}
+        </div>
+      `).join('');
+      return `<div class="sub-title">Momentos destacados</div><div class="highlights">${cards}</div>`;
+    };
+
+    const createContest = contest => {
+      if (!contest || typeof contest !== 'object') return '';
+      const intro = contest.intro ? `<p class="contest-intro">${escapeHtml(contest.intro)}</p>` : '';
+      const cats = Array.isArray(contest.categories) && contest.categories.length
+        ? `<div class="contest-cats">${contest.categories.map(c => `<span class="contest-chip">${escapeHtml(c)}</span>`).join('')}</div>`
+        : '';
+      const winners = Array.isArray(contest.winners) && contest.winners.length
+        ? `<div class="contest-winners">${contest.winners.map(w => `
+            <div class="winner-card">
+              <div class="winner-place">${escapeHtml(w.place || '')}</div>
+              <div class="winner-name">${escapeHtml(w.name || '')}</div>
+              ${w.city ? `<div class="winner-city">${escapeHtml(w.city)}</div>` : ''}
+            </div>`).join('')}</div>`
+        : '';
+      const finalists = Array.isArray(contest.finalistGroups) && contest.finalistGroups.length
+        ? `<div class="finalist-groups">${contest.finalistGroups.map(g => `
+            <div class="finalist-group">
+              <div class="finalist-cat">${escapeHtml(g.category || '')}</div>
+              <ul class="finalist-list">${(g.names || []).map(n => `<li>${escapeHtml(n)}</li>`).join('')}</ul>
+            </div>`).join('')}</div>`
+        : '';
+      if (!intro && !cats && !winners && !finalists) return '';
+      const finalistLabel = finalists && !winners ? '<div class="finalist-heading">Finalistas por categoría</div>' : '';
+      return `<div class="sub-title">Concurso</div>${intro}${cats}${winners}${finalistLabel}${finalists}`;
+    };
+
+    const renderFiebEditions = editions => {
+      editions.forEach(edition => {
+        const article = document.querySelector(`.acc-year[data-year="${edition.year}"]`);
+        if (!article) return;
+
+        const head = article.querySelector('.acc-head');
+        const yearEl = article.querySelector('.year');
+        const editionEl = article.querySelector('.meta-edition');
+        const titleEl = article.querySelector('.meta-title');
+        const placeEl = article.querySelector('.meta-place');
+        const datesEl = article.querySelector('.acc-dates');
+        const descEl = article.querySelector('.acc-desc');
+        const bodyEl = article.querySelector('.edition-body');
+        const sponsorsEl = article.querySelector('.acc-sponsors');
+
+        if (yearEl) yearEl.textContent = String(edition.year);
+        if (editionEl) editionEl.textContent = edition.heading || '';
+        if (titleEl) titleEl.textContent = edition.title || '';
+        if (placeEl) placeEl.textContent = edition.place || '';
+        if (descEl) descEl.textContent = edition.description || '';
+        if (datesEl) {
+          datesEl.textContent = edition.dates || '';
+          datesEl.classList.toggle('show', Boolean(edition.dates));
+        }
+
+        const groups = edition.masterGroups || (edition.masters ? [{ label: '', masters: edition.masters }] : []);
+        const withMasters = groups.filter(g => (g.masters || []).length);
+        if (bodyEl) {
+          const html = withMasters.map(createMasterGroup).join('')
+            + createHighlights(edition.highlights)
+            + createContest(edition.contest)
+            + createProgram(edition.program);
+          bodyEl.innerHTML = html ||
+            '<p class="edition-empty">Información de esta edición pendiente por publicar.</p>';
+        }
+        if (sponsorsEl) {
+          sponsorsEl.textContent = edition.sponsors || '';
+          sponsorsEl.classList.toggle('show', Boolean(edition.sponsors));
+        }
+
+        article.classList.toggle('open', Boolean(edition.open));
+        if (head) head.setAttribute('aria-expanded', edition.open ? 'true' : 'false');
+      });
+      lucide.createIcons();
+    };
+
+    fetch('fieb-data.txt')
+      .then(response => {
+        if (!response.ok) throw new Error(`No se pudo cargar fieb-data.txt (${response.status})`);
+        return response.json();
+      })
+      .then(data => {
+        if (data && Array.isArray(data.editions)) renderFiebEditions(data.editions);
+      })
+      .catch(() => {
+        console.warn('No se pudo cargar el archivo de datos de FIEB. La página seguirá mostrando el contenido estático.');
+      });
+
+    const form = document.getElementById('inscripcionForm');
+    const success = document.getElementById('formSuccess');
+    const preview = document.getElementById('formPreview');
+    const statusBox = document.getElementById('formStatus');
+    const submitButton = document.getElementById('submitInscripcion');
+    const supabaseConfig = window.FIEB_SUPABASE || {};
+    const hasSupabaseConfig = Boolean(
+      supabaseConfig.url &&
+      supabaseConfig.anonKey &&
+      !supabaseConfig.url.includes('TU-PROYECTO') &&
+      !supabaseConfig.anonKey.includes('TU-ANON-KEY')
+    );
+    const supabaseClient = hasSupabaseConfig && window.supabase
+      ? window.supabase.createClient(supabaseConfig.url, supabaseConfig.anonKey)
+      : null;
+
+    const setFormStatus = (message, type = 'info') => {
+      if (!statusBox) return;
+      statusBox.textContent = message;
+      statusBox.className = `form-status show is-${type}`;
+    };
+
+    const normalizePayload = formData => ({
+      nombre: String(formData.get('nombre') || '').trim(),
+      edad: formData.get('edad') ? Number(formData.get('edad')) : null,
+      correo: String(formData.get('correo') || '').trim().toLowerCase(),
+      telefono: String(formData.get('telefono') || '').trim() || null,
+      pais_ciudad: String(formData.get('pais') || '').trim() || null,
+      instrumento: String(formData.get('instrumento') || '').trim(),
+      nivel: String(formData.get('nivel') || '').trim() || null,
+      institucion: String(formData.get('institucion') || '').trim() || null,
+      mensaje: String(formData.get('mensaje') || '').trim() || null,
+      acepta_datos: formData.get('acepta_datos') === 'on',
+      origen: 'web-fieb',
+      user_agent: navigator.userAgent
+    });
+
+    if (form && !supabaseClient) {
+      setFormStatus('Falta configurar Supabase. Edita v2/supabase-config.js con la URL y la anon key del proyecto antes de recibir inscripciones reales.', 'info');
+    }
+
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        if (!supabaseClient) {
+          setFormStatus('No se pudo enviar: primero configura las credenciales de Supabase en v2/supabase-config.js.', 'error');
+          return;
+        }
+
+        const data = normalizePayload(new FormData(form));
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i data-lucide="loader-circle"></i> Enviando...';
+        setFormStatus('Enviando inscripción...', 'info');
+        lucide.createIcons();
+
+        const { error } = await supabaseClient
+          .from('fieb_inscripciones')
+          .insert(data);
+
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<i data-lucide="send"></i> Enviar inscripción';
+        lucide.createIcons();
+
+        if (error) {
+          setFormStatus(`No se pudo guardar la inscripción: ${error.message}`, 'error');
+          return;
+        }
+
+        preview.textContent = JSON.stringify({
+          fecha: new Date().toISOString(),
+          nombre: data.nombre,
+          correo: data.correo,
+          instrumento: data.instrumento
+        }, null, 2);
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        lucide.createIcons();
+      });
+    }
+  </script>
+</body>
+</html>

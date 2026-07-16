@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .scale-row { display: grid; grid-template-columns: 110px 1fr 90px; gap: 14px; align-items: baseline; padding: 8px 0; border-bottom: 1px dashed #eee; }
+  .scale-row:last-child { border-bottom: none; }
+  .role { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; }
+  .specimen { font-family: 'DM Serif Display', serif; color: #325591; line-height: 1; }
+  .specimen.body { font-family: 'Raleway', sans-serif; color: #333; font-weight: 400; }
+  .size { font-family: 'SFMono-Regular', Menlo, monospace; font-size: 10px; color: #888; text-align: right; }
+</style>
+</head>
+<body>
+  <div class="row" style="justify-content: space-between; align-items: baseline; margin-bottom: 10px;">
+    <span class="label">Type scale</span>
+    <span class="mono">rem · px @ 16</span>
+  </div>
+
+  <div class="scale-row"><span class="role">h1 · hero</span><span class="specimen" style="font-size: 36px;">Mi trabajo</span><span class="size">4rem / 64</span></div>
+  <div class="scale-row"><span class="role">h2 · section</span><span class="specimen" style="font-size: 28px;">Nuestra Historia</span><span class="size">2.5rem / 40</span></div>
+  <div class="scale-row"><span class="role">h3 · card</span><span class="specimen" style="font-size: 22px;">Formación</span><span class="size">1.8rem / 28.8</span></div>
+  <div class="scale-row"><span class="role">lead</span><span class="specimen body" style="font-size: 16px; font-weight: 300;">Forjando identidad cultural…</span><span class="size">1.2rem / 19.2</span></div>
+  <div class="scale-row"><span class="role">body</span><span class="specimen body" style="font-size: 14px;">El FIEB es una iniciativa artística…</span><span class="size">1rem / 16</span></div>
+  <div class="scale-row"><span class="role">button</span><span class="specimen body" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Conoce mi trabajo</span><span class="size">0.95rem / 15</span></div>
+</body>
+</html>

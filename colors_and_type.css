@@ -1,0 +1,231 @@
+/* ============================================================
+   Johnfer Laverde — Design System
+   colors_and_type.css
+
+   All design tokens for the three-product ecosystem:
+   - Johnfer Laverde (personal brand) — default :root
+   - FIEB (festival) — .fieb-theme body class
+   - Fundación / Latido Panches — .fundacion-theme body class
+
+   Plus shared semantic typography variables (h1, h2, body, etc).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Raleway:wght@300;400;600;700&display=swap');
+
+/* ============================================================
+   1. SHARED FOUNDATION — Johnfer Laverde palette is the default
+   ============================================================ */
+:root {
+  /* --- Brand: Johnfer Laverde (default) --- */
+  --color-primary:    #325591;     /* institutional blue */
+  --color-secondary:  #B6CBE8;     /* sky blue */
+  --color-neutral:    #BBBBBB;     /* mid grey */
+  --color-accent:     #8B6D4B;     /* warm bronze */
+  --color-white:      #FFFFFF;
+  --color-dark:       #1F355C;     /* deep blue / footer */
+  --color-bg:         #FFFFFF;
+  --color-bg-alt:     #F8FAFD;     /* light blue-tinted section bg */
+  --color-text-main:  #333333;
+  --color-text-sec:   #666666;
+  --color-border:     rgba(50, 85, 145, 0.1);
+
+  /* --- Typography families --- */
+  --font-title:    'DM Serif Display', Georgia, serif;
+  --font-body:     'Raleway', system-ui, -apple-system, sans-serif;
+  --font-subtitle: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+
+  /* --- Type scale (effective values seen across sites) --- */
+  --fs-h1:       4rem;       /* hero, 64px */
+  --fs-h2:       2.5rem;     /* section-title, 40px */
+  --fs-h3:       1.8rem;     /* card title, 28.8px */
+  --fs-h4:       1.4rem;     /* sub-card, 22.4px */
+  --fs-lead:     1.2rem;     /* lead paragraph */
+  --fs-body:     1rem;       /* base, 16px */
+  --fs-small:    0.9rem;
+  --fs-button:   0.95rem;
+  --fs-eyebrow:  0.85rem;
+
+  --lh-tight:    1.2;
+  --lh-body:     1.6;
+  --lh-airy:     1.8;
+
+  --ls-button:   1px;        /* uppercase tracking */
+  --ls-eyebrow:  2px;
+  --ls-hero-sub: 3px;
+
+  /* --- Spacing / sizing --- */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-pill: 50px;       /* all CTAs */
+
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:   0 8px 24px rgba(0,0,0,0.12);
+  --shadow-lg:   0 16px 48px rgba(0,0,0,0.18);
+  --shadow-card: 0 10px 30px rgba(0,0,0,0.05);
+  --shadow-card-hover: 0 15px 40px rgba(0,0,0,0.1);
+
+  --max-width:   1200px;
+  --section-pad: 6rem 5%;
+  --card-pad:    3rem 2rem;
+
+  --transition:  all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Z-layers --- */
+  --z-nav:       1000;
+  --z-overlay:   1500;
+  --z-modal:     2000;
+}
+
+/* ============================================================
+   2. FIEB THEME — light editorial, navy + gold
+   ============================================================ */
+body.fieb-theme {
+  --color-primary:      #1A2744;       /* navy */
+  --color-blue-main:    #1A2744;
+  --color-blue-sec:     #2A3E6E;
+  --color-accent:       #E8A800;       /* gold (accents only) */
+  --color-silver:       #BBBBBB;
+  --color-silver-light: #E8E8E5;
+  --color-neutral:      #E8E8E5;
+  --color-bg:           #F4F4F2;       /* warm off-white */
+  --color-bg-alt:       #E8E8E5;
+  --color-secondary:    #E8E8E5;
+  --color-text-main:    #1A2744;
+  --color-text-sec:     #334155;
+  --color-border:       rgba(26, 39, 68, 0.08);
+  --color-shadow:       rgba(26, 39, 68, 0.06);
+  --color-white:        #FFFFFF;
+  --color-dark:         #1A2744;
+
+  /* type runs slightly airier in this theme */
+  --lh-body:            1.8;
+  --ls-hero-sub:        4px;
+  --section-pad:        6rem 5%;
+}
+
+/* ============================================================
+   3. FUNDACIÓN / LATIDO PANCHES THEME — premium dark, gold glow
+   ============================================================ */
+body.fundacion-theme {
+  --color-primary:        #0D1B2A;     /* near-black navy */
+  --color-secondary:      #122233;     /* alternating sections */
+  --color-accent:         #F5C842;     /* bright gold */
+  --color-accent-medium:  #E8B84B;
+  --color-accent-deep:    #C9912B;     /* deep gold for buttons */
+  --color-neutral:        #E8B84B;
+  --color-white:          #FAF4E4;     /* cream, not pure white */
+  --color-dark:           #080F15;     /* footer near-black */
+  --color-bg:             #0D1B2A;
+  --color-bg-alt:         #122233;
+  --color-text-main:      #FAF4E4;
+  --color-text-sec:       #E8B84B;     /* gold-tinted secondary text */
+  --color-border:         rgba(245, 200, 66, 0.12);
+  --color-card-bg:        #1C3046;     /* card surface */
+
+  /* type runs airier and slightly larger */
+  --fs-h2:                3rem;
+  --ls-hero-sub:          3px;
+  --lh-body:              1.8;
+
+  /* signature shadow: gold glow */
+  --shadow-glow:          0 0 20px rgba(245, 200, 66, 0.5);
+  --shadow-glow-soft:     0 0 15px rgba(245, 200, 66, 0.2);
+  --shadow-card:          0 10px 40px rgba(0,0,0,0.25);
+  --shadow-card-hover:    0 15px 50px rgba(245, 200, 66, 0.18);
+}
+
+/* ============================================================
+   4. SEMANTIC TYPOGRAPHY — element-level rules
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-main);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 400;     /* DM Serif Display only ships at 400 */
+  line-height: var(--lh-tight);
+  color: var(--color-primary);
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+  text-wrap: pretty;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--color-text-sec);
+}
+
+.subtitle,
+.eyebrow {
+  font-family: var(--font-subtitle);
+  font-size: var(--fs-lead);
+  color: var(--color-text-sec);
+  font-style: italic;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eyebrow);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: var(--fs-h2);
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--color-accent);
+  margin: 1rem auto 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* button base — pill, uppercase, tracked */
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-button);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-button);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}

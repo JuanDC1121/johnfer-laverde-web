@@ -1,0 +1,145 @@
+FIEB - DATOS POR EDICION
+
+Instrucciones:
+- Completa 3 maestros por cada festival.
+- Completa 1 solo enlace de YouTube por festival.
+- Si no conoces algún dato, deja la línea en blanco.
+- Puedes copiar y pegar este formato para cada año.
+
+==================================================
+AÑO: 2020
+EDICION:
+TITULO DEL FESTIVAL:
+LUGAR:
+DESCRIPCION:
+VIDEO YOUTUBE:
+
+MAESTRO 1
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 2
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 3
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+==================================================
+AÑO: 2021
+EDICION:
+TITULO DEL FESTIVAL:
+LUGAR:
+DESCRIPCION:
+VIDEO YOUTUBE:
+
+MAESTRO 1
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 2
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 3
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+==================================================
+AÑO: 2022
+EDICION:
+TITULO DEL FESTIVAL:
+LUGAR:
+DESCRIPCION:
+VIDEO YOUTUBE:
+
+MAESTRO 1
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 2
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 3
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+==================================================
+AÑO: 2023
+EDICION:
+TITULO DEL FESTIVAL:
+LUGAR:
+DESCRIPCION:
+VIDEO YOUTUBE:
+
+MAESTRO 1
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 2
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 3
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+==================================================
+AÑO: 2024
+EDICION:
+TITULO DEL FESTIVAL:
+LUGAR:
+DESCRIPCION:
+VIDEO YOUTUBE:
+
+MAESTRO 1
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 2
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 3
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+==================================================
+AÑO: 2025
+EDICION:
+TITULO DEL FESTIVAL:
+LUGAR:
+DESCRIPCION:
+VIDEO YOUTUBE:
+
+MAESTRO 1
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 2
+NOMBRE:
+ROL:
+BIOGRAFIA:
+
+MAESTRO 3
+NOMBRE:
+ROL:
+BIOGRAFIA:

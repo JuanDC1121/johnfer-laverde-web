@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 22px 28px; }
+  .icon-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; margin-top: 14px; }
+  .icon-cell {
+    aspect-ratio: 1; border-radius: 8px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px;
+    background: #FAFAF8; border: 1px solid #eee;
+  }
+  .icon-cell i { font-size: 18px; color: #8B6D4B; }
+  .icon-cell .n { font-size: 8px; color: #888; letter-spacing: 0.3px; line-height: 1; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="row" style="justify-content: space-between; align-items: baseline;">
+    <span class="label">Iconography · Font Awesome 6.4.0</span>
+    <span class="mono">fas / fab via CDN</span>
+  </div>
+
+  <div class="icon-grid">
+    <div class="icon-cell"><i class="fas fa-bullseye"></i><span class="n">bullseye</span></div>
+    <div class="icon-cell"><i class="fas fa-eye"></i><span class="n">eye</span></div>
+    <div class="icon-cell"><i class="fas fa-gem"></i><span class="n">gem</span></div>
+    <div class="icon-cell"><i class="fas fa-compass"></i><span class="n">compass</span></div>
+    <div class="icon-cell"><i class="fas fa-heartbeat"></i><span class="n">heartbeat</span></div>
+    <div class="icon-cell"><i class="fas fa-music"></i><span class="n">music</span></div>
+    <div class="icon-cell"><i class="fas fa-graduation-cap"></i><span class="n">grad cap</span></div>
+    <div class="icon-cell"><i class="fas fa-chalkboard-teacher"></i><span class="n">teacher</span></div>
+    <div class="icon-cell"><i class="fas fa-globe-americas"></i><span class="n">globe</span></div>
+    <div class="icon-cell"><i class="fas fa-book"></i><span class="n">book</span></div>
+    <div class="icon-cell"><i class="fas fa-exchange-alt"></i><span class="n">exchange</span></div>
+    <div class="icon-cell"><i class="fas fa-university"></i><span class="n">university</span></div>
+    <div class="icon-cell"><i class="fas fa-ticket-alt"></i><span class="n">ticket</span></div>
+    <div class="icon-cell"><i class="fas fa-tree"></i><span class="n">tree</span></div>
+    <div class="icon-cell"><i class="fas fa-users"></i><span class="n">users</span></div>
+    <div class="icon-cell"><i class="fas fa-drum"></i><span class="n">drum</span></div>
+    <div class="icon-cell"><i class="fas fa-map-marked-alt"></i><span class="n">map</span></div>
+    <div class="icon-cell"><i class="fas fa-chart-line"></i><span class="n">chart</span></div>
+    <div class="icon-cell"><i class="fas fa-envelope"></i><span class="n">envelope</span></div>
+    <div class="icon-cell"><i class="fas fa-child"></i><span class="n">child</span></div>
+    <div class="icon-cell"><i class="fab fa-facebook-f" style="color:#325591;"></i><span class="n">facebook</span></div>
+    <div class="icon-cell"><i class="fab fa-instagram" style="color:#325591;"></i><span class="n">instagram</span></div>
+    <div class="icon-cell"><i class="fab fa-youtube" style="color:#325591;"></i><span class="n">youtube</span></div>
+    <div class="icon-cell"><i class="fab fa-linkedin-in" style="color:#325591;"></i><span class="n">linkedin</span></div>
+  </div>
+  <div style="margin-top: 12px; font-size: 11px; color: #666;">
+    No custom SVGs, no emoji. Solid <span class="mono">fas</span> for thematic icons; brand <span class="mono">fab</span> for social only.
+  </div>
+</body>
+</html>
