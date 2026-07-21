@@ -6,3 +6,6 @@ Desktop.ini
 # Editor
 .vscode/
 *.swp
+
+# Herramientas locales (no forman parte del sitio)
+tmp/

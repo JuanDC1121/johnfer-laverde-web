@@ -1,7 +1,8 @@
 # Inventario de imágenes del sitio
 
-Para reemplazar una imagen: guarda la tuya en `assets/img/` (crea la carpeta) y avisa cuál
-reemplaza a cuál. Las medidas son las recomendadas para que se vea nítida.
+Para reemplazar una imagen: guarda la tuya en `assets/images/` con el nombre indicado abajo
+(minúsculas, guiones) y avisa cuál reemplaza a cuál. Preferir `.webp` o `.jpg` sobre `.png`
+para fotos — pesan mucho menos para la misma calidad.
 
 ## Logos (locales, en `assets/logos/`)
 
@@ -14,18 +15,20 @@ reemplaza a cuál. Las medidas son las recomendadas para que se vea nítida.
 | `fundacion_logo_gold.png` | Hero de la página Fundación (logo grande) | Dorado con glow |
 | `fundacion_logo_gold_small.png` | Navbar Fundación, tarjetas de ecosistema | |
 
-## Fotos de fondo (externas — REEMPLAZAR por fotos propias del festival)
+## Fotos (locales, en `assets/images/`)
 
-| Imagen actual | Dónde se usa | Tamaño recomendado |
+| Archivo | Dónde se usa | Estado |
 |---|---|---|
-| Eufonio en ensayo (Wikimedia Commons, CC BY-SA 4.0) | **FIEB** → fondo del hero (con lavado crema encima) | 1920×1080 o mayor, horizontal |
-| Concierto (Unsplash `photo-1493225457124`) | **Johnfer Laverde** → fondo del hero (lavado azul oscuro) | 1920×1080, horizontal |
-| Escenario/luces (Unsplash `photo-1511192336575`) | **Johnfer Laverde** → foto "Sobre mí" (retrato) | 900×1125, vertical 4:5 — ideal: foto personal de Johnfer |
-| Escenario (Unsplash `photo-1511671782779`) | **Fundación** → fondo del hero (lavado azul noche) | 1920×1080, horizontal |
+| `fundacion-hero-cultura-deporte.webp` | **Fundación** → fondo del hero (lavado azul noche) | ✅ Foto propia (iglesia/plaza) con íconos de los 4 pilares superpuestos |
+| `jhonfer-trayectoria.webp` | **Johnfer** → foto "Sobre mí" (retrato 4:5) | ✅ Foto propia con eufonio |
+| `jhonfer-hero-background-v3.webp` | **Johnfer** → fondo del hero (retrato ilustrado integrado a la derecha) | ✅ Texto del hero centrado (sin alineación especial) |
+| — | **FIEB** → fondo del hero | ⏳ Sigue siendo la foto de Wikimedia (eufonio en ensayo, CC BY-SA 4.0). Reemplazar por foto propia del festival: `fieb-hero.jpg`, 1920×1080 horizontal |
+
+Los `.png` junto a cada `.webp` son el original de mayor peso — se conservan como respaldo pero la página usa el `.webp` (mismo contenido, 5-6× más liviano).
 
 ## Fotos que NO existen aún y valdría la pena agregar
 
-- Fotos de los **maestros invitados** (las tarjetas hoy muestran iniciales en círculo).
+- Fotos de los **maestros invitados** del FIEB (las tarjetas hoy muestran iniciales en círculo).
   Formato: cuadradas, mínimo 200×200, nombradas por maestro (ej. `adam-frey.jpg`).
 - Fotos de cada **edición del festival** para la línea de tiempo (opcional).
 - **Favicon** del sitio (no hay): 512×512 PNG con el ícono del eufonio.
