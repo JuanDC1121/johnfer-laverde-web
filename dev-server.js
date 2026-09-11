@@ -15,14 +15,29 @@ const types = {
   '.jpeg': 'image/jpeg'
 };
 
-http.createServer((req, res) => {
-  let urlPath = decodeURIComponent(req.url.split('?')[0]);
-  if (urlPath === '/') urlPath = '/v2/index.html';
+// Resuelve URLs limpias como lo hace GitHub Pages:
+//   /            -> /index.html
+//   /fieb/       -> /fieb/index.html
+//   /fieb        -> /fieb/index.html (o /fieb.html si existe)
+function resolveFile(urlPath) {
+  const base = path.normalize(path.join(root, urlPath));
+  if (!base.startsWith(root)) return null;
+  const candidates = [];
+  if (urlPath.endsWith('/')) {
+    candidates.push(path.join(base, 'index.html'));
+  } else if (!path.extname(urlPath)) {
+    candidates.push(path.join(base, 'index.html'), base + '.html');
+  }
+  candidates.push(base);
+  return candidates.find(f => fs.existsSync(f) && fs.statSync(f).isFile()) || null;
+}
 
-  const file = path.normalize(path.join(root, urlPath));
-  if (!file.startsWith(root)) {
-    res.writeHead(403);
-    res.end('Forbidden');
+http.createServer((req, res) => {
+  const urlPath = decodeURIComponent(req.url.split('?')[0]);
+  const file = resolveFile(urlPath);
+  if (!file) {
+    res.writeHead(404);
+    res.end('Not found');
     return;
   }
 
