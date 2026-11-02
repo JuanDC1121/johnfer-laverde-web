@@ -1,0 +1,66 @@
+# Publica la página de la Fundación (fundacion/) como sitio independiente en
+# latidopanches.org. GitHub Pages solo admite un dominio por repositorio, así que
+# este flujo arma el sitio y lo empuja al repo JuanDC1121/latidopanches-web,
+# que lo sirve con su propio dominio.
+#
+# Requiere el secreto LATIDO_DEPLOY_KEY (llave SSH privada cuya parte pública
+# está registrada como deploy key con escritura en latidopanches-web).
+
+name: Publicar latidopanches.org
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'fundacion/**'
+      - 'v2/system.css'
+      - 'v2/motifs.css'
+      - 'assets/logos/**'
+      - 'assets/images/fundacion-*'
+      - '.github/workflows/publicar-latido.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: publicar-latido
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Armar el sitio
+        run: |
+          mkdir -p _site/v2 _site/assets/images
+          cp v2/system.css v2/motifs.css _site/v2/
+          cp -r assets/logos _site/assets/
+          cp assets/images/fundacion-* _site/assets/images/
+
+          # La página vive en /fundacion/ en el repo principal; aquí pasa a la raíz.
+          # Los enlaces a las otras páginas del ecosistema apuntan a johnferlaverde.com.
+          sed -e 's#\.\./v2/#v2/#g' \
+              -e 's#\.\./assets/#assets/#g' \
+              -e 's#href="\.\./fieb/"#href="https://johnferlaverde.com/fieb/"#g' \
+              -e 's#href="\.\./"#href="https://johnferlaverde.com/"#g' \
+              fundacion/index.html > _site/index.html
+
+          echo "latidopanches.org" > _site/CNAME
+          touch _site/.nojekyll
+
+      - name: Empujar a latidopanches-web
+        env:
+          DEPLOY_KEY: ${{ secrets.LATIDO_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+          cd _site
+          git init -q -b main
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Publicar desde johnfer-laverde-web@${GITHUB_SHA::7}"
+          git push -f git@github.com:JuanDC1121/latidopanches-web.git main
