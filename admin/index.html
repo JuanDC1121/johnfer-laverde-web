@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel del sitio — Johnfer Laverde</title>
+<link rel="stylesheet" href="../v2/system.css">
+<style>
+  :root {
+    --fondo: #F6F2EA;
+    --tarjeta: #FFFFFF;
+    --borde: rgba(31, 53, 92, 0.12);
+    --tinta: #1F2633;
+    --tinta-2: #4F5868;
+    --tinta-3: #7A8291;
+    --acento: var(--jhonfer-primary);
+    --exito: #2E7D4F;
+    --error: #B3261E;
+  }
+  body { background: var(--fondo); color: var(--tinta); line-height: 1.5; min-height: 100vh; }
+  [hidden] { display: none !important; }
+
+  .barra {
+    background: var(--jhonfer-dark);
+    color: #F4EDE0;
+    padding: 0.9rem 5%;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .barra img { height: 34px; }
+  .barra-titulo {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-johnfer);
+    padding-left: 1rem; border-left: 1px solid rgba(244, 237, 224, 0.25);
+  }
+  .barra-usuario { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; }
+  .barra-usuario button {
+    background: transparent; color: #F4EDE0;
+    border: 1px solid rgba(244, 237, 224, 0.4); border-radius: var(--radius-pill);
+    padding: 0.35rem 0.9rem; font: inherit; cursor: pointer;
+  }
+  .barra-usuario button:hover { border-color: var(--gold-johnfer); color: var(--gold-johnfer); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem 5% 4rem; }
+  h1 { font-size: 2rem; color: var(--jhonfer-dark); margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; color: var(--jhonfer-dark); margin: 2.5rem 0 1rem; }
+
+  .tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+  .centrada { max-width: 420px; margin: 3rem auto; }
+  .texto-2 { color: var(--tinta-2); }
+  .nota { font-size: 0.85rem; color: var(--tinta-3); margin-top: 0.75rem; }
+
+  label.etiqueta { display: block; font-size: 0.8rem; font-weight: 700; color: var(--tinta-2); margin: 1rem 0 0.35rem; }
+  input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    font: inherit; color: var(--tinta);
+    border: 1px solid rgba(31, 53, 92, 0.25); border-radius: var(--radius-sm);
+    padding: 0.65rem 0.75rem;
+    background: #fff;
+  }
+  textarea { resize: vertical; min-height: 2.6rem; line-height: 1.5; }
+  input:focus, textarea:focus { outline: 2px solid var(--gold-johnfer); outline-offset: 1px; border-color: var(--acento); }
+
+  .boton {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font: inherit; font-size: 0.85rem; font-weight: 700;
+    padding: 0.55rem 1.1rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--acento);
+    background: var(--acento); color: #fff;
+    cursor: pointer; text-decoration: none;
+    transition: var(--transition);
+  }
+  .boton:hover:not(:disabled) { background: var(--jhonfer-dark); border-color: var(--jhonfer-dark); }
+  .boton:disabled { opacity: 0.4; cursor: default; }
+  .boton.secundario { background: transparent; color: var(--acento); }
+  .boton.secundario:hover:not(:disabled) { background: rgba(50, 85, 145, 0.08); color: var(--jhonfer-dark); }
+  .boton.ancho { width: 100%; justify-content: center; margin-top: 1.25rem; padding: 0.75rem; }
+  .mensaje { margin-top: 0.75rem; font-size: 0.85rem; }
+  .mensaje.error { color: var(--error); }
+  .mensaje.ok { color: var(--exito); }
+
+  /* Pestañas y filtros */
+  .pestanas { display: flex; gap: 0.5rem; border-bottom: 1px solid var(--borde); margin-bottom: 1.5rem; }
+  .pestanas button {
+    font: inherit; font-weight: 700; font-size: 0.95rem;
+    background: none; border: none; cursor: pointer;
+    padding: 0.75rem 1rem; color: var(--tinta-3);
+    border-bottom: 3px solid transparent; margin-bottom: -1px;
+  }
+  .pestanas button[aria-selected="true"] { color: var(--jhonfer-dark); border-bottom-color: var(--gold-johnfer); }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .chips button {
+    font: inherit; font-size: 0.85rem; font-weight: 600;
+    padding: 0.4rem 0.95rem; border-radius: var(--radius-pill);
+    border: 1px solid var(--borde); background: #fff; color: var(--tinta-2); cursor: pointer;
+  }
+  .chips button[aria-pressed="true"] { background: var(--jhonfer-dark); border-color: var(--jhonfer-dark); color: #fff; }
+  .chips a { margin-left: auto; font-size: 0.85rem; font-weight: 600; color: var(--acento); }
+
+  /* Estadísticas */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+  .kpi .rotulo { font-size: 0.85rem; color: var(--tinta-2); }
+  .kpi .valor { font-size: 2.4rem; font-weight: 600; color: var(--tinta); line-height: 1.15; margin: 0.35rem 0 0.2rem; font-family: var(--font-body); font-variant-numeric: lining-nums proportional-nums; }
+  .kpi .detalle, .kpi .rotulo { font-variant-numeric: lining-nums; }
+  .kpi .detalle { font-size: 0.8rem; color: var(--tinta-3); }
+  .kpi.descargas { border-top: 3px solid var(--gold-johnfer); }
+  .tabla-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; }
+  th, td { padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--borde); text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--tinta-3); font-weight: 700; }
+  td { font-variant-numeric: lining-nums tabular-nums; color: var(--tinta); }
+  td.cero { color: var(--tinta-3); }
+  .casilla { display: flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-size: 0.9rem; color: var(--tinta-2); }
+
+  /* Contenido */
+  .ayuda {
+    margin: 1rem 0 1.5rem; padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+    background: rgba(224, 180, 104, 0.14);
+    font-size: 0.85rem; color: var(--tinta-2);
+  }
+  .ayuda code { background: rgba(255, 255, 255, 0.7); padding: 0 0.3rem; border-radius: 3px; }
+  .seccion { margin-bottom: 1.25rem; }
+  .seccion h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.05rem; color: var(--jhonfer-dark); margin-bottom: 0.25rem; }
+  .campo { padding: 1rem 0; border-top: 1px solid var(--borde); }
+  .campo:first-of-type { border-top: none; }
+  .campo-cabeza { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .campo-cabeza label { font-size: 0.85rem; font-weight: 700; color: var(--tinta-2); }
+  .insignia {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 0.15rem 0.5rem; border-radius: var(--radius-pill);
+    background: rgba(50, 85, 145, 0.1); color: var(--acento);
+  }
+  .campo-acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.6rem; }
+  .estado { font-size: 0.82rem; color: var(--tinta-3); }
+  .estado.ok { color: var(--exito); }
+  .estado.error { color: var(--error); }
+  .img-fila { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; }
+  .miniatura {
+    width: 180px; height: 120px; object-fit: cover;
+    border-radius: var(--radius-sm); border: 1px solid var(--borde);
+    background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px;
+  }
+  .miniatura.vertical { width: 110px; height: 155px; }
+  label.boton input { display: none; }
+  .vacio { padding: 2rem; text-align: center; color: var(--tinta-3); }
+</style>
+</head>
+<body>
+  <header class="barra">
+    <img src="../assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde">
+    <span class="barra-titulo">Panel del sitio</span>
+    <div class="barra-usuario" id="barra-usuario" hidden>
+      <span id="usuario-correo"></span>
+      <button type="button" id="salir">Salir</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="vista-cargando" class="vacio">Cargando…</p>
+
+    <section id="vista-error" class="tarjeta centrada" hidden>
+      <h1>No hay conexión</h1>
+      <p class="texto-2" id="error-detalle">No se pudo conectar con Supabase.</p>
+    </section>
+
+    <section id="vista-login" class="tarjeta centrada" hidden>
+      <h1>Entrar al panel</h1>
+      <p class="texto-2">Usa el correo y la contraseña de administrador.</p>
+      <form id="form-login">
+        <label class="etiqueta" for="login-correo">Correo</label>
+        <input type="email" id="login-correo" autocomplete="username" required>
+        <label class="etiqueta" for="login-clave">Contraseña</label>
+        <input type="password" id="login-clave" autocomplete="current-password" required>
+        <button class="boton ancho" type="submit">Entrar</button>
+        <p class="mensaje error" id="login-mensaje" hidden></p>
+      </form>
+    </section>
+
+    <section id="vista-sin-permiso" class="tarjeta centrada" hidden>
+      <h1>Sin permiso</h1>
+      <p class="texto-2">Tu usuario existe, pero no está en la lista de administradores. Agrégalo con el paso 5 de <code>supabase/admin.sql</code>.</p>
+    </section>
+
+    <section id="vista-panel" hidden>
+      <nav class="pestanas" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-pestana="estadisticas">Estadísticas</button>
+        <button type="button" role="tab" aria-selected="false" data-pestana="contenido">Textos e imágenes</button>
+      </nav>
+
+      <div id="pestana-estadisticas">
+        <div class="chips" id="periodos">
+          <button type="button" data-dias="1" aria-pressed="false">Hoy</button>
+          <button type="button" data-dias="7" aria-pressed="false">7 días</button>
+          <button type="button" data-dias="30" aria-pressed="true">30 días</button>
+          <button type="button" data-dias="0" aria-pressed="false">Todo</button>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <p class="nota">Cada persona cuenta una vez por página en cada visita (sesión del navegador). Las descargas se cuentan una vez por visita.</p>
+
+        <h2>Por día · últimos 30 días</h2>
+        <div class="tarjeta tabla-wrap" style="padding: 0;">
+          <table>
+            <thead><tr><th>Fecha</th><th>Johnfer</th><th>FIEB</th><th>Fundación</th><th>Descargas método</th></tr></thead>
+            <tbody id="tabla-dias"></tbody>
+          </table>
+        </div>
+        <label class="casilla"><input type="checkbox" id="no-contar"> No contar mis visitas desde este navegador</label>
+      </div>
+
+      <div id="pestana-contenido" hidden>
+        <div class="chips" id="paginas">
+          <button type="button" data-pagina="johnfer" aria-pressed="true">Johnfer Laverde</button>
+          <button type="button" data-pagina="fieb" aria-pressed="false">FIEB</button>
+          <button type="button" data-pagina="fundacion" aria-pressed="false">Fundación</button>
+          <a id="ver-pagina" href="../" target="_blank" rel="noopener">Ver página ↗</a>
+        </div>
+        <p class="ayuda">
+          Los cambios se publican al pulsar <strong>Guardar</strong> y se ven al recargar la página.
+          Formato: <code>*cursiva*</code>, <code>**negrita**</code> y Enter para un salto de línea.
+          <strong>Restaurar original</strong> vuelve al texto o la foto que trae la página.
+        </p>
+        <div id="campos"><p class="vacio">Cargando campos…</p></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.min.js"></script>
+  <script src="../v2/supabase-config.js"></script>
+  <script src="../v2/sitio.js"></script>
+  <script>
+  (function () {
+    const cfg = window.FIEB_SUPABASE || {};
+    const $ = id => document.getElementById(id);
+    const vistas = ['vista-cargando', 'vista-error', 'vista-login', 'vista-sin-permiso', 'vista-panel'];
+    const mostrar = id => vistas.forEach(v => { $(v).hidden = v !== id; });
+
+    if (!window.supabase || !cfg.url) {
+      $('error-detalle').textContent = 'No cargó la librería de Supabase o falta v2/supabase-config.js.';
+      mostrar('vista-error');
+      return;
+    }
+    const sb = window.supabase.createClient(cfg.url, cfg.anonKey);
+
+    const PAGINAS = {
+      johnfer: { nombre: 'Johnfer', url: '../' },
+      fieb: { nombre: 'FIEB', url: '../fieb/' },
+      fundacion: { nombre: 'Fundación', url: '../fundacion/' }
+    };
+    const numero = new Intl.NumberFormat('es-CO');
+    const fechaLarga = new Intl.DateTimeFormat('es-CO', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+
+    // ---------------- Sesión ----------------
+
+    let iniciado = false;
+    async function revisarSesion(sesion) {
+      if (!sesion) {
+        $('barra-usuario').hidden = true;
+        iniciado = false;
+        mostrar('vista-login');
+        return;
+      }
+      $('usuario-correo').textContent = sesion.user.email;
+      $('barra-usuario').hidden = false;
+      const { data: esAdmin, error } = await sb.rpc('es_admin');
+      if (error) { mostrarError(error); return; }
+      if (!esAdmin) { mostrar('vista-sin-permiso'); return; }
+      mostrar('vista-panel');
+      if (!iniciado) { iniciado = true; iniciarPanel(); }
+    }
+
+    function mostrarError(error) {
+      const pausado = /fetch|network|521|540|503/i.test(String(error.message || error));
+      $('error-detalle').textContent = pausado
+        ? 'Supabase no responde. Si el proyecto está pausado, reactívalo en supabase.com (Restore project) y recarga.'
+        : 'Error de Supabase: ' + (error.message || error);
+      mostrar('vista-error');
+    }
+
+    $('form-login').addEventListener('submit', async e => {
+      e.preventDefault();
+      const msg = $('login-mensaje');
+      msg.hidden = true;
+      const { error } = await sb.auth.signInWithPassword({
+        email: $('login-correo').value.trim(),
+        password: $('login-clave').value
+      });
+      if (error) {
+        msg.textContent = /invalid/i.test(error.message) ? 'Correo o contraseña incorrectos.' : 'No se pudo entrar: ' + error.message;
+        msg.hidden = false;
+        return;
+      }
+      // Quien administra no debería inflar los contadores.
+      try { localStorage.setItem('sitio-no-contar', '1'); } catch (err) { /* sin almacenamiento */ }
+    });
+
+    $('salir').addEventListener('click', () => sb.auth.signOut());
+
+    sb.auth.onAuthStateChange((evento, sesion) => {
+      if (evento === 'SIGNED_IN' || evento === 'SIGNED_OUT') revisarSesion(sesion);
+    });
+    sb.auth.getSession()
+      .then(({ data }) => revisarSesion(data.session))
+      .catch(mostrarError);
+
+    function iniciarPanel() {
+      document.querySelectorAll('[data-pestana]').forEach(b => b.addEventListener('click', () => {
+        document.querySelectorAll('[data-pestana]').forEach(o => o.setAttribute('aria-selected', String(o === b)));
+        $('pestana-estadisticas').hidden = b.dataset.pestana !== 'estadisticas';
+        $('pestana-contenido').hidden = b.dataset.pestana !== 'contenido';
+      }));
+      iniciarEstadisticas();
+      iniciarContenido();
+    }
+
+    // ---------------- Estadísticas ----------------
+
+    let filas = [];
+    let dias = 30;
+
+    const hoyBogota = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Bogota' }).format(new Date());
+    function restarDias(iso, n) {
+      const d = new Date(iso + 'T00:00:00Z');
+      d.setUTCDate(d.getUTCDate() - n);
+      return d.toISOString().slice(0, 10);
+    }
+    function suma(tipo, recurso, desde) {
+      return filas
+        .filter(f => f.tipo === tipo && f.recurso === recurso && (!desde || f.dia >= desde))
+        .reduce((total, f) => total + f.total, 0);
+    }
+
+    async function iniciarEstadisticas() {
+      $('no-contar').checked = (() => { try { return localStorage.getItem('sitio-no-contar') === '1'; } catch (e) { return false; } })();
+      $('no-contar').addEventListener('change', e => {
+        try {
+          if (e.target.checked) localStorage.setItem('sitio-no-contar', '1');
+          else localStorage.removeItem('sitio-no-contar');
+        } catch (err) { /* sin almacenamiento */ }
+      });
+      document.querySelectorAll('#periodos button').forEach(b => b.addEventListener('click', () => {
+        dias = Number(b.dataset.dias);
+        document.querySelectorAll('#periodos button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+        pintarKpis();
+      }));
+
+      const { data, error } = await sb.from('contadores').select('tipo,recurso,dia,total').order('dia', { ascending: false });
+      if (error) { $('kpis').innerHTML = ''; $('kpis').append(textoVacio('No se pudieron cargar las estadísticas: ' + error.message)); return; }
+      filas = data || [];
+      pintarKpis();
+      pintarTabla();
+    }
+
+    function textoVacio(texto) {
+      const p = document.createElement('p');
+      p.className = 'vacio';
+      p.textContent = texto;
+      return p;
+    }
+
+    function pintarKpis() {
+      const hoy = hoyBogota();
+      const desde = dias ? restarDias(hoy, dias - 1) : null;
+      const tarjetas = [
+        ['Visitas · Johnfer Laverde', 'visita', 'johnfer'],
+        ['Visitas · FIEB', 'visita', 'fieb'],
+        ['Visitas · Fundación', 'visita', 'fundacion'],
+        ['Descargas · Método', 'descarga', 'metodo-eufonio']
+      ];
+      const cont = $('kpis');
+      cont.innerHTML = '';
+      tarjetas.forEach(([rotulo, tipo, recurso]) => {
+        const div = document.createElement('div');
+        div.className = 'tarjeta kpi' + (tipo === 'descarga' ? ' descargas' : '');
+        const r = document.createElement('div'); r.className = 'rotulo'; r.textContent = rotulo;
+        const v = document.createElement('div'); v.className = 'valor'; v.textContent = numero.format(suma(tipo, recurso, desde));
+        const d = document.createElement('div'); d.className = 'detalle';
+        d.textContent = dias === 1 ? 'Hoy' : `Hoy: ${numero.format(suma(tipo, recurso, hoy))}`;
+        div.append(r, v, d);
+        cont.append(div);
+      });
+    }
+
+    function pintarTabla() {
+      const hoy = hoyBogota();
+      const cuerpo = $('tabla-dias');
+      cuerpo.innerHTML = '';
+      const columnas = [['visita', 'johnfer'], ['visita', 'fieb'], ['visita', 'fundacion'], ['descarga', 'metodo-eufonio']];
+      let algunDia = false;
+      for (let i = 0; i < 30; i++) {
+        const dia = restarDias(hoy, i);
+        const valores = columnas.map(([tipo, recurso]) => {
+          const f = filas.find(x => x.dia === dia && x.tipo === tipo && x.recurso === recurso);
+          return f ? f.total : 0;
+        });
+        if (valores.every(v => v === 0)) continue;
+        algunDia = true;
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.textContent = i === 0 ? 'Hoy' : fechaLarga.format(new Date(dia + 'T00:00:00Z'));
+        tr.append(td);
+        valores.forEach(v => {
+          const c = document.createElement('td');
+          c.textContent = numero.format(v);
+          if (!v) c.className = 'cero';
+          tr.append(c);
+        });
+        cuerpo.append(tr);
+      }
+      if (!algunDia) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 5; td.className = 'cero'; td.style.textAlign = 'center';
+        td.textContent = 'Todavía no hay visitas registradas.';
+        tr.append(td); cuerpo.append(tr);
+      }
+    }
+
+    // ---------------- Textos e imágenes ----------------
+
+    function iniciarContenido() {
+      document.querySelectorAll('#paginas button').forEach(b => b.addEventListener('click', () => {
+        document.querySelectorAll('#paginas button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+        cargarPagina(b.dataset.pagina);
+      }));
+      cargarPagina('johnfer');
+    }
+
+    let cargaActual = 0;
+    async function cargarPagina(pagina) {
+      const carga = ++cargaActual;
+      const info = PAGINAS[pagina];
+      $('ver-pagina').href = info.url;
+      const cont = $('campos');
+      cont.innerHTML = '';
+      cont.append(textoVacio('Cargando campos…'));
+
+      const base = new URL(info.url, location.href);
+      let doc, guardados;
+      try {
+        const [html, respuesta] = await Promise.all([
+          fetch(base, { cache: 'no-store' }).then(r => r.text()),
+          sb.from('contenido').select('clave,tipo,valor').like('clave', pagina + '.%')
+        ]);
+        if (respuesta.error) throw respuesta.error;
+        doc = new DOMParser().parseFromString(html, 'text/html');
+        guardados = new Map(respuesta.data.map(f => [f.clave, f]));
+      } catch (error) {
+        if (carga !== cargaActual) return;
+        cont.innerHTML = '';
+        cont.append(textoVacio('No se pudo cargar la página: ' + (error.message || error)));
+        return;
+      }
+      if (carga !== cargaActual) return;
+
+      cont.innerHTML = '';
+      const secciones = new Map();
+      doc.querySelectorAll('[data-edit], [data-edit-img]').forEach(el => {
+        const nombre = (el.closest('[data-edit-seccion]') || {}).dataset?.editSeccion || 'Otros';
+        if (!secciones.has(nombre)) {
+          const tarjeta = document.createElement('div');
+          tarjeta.className = 'tarjeta seccion';
+          const h3 = document.createElement('h3');
+          h3.textContent = nombre;
+          tarjeta.append(h3);
+          cont.append(tarjeta);
+          secciones.set(nombre, tarjeta);
+        }
+        const tarjeta = secciones.get(nombre);
+        if (el.dataset.edit) tarjeta.append(campoTexto(el, guardados.get(el.dataset.edit)));
+        else tarjeta.append(campoImagen(el, guardados.get(el.dataset.editImg), base));
+      });
+      if (!secciones.size) cont.append(textoVacio('Esta página no tiene campos editables.'));
+    }
+
+    function cabeza(etiqueta, idCampo) {
+      const div = document.createElement('div');
+      div.className = 'campo-cabeza';
+      const label = document.createElement('label');
+      label.textContent = etiqueta;
+      if (idCampo) label.htmlFor = idCampo;
+      const insignia = document.createElement('span');
+      insignia.className = 'insignia';
+      insignia.textContent = 'Editado';
+      div.append(label, insignia);
+      return { div, insignia };
+    }
+
+    function boton(texto, secundario) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'boton' + (secundario ? ' secundario' : '');
+      b.textContent = texto;
+      return b;
+    }
+
+    function avisar(estado, texto, tipo) {
+      estado.textContent = texto;
+      estado.className = 'estado' + (tipo ? ' ' + tipo : '');
+    }
+
+    async function guardarFila(clave, tipo, valor) {
+      const { error } = await sb.from('contenido').upsert({ clave, tipo, valor, actualizado: new Date().toISOString() });
+      if (error) throw error;
+    }
+    async function borrarFila(clave) {
+      const { error } = await sb.from('contenido').delete().eq('clave', clave);
+      if (error) throw error;
+    }
+
+    function autoAltura(area) {
+      area.style.height = 'auto';
+      area.style.height = (area.scrollHeight + 2) + 'px';
+    }
+
+    let contadorIds = 0;
+    function campoTexto(el, fila) {
+      const clave = el.dataset.edit;
+      const original = window.Sitio.aTexto(el);
+      let guardado = fila ? fila.valor : original;
+
+      const campo = document.createElement('div');
+      campo.className = 'campo';
+      const idCampo = 'campo-' + (++contadorIds);
+      const { div, insignia } = cabeza(el.dataset.editLabel || clave, idCampo);
+      const area = document.createElement('textarea');
+      area.id = idCampo;
+      area.rows = 1;
+      area.maxLength = 5000;
+      area.value = guardado;
+      const acciones = document.createElement('div');
+      acciones.className = 'campo-acciones';
+      const bGuardar = boton('Guardar');
+      const bRestaurar = boton('Restaurar original', true);
+      const estado = document.createElement('span');
+      estado.className = 'estado';
+      acciones.append(bGuardar, bRestaurar, estado);
+      campo.append(div, area, acciones);
+
+      const refrescar = () => {
+        insignia.hidden = guardado === original;
+        bRestaurar.hidden = guardado === original;
+        bGuardar.disabled = area.value.trim() === guardado;
+      };
+      area.addEventListener('input', () => { autoAltura(area); refrescar(); avisar(estado, ''); });
+      requestAnimationFrame(() => autoAltura(area));
+
+      bGuardar.addEventListener('click', async () => {
+        const valor = area.value.trim();
+        if (!valor) { avisar(estado, 'El texto no puede quedar vacío. Usa "Restaurar original".', 'error'); return; }
+        bGuardar.disabled = true;
+        avisar(estado, 'Guardando…');
+        try {
+          if (valor === original) await borrarFila(clave);
+          else await guardarFila(clave, 'texto', valor);
+          guardado = valor;
+          area.value = valor;
+          avisar(estado, 'Guardado ✓', 'ok');
+        } catch (error) {
+          avisar(estado, 'No se guardó: ' + error.message, 'error');
+        }
+        refrescar();
+      });
+
+      bRestaurar.addEventListener('click', async () => {
+        if (!confirm('¿Volver al texto original de la página?')) return;
+        avisar(estado, 'Restaurando…');
+        try {
+          await borrarFila(clave);
+          guardado = original;
+          area.value = original;
+          autoAltura(area);
+          avisar(estado, 'Restaurado ✓', 'ok');
+        } catch (error) {
+          avisar(estado, 'No se restauró: ' + error.message, 'error');
+        }
+        refrescar();
+      });
+
+      refrescar();
+      return campo;
+    }
+
+    function imagenOriginal(el, base) {
+      if (el.tagName === 'IMG') return new URL(el.getAttribute('src'), base).href;
+      const m = /--img:\s*url\((['"]?)(.*?)\1\)/.exec(el.getAttribute('style') || '');
+      return m ? new URL(m[2], base).href : '';
+    }
+
+    function campoImagen(el, fila, base) {
+      const clave = el.dataset.editImg;
+      const original = imagenOriginal(el, base);
+      let actual = fila ? fila.valor : original;
+
+      const campo = document.createElement('div');
+      campo.className = 'campo';
+      const { div, insignia } = cabeza(el.dataset.editLabel || clave);
+      const fila2 = document.createElement('div');
+      fila2.className = 'img-fila';
+      const mini = document.createElement('img');
+      mini.className = 'miniatura' + (el.tagName === 'IMG' ? ' vertical' : '');
+      mini.alt = el.dataset.editLabel || 'Imagen';
+      const lado = document.createElement('div');
+      const acciones = document.createElement('div');
+      acciones.className = 'campo-acciones';
+      acciones.style.marginTop = '0';
+      const bCambiar = document.createElement('label');
+      bCambiar.className = 'boton';
+      bCambiar.textContent = 'Cambiar imagen';
+      const entrada = document.createElement('input');
+      entrada.type = 'file';
+      entrada.accept = 'image/jpeg,image/png,image/webp';
+      bCambiar.append(entrada);
+      const bRestaurar = boton('Restaurar original', true);
+      acciones.append(bCambiar, bRestaurar);
+      const estado = document.createElement('p');
+      estado.className = 'estado';
+      estado.style.marginTop = '0.5rem';
+      const nota = document.createElement('p');
+      nota.className = 'nota';
+      nota.textContent = 'JPG, PNG o WebP. Se optimiza automáticamente antes de subirla.';
+      lado.append(acciones, estado, nota);
+      fila2.append(mini, lado);
+      campo.append(div, fila2);
+
+      const refrescar = () => {
+        mini.src = actual;
+        insignia.hidden = actual === original;
+        bRestaurar.hidden = actual === original;
+      };
+
+      entrada.addEventListener('change', async () => {
+        const archivo = entrada.files[0];
+        entrada.value = '';
+        if (!archivo) return;
+        avisar(estado, 'Optimizando y subiendo…');
+        try {
+          const blob = await optimizar(archivo);
+          const ext = blob.type === 'image/webp' ? 'webp' : 'jpg';
+          const ruta = `${clave.replace(/\./g, '/')}/${Date.now()}.${ext}`;
+          const subida = await sb.storage.from('contenido').upload(ruta, blob, { contentType: blob.type, cacheControl: '31536000' });
+          if (subida.error) throw subida.error;
+          const url = sb.storage.from('contenido').getPublicUrl(ruta).data.publicUrl;
+          await guardarFila(clave, 'imagen', url);
+          actual = url;
+          avisar(estado, `Imagen publicada ✓ (${Math.round(blob.size / 1024)} KB)`, 'ok');
+        } catch (error) {
+          avisar(estado, 'No se subió: ' + (error.message || error), 'error');
+        }
+        refrescar();
+      });
+
+      bRestaurar.addEventListener('click', async () => {
+        if (!confirm('¿Volver a la imagen original de la página?')) return;
+        avisar(estado, 'Restaurando…');
+        try {
+          await borrarFila(clave);
+          actual = original;
+          avisar(estado, 'Restaurada ✓', 'ok');
+        } catch (error) {
+          avisar(estado, 'No se restauró: ' + error.message, 'error');
+        }
+        refrescar();
+      });
+
+      refrescar();
+      return campo;
+    }
+
+    // Reduce la foto a 2000 px como máximo y la guarda en WebP (o JPG si el navegador no puede).
+    async function optimizar(archivo) {
+      const bitmap = await createImageBitmap(archivo);
+      const escala = Math.min(1, 2000 / Math.max(bitmap.width, bitmap.height));
+      const lienzo = document.createElement('canvas');
+      lienzo.width = Math.round(bitmap.width * escala);
+      lienzo.height = Math.round(bitmap.height * escala);
+      lienzo.getContext('2d').drawImage(bitmap, 0, 0, lienzo.width, lienzo.height);
+      const comoBlob = (tipo, calidad) => new Promise(ok => lienzo.toBlob(ok, tipo, calidad));
+      let blob = await comoBlob('image/webp', 0.85);
+      if (!blob || blob.type !== 'image/webp') blob = await comoBlob('image/jpeg', 0.85);
+      if (!blob) throw new Error('el navegador no pudo procesar la imagen');
+      if (blob.size > 5 * 1024 * 1024) throw new Error('la imagen sigue pesando más de 5 MB');
+      return blob;
+    }
+  })();
+  </script>
+</body>
+</html>

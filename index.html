@@ -65,7 +65,7 @@
     background-image:
       linear-gradient(to bottom, rgba(31,53,92,1) 0%, rgba(31,53,92,1) 10%, rgba(31,53,92,0) 25%),
       linear-gradient(135deg, rgba(50,85,145,0.5) 0%, rgba(31,53,92,0.45) 55%, rgba(26,20,15,0.55) 100%),
-      url('assets/images/jhonfer-hero-background-v3.webp');
+      var(--img);
     background-size: cover;
     background-position: center;
   }
@@ -106,6 +106,31 @@
   }
   .btn-outline:hover { background: rgba(255, 235, 200, 0.12); border-color: rgba(255, 235, 200, 0.85); }
 
+  /* Aviso del método en el hero */
+  .hero-aviso-wrap { margin-top: 2rem; }
+  .hero-aviso {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.45rem 1.1rem 0.45rem 0.45rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 235, 200, 0.1);
+    border: 1px solid rgba(224, 180, 104, 0.5);
+    color: #F4EDE0;
+    font-size: 0.92rem;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+    transition: var(--transition);
+  }
+  .hero-aviso:hover { background: rgba(224, 180, 104, 0.2); border-color: var(--gold-johnfer); }
+  .hero-aviso .tag {
+    background: var(--gold-johnfer);
+    color: #1F1610;
+    font-size: 0.66rem; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-pill);
+  }
+  .hero-aviso svg { width: 16px; height: 16px; flex-shrink: 0; }
+
   /* ============ Sections ============ */
   section { padding: 6rem 5%; position: relative; }
   .container { max-width: var(--max-width); margin: 0 auto; }
@@ -144,7 +169,7 @@
     position: relative;
     background:
       linear-gradient(180deg, rgba(31,53,92,0.15), rgba(160,122,80,0.25)),
-      url('assets/images/jhonfer-trayectoria.webp') center/cover;
+      var(--img) center/cover;
     box-shadow: 0 24px 60px rgba(31, 22, 16, 0.18);
   }
   .about-photo::after {
@@ -238,6 +263,98 @@
     margin: 0;
   }
 
+  /* Método de eufonio: tarjeta azul destacada sobre fondo claro */
+  .metodo { background: var(--panches-crudo); }
+  .metodo-card {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3.5rem;
+    align-items: center;
+    padding: 4rem;
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(circle at 20% 35%, rgba(224, 180, 104, 0.22), transparent 55%),
+      linear-gradient(135deg, var(--jhonfer-primary) 0%, var(--jhonfer-dark) 72%);
+    color: #F4EDE0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(31, 53, 92, 0.28);
+  }
+  .metodo-card .motif-rays { color: rgba(255, 235, 200, 0.16); }
+  .metodo-libro {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center;
+    perspective: 1400px;
+  }
+  .metodo-libro a {
+    position: relative;
+    display: block;
+    width: 100%; max-width: 460px;
+    border-radius: 4px 10px 10px 4px;
+    transform: rotateY(-14deg) rotateX(3deg);
+    box-shadow: -3px 0 0 rgba(0, 0, 0, 0.25), 20px 28px 56px rgba(0, 0, 0, 0.45);
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .metodo-libro a:hover {
+    transform: rotateY(-4deg) rotateX(1deg) translateY(-6px);
+    box-shadow: -3px 0 0 rgba(0, 0, 0, 0.25), 24px 34px 64px rgba(0, 0, 0, 0.5);
+  }
+  .metodo-libro a::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 16px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.14) 60%, transparent);
+    border-radius: 4px 0 0 4px;
+    z-index: 1;
+  }
+  .metodo-libro img {
+    width: 100%;
+    aspect-ratio: 11 / 8.5;
+    object-fit: cover;
+    border-radius: 4px 10px 10px 4px;
+  }
+  .metodo-texto { position: relative; z-index: 1; }
+  .metodo .eyebrow { color: var(--gold-johnfer); }
+  .metodo h2 {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .metodo-desc {
+    font-size: 1.08rem;
+    color: rgba(244, 237, 224, 0.88);
+    max-width: 540px;
+    margin-bottom: 2rem;
+  }
+  .metodo-puntos {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    margin-bottom: 2.25rem;
+  }
+  .metodo-puntos li {
+    padding: 1rem;
+    background: rgba(255, 235, 200, 0.06);
+    border: 1px solid rgba(255, 235, 200, 0.12);
+    border-radius: var(--radius-md);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: rgba(244, 237, 224, 0.72);
+  }
+  .metodo-puntos svg { display: block; width: 22px; height: 22px; color: var(--gold-johnfer); margin-bottom: 0.6rem; }
+  .metodo-puntos strong { display: block; color: #fff; font-size: 0.92rem; margin-bottom: 0.2rem; }
+  .metodo-acciones { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .btn-descarga { padding: 17px 34px; font-size: 0.92rem; }
+  .btn-descarga svg { width: 18px; height: 18px; }
+  .metodo-nota {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(244, 237, 224, 0.6);
+  }
+
   /* Proyectos */
   .projects { background: var(--jhonfer-cream); }
   .projects-grid {
@@ -291,6 +408,51 @@
   .project-card[data-brand="fieb"] { --accent-color: var(--gold-fieb); }
   .project-card[data-brand="latido"] { --accent-color: var(--gold-latido); }
   .project-card[data-brand="banda"] { --accent-color: var(--panches-terracota); }
+
+  /* Contacto */
+  .contacto { background: var(--jhonfer-cream); text-align: center; }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    max-width: 1040px;
+    margin: 3rem auto 0;
+  }
+  .contact-card {
+    padding: 2rem 1rem;
+    background: #fff;
+    border: 1px solid rgba(160, 122, 80, 0.15);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 28px rgba(31, 22, 16, 0.06);
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  .contact-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold-johnfer);
+    box-shadow: 0 16px 40px rgba(31, 22, 16, 0.1);
+  }
+  .contact-card .icon-wrap {
+    width: 52px; height: 52px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--jhonfer-primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .contact-card .role {
+    margin-bottom: 0.35rem;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-johnfer-deep);
+  }
+  .contact-card .value {
+    color: var(--jhonfer-dark);
+    font-weight: 600;
+    overflow-wrap: break-word;
+  }
 
   /* Ecosistema footer module */
   .ecosistema {
@@ -377,6 +539,26 @@
   @media (max-width: 860px) {
     .about-grid, .inversion-grid { grid-template-columns: 1fr; }
     .nav .links { display: none; }
+    .metodo-card { grid-template-columns: 1fr; gap: 2.5rem; padding: 2.75rem 1.5rem; }
+    .metodo-libro a { max-width: 340px; }
+    /* En celular el botón de descarga va antes de los puntos */
+    .metodo-texto { display: flex; flex-direction: column; }
+    .metodo-acciones { order: 1; }
+    .metodo-nota { order: 2; }
+    .metodo-puntos { order: 3; grid-template-columns: 1fr; margin: 2rem 0 0; }
+    .metodo-puntos li {
+      display: grid; grid-template-columns: auto 1fr; column-gap: 0.85rem;
+      padding: 0.85rem 1rem;
+    }
+    .metodo-puntos svg { grid-row: span 2; margin: 2px 0 0; }
+  }
+  @media (max-width: 480px) {
+    .hero-aviso { font-size: 0.82rem; }
+    .metodo-acciones .btn { width: 100%; }
+    .contact-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .contact-card { padding: 1.4rem 0.6rem; }
+    .contact-card .icon-wrap { width: 44px; height: 44px; font-size: 17px; margin-bottom: 0.75rem; }
+    .contact-card .value { font-size: 0.86rem; }
   }
 </style>
 </head>
@@ -410,106 +592,174 @@
     <a href="#top" class="brand"><img src="assets/logos/jhonfer_logo_white_small.png" alt="Johnfer Laverde"></a>
     <ul class="links">
       <li><a href="#sobre-mi">Sobre Mí</a></li>
+      <li><a href="#metodo">Método</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
   <!-- Hero -->
-  <header class="hero" id="top">
+  <header class="hero" id="top" style="--img: url('assets/images/jhonfer-hero-background-v3.webp');" data-edit-seccion="Inicio" data-edit-img="johnfer.inicio.fondo" data-edit-label="Foto de fondo">
     <div class="motif-rays top-left"><svg><use href="#rays"/></svg></div>
     <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
     <div class="hero-content reveal">
-      <div class="eyebrow eyebrow-line hero-eyebrow"><span>Músico · Director · Gestor cultural</span></div>
+      <div class="eyebrow eyebrow-line hero-eyebrow"><span data-edit="johnfer.inicio.etiqueta" data-edit-label="Texto sobre el logo">Músico · Director · Gestor cultural</span></div>
       <img src="assets/logos/jhonfer_logo_white.png" alt="Johnfer Laverde" class="hero-logo">
-      <p class="hero-quote">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
+      <p class="hero-quote" data-edit="johnfer.inicio.frase" data-edit-label="Frase">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
       <div class="hero-actions">
         <a href="#proyectos" class="btn btn-primary">Conoce mi trabajo <i data-lucide="arrow-right"></i></a>
         <a href="#contacto" class="btn btn-outline">Contactar</a>
+      </div>
+      <div class="hero-aviso-wrap">
+        <a href="#metodo" class="hero-aviso">
+          <span class="tag">Nuevo</span>
+          <span data-edit="johnfer.inicio.aviso" data-edit-label="Aviso del método">Libro <em>Iniciación al Eufonio</em> · descárgalo gratis</span>
+          <i data-lucide="arrow-down"></i>
+        </a>
       </div>
     </div>
   </header>
 
   <!-- Sobre Mí -->
-  <section class="about" id="sobre-mi">
+  <section class="about" id="sobre-mi" data-edit-seccion="Sobre mí">
     <div class="container about-grid">
-      <div class="about-photo reveal"></div>
+      <div class="about-photo reveal" style="--img: url('assets/images/jhonfer-trayectoria.webp');" data-edit-img="johnfer.sobre.foto" data-edit-label="Foto"></div>
       <div class="reveal delay-1">
-        <div class="eyebrow eyebrow-line eyebrow-light"><span>Trayectoria</span></div>
-        <h2 class="section-title">Una vida<br>al servicio de la música.</h2>
-        <p>Johnfer Laverde es músico eufonista, director de banda sinfónica y gestor cultural. Su carrera articula la formación musical, la gestión de proyectos culturales y la dirección artística, con impacto a nivel municipal, departamental y nacional en Colombia.</p>
-        <p>Su pasión por la música tradicional colombiana y los procesos pedagógicos lo ha llevado a crear plataformas de gran impacto que transforman comunidades a través del arte sonoro.</p>
+        <div class="eyebrow eyebrow-line eyebrow-light"><span data-edit="johnfer.sobre.etiqueta" data-edit-label="Etiqueta">Trayectoria</span></div>
+        <h2 class="section-title" data-edit="johnfer.sobre.titulo" data-edit-label="Título">Una vida<br>al servicio de la música.</h2>
+        <p data-edit="johnfer.sobre.parrafo1" data-edit-label="Párrafo 1">Johnfer Laverde es músico eufonista, director de banda sinfónica y gestor cultural. Su carrera articula la formación musical, la gestión de proyectos culturales y la dirección artística, con impacto a nivel municipal, departamental y nacional en Colombia.</p>
+        <p data-edit="johnfer.sobre.parrafo2" data-edit-label="Párrafo 2">Su pasión por la música tradicional colombiana y los procesos pedagógicos lo ha llevado a crear plataformas de gran impacto que transforman comunidades a través del arte sonoro.</p>
       </div>
     </div>
   </section>
 
   <!-- Trayectoria en cifras -->
-  <div class="stats-band">
+  <div class="stats-band" data-edit-seccion="Cifras">
     <div class="stats-grid reveal">
-      <div class="stat"><div class="num">5</div><div class="label">Ediciones del FIEB</div></div>
-      <div class="stat"><div class="num">18</div><div class="label">Maestros e invitados</div></div>
-      <div class="stat"><div class="num">6</div><div class="label">Países representados</div></div>
-      <div class="stat"><div class="num">3</div><div class="label">Plataformas culturales</div></div>
+      <div class="stat"><div class="num" data-edit="johnfer.cifras.1-numero" data-edit-label="Cifra 1 · número">5</div><div class="label" data-edit="johnfer.cifras.1-texto" data-edit-label="Cifra 1 · texto">Ediciones del FIEB</div></div>
+      <div class="stat"><div class="num" data-edit="johnfer.cifras.2-numero" data-edit-label="Cifra 2 · número">18</div><div class="label" data-edit="johnfer.cifras.2-texto" data-edit-label="Cifra 2 · texto">Maestros e invitados</div></div>
+      <div class="stat"><div class="num" data-edit="johnfer.cifras.3-numero" data-edit-label="Cifra 3 · número">6</div><div class="label" data-edit="johnfer.cifras.3-texto" data-edit-label="Cifra 3 · texto">Países representados</div></div>
+      <div class="stat"><div class="num" data-edit="johnfer.cifras.4-numero" data-edit-label="Cifra 4 · número">3</div><div class="label" data-edit="johnfer.cifras.4-texto" data-edit-label="Cifra 4 · texto">Plataformas culturales</div></div>
     </div>
   </div>
 
+  <!-- Método de eufonio: descarga directa del PDF (se cuenta en el panel) -->
+  <section class="metodo" id="metodo" data-edit-seccion="Método de eufonio">
+    <div class="metodo-card">
+      <div class="motif-rays top-right" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
+      <div class="metodo-libro reveal">
+        <a href="descargas/iniciacion-al-eufonio-johnfer-laverde.pdf" download="Iniciacion-al-Eufonio-Johnfer-Laverde.pdf" data-descarga="metodo-eufonio" aria-label="Descargar el libro Iniciación al Eufonio en PDF">
+          <img src="assets/images/metodo-eufonio-portada.jpg" alt="Portada del libro Iniciación al Eufonio" data-edit-img="johnfer.metodo.portada" data-edit-label="Portada">
+        </a>
+      </div>
+      <div class="metodo-texto reveal delay-1">
+        <div class="eyebrow eyebrow-line"><span data-edit="johnfer.metodo.etiqueta" data-edit-label="Etiqueta">Libro gratuito</span></div>
+        <h2 data-edit="johnfer.metodo.titulo" data-edit-label="Título">Iniciación al Eufonio.</h2>
+        <p class="metodo-desc" data-edit="johnfer.metodo.descripcion" data-edit-label="Descripción">Un libro para dar los primeros pasos en el eufonio: partes del instrumento, respiración, embocadura, postura y lectura musical, con tres lecciones de ejercicios y canciones infantiles. <strong>Ganador del Programa de Estímulos 2026</strong> en la categoría Materiales Pedagógicos.</p>
+        <ul class="metodo-puntos">
+          <li><i data-lucide="book-open"></i><strong data-edit="johnfer.metodo.punto1-titulo" data-edit-label="Punto 1 · título">Desde cero</strong><span data-edit="johnfer.metodo.punto1-texto" data-edit-label="Punto 1 · texto">Partes del eufonio, respiración, embocadura y postura.</span></li>
+          <li><i data-lucide="music"></i><strong data-edit="johnfer.metodo.punto2-titulo" data-edit-label="Punto 2 · título">3 lecciones</strong><span data-edit="johnfer.metodo.punto2-texto" data-edit-label="Punto 2 · texto">Ejercicios, canciones infantiles y práctica rítmica.</span></li>
+          <li><i data-lucide="gift"></i><strong data-edit="johnfer.metodo.punto3-titulo" data-edit-label="Punto 3 · título">Gratis en PDF</strong><span data-edit="johnfer.metodo.punto3-texto" data-edit-label="Punto 3 · texto">72 páginas para imprimir o estudiar en pantalla.</span></li>
+        </ul>
+        <div class="metodo-acciones">
+          <a href="descargas/iniciacion-al-eufonio-johnfer-laverde.pdf" download="Iniciacion-al-Eufonio-Johnfer-Laverde.pdf" data-descarga="metodo-eufonio" class="btn btn-primary btn-descarga"><i data-lucide="download"></i> <span data-edit="johnfer.metodo.boton" data-edit-label="Texto del botón">Descargar PDF gratis</span></a>
+          <button type="button" class="btn btn-outline" id="compartir-metodo"><i data-lucide="share-2"></i> <span>Compartir</span></button>
+        </div>
+        <p class="metodo-nota">PDF · 72 páginas · 15 MB · La descarga empieza de inmediato.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Sección de inversión polar -->
-  <section class="inversion">
+  <section class="inversion" data-edit-seccion="Misión y visión">
     <div class="motif-dots"></div>
     <div class="container">
       <div class="reveal" style="max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line"><span>Lo que persigo</span></div>
-        <h2 class="section-title" style="color: #F4EDE0;">Misión y Visión.</h2>
+        <div class="eyebrow eyebrow-line"><span data-edit="johnfer.mision.etiqueta" data-edit-label="Etiqueta">Lo que persigo</span></div>
+        <h2 class="section-title" style="color: #F4EDE0;" data-edit="johnfer.mision.titulo" data-edit-label="Título">Misión y Visión.</h2>
       </div>
       <div class="inversion-grid">
         <article class="ideal reveal delay-1">
           <div class="icon-wrap"><i data-lucide="target"></i></div>
-          <h3>Misión</h3>
-          <p>Brindar herramientas, formación y espacios de desarrollo que fortalezcan la carrera de músicos y agrupaciones, promoviendo la profesionalización, la disciplina y la visibilidad del talento artístico colombiano.</p>
+          <h3 data-edit="johnfer.mision.mision-titulo" data-edit-label="Misión · título">Misión</h3>
+          <p data-edit="johnfer.mision.mision-texto" data-edit-label="Misión · texto">Brindar herramientas, formación y espacios de desarrollo que fortalezcan la carrera de músicos y agrupaciones, promoviendo la profesionalización, la disciplina y la visibilidad del talento artístico colombiano.</p>
         </article>
         <article class="ideal reveal delay-2">
           <div class="icon-wrap"><i data-lucide="eye"></i></div>
-          <h3>Visión</h3>
-          <p>Consolidar una red de formación, intercambio y gestión cultural que conecte a artistas e instituciones a nivel nacional e internacional, fomentando la interculturalidad y el reconocimiento del arte colombiano.</p>
+          <h3 data-edit="johnfer.mision.vision-titulo" data-edit-label="Visión · título">Visión</h3>
+          <p data-edit="johnfer.mision.vision-texto" data-edit-label="Visión · texto">Consolidar una red de formación, intercambio y gestión cultural que conecte a artistas e instituciones a nivel nacional e internacional, fomentando la interculturalidad y el reconocimiento del arte colombiano.</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- Proyectos -->
-  <section class="projects" id="proyectos">
+  <section class="projects" id="proyectos" data-edit-seccion="Proyectos">
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-light" style="justify-content: center;"><span>Mis proyectos</span></div>
-        <h2 class="section-title" style="text-align: center;">Plataformas que he creado.</h2>
-        <p class="section-lead" style="margin: 0 auto;">Tres frentes complementarios: festival internacional, fundación cultural y banda tradicional. Diferentes públicos, una misma raíz panche.</p>
+        <div class="eyebrow eyebrow-line eyebrow-light" style="justify-content: center;"><span data-edit="johnfer.proyectos.etiqueta" data-edit-label="Etiqueta">Mis proyectos</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="johnfer.proyectos.titulo" data-edit-label="Título">Plataformas que he creado.</h2>
+        <p class="section-lead" style="margin: 0 auto;" data-edit="johnfer.proyectos.intro" data-edit-label="Introducción">Tres frentes complementarios: festival internacional, fundación cultural y banda tradicional. Diferentes públicos, una misma raíz panche.</p>
       </div>
 
       <div class="projects-grid">
         <a class="project-card reveal delay-1" href="fieb/" data-brand="fieb">
           <div class="logo-block"><img src="assets/logos/fieb_logo_gold_small.png" alt="FIEB"></div>
-          <h3>Festival Internacional de Eufonios y Bombardinos</h3>
-          <p>Plataforma académica y artística de eufonio y bombardino en Colombia. Desde 2020, reúne maestros nacionales e internacionales.</p>
+          <h3 data-edit="johnfer.proyectos.fieb-titulo" data-edit-label="FIEB · título">Festival Internacional de Eufonios y Bombardinos</h3>
+          <p data-edit="johnfer.proyectos.fieb-texto" data-edit-label="FIEB · texto">Plataforma académica y artística de eufonio y bombardino en Colombia. Desde 2020, reúne maestros nacionales e internacionales.</p>
           <span class="arrow">Ver festival <i data-lucide="arrow-up-right"></i></span>
         </a>
         <a class="project-card reveal delay-2" href="https://latidopanches.org/" data-brand="latido">
           <div class="logo-block"><img src="assets/logos/fundacion_logo_gold_small.png" alt="Latido Panches"></div>
-          <h3>Fundación Cultural Raíces Panches</h3>
-          <p>Plataforma de transformación social que conecta identidad ancestral, música, tecnología, deporte y medio ambiente.</p>
+          <h3 data-edit="johnfer.proyectos.fundacion-titulo" data-edit-label="Fundación · título">Fundación Cultural Raíces Panches</h3>
+          <p data-edit="johnfer.proyectos.fundacion-texto" data-edit-label="Fundación · texto">Plataforma de transformación social que conecta identidad ancestral, música, tecnología, deporte y medio ambiente.</p>
           <span class="arrow">Ver fundación <i data-lucide="arrow-up-right"></i></span>
         </a>
         <a class="project-card reveal delay-3" href="#" data-brand="banda">
           <div class="logo-block" style="font-family: var(--font-display); font-size: 1.8rem; color: var(--panches-terracota);">16 de Julio</div>
-          <h3>Banda Fiestera 16 de Julio</h3>
-          <p>Banda de la Virgen del Carmen de Nocaima — formación y circulación musical con identidad tradicional.</p>
+          <h3 data-edit="johnfer.proyectos.banda-titulo" data-edit-label="Banda · título">Banda Fiestera 16 de Julio</h3>
+          <p data-edit="johnfer.proyectos.banda-texto" data-edit-label="Banda · texto">Banda de la Virgen del Carmen de Nocaima — formación y circulación musical con identidad tradicional.</p>
           <span class="arrow">Próximamente <i data-lucide="hourglass"></i></span>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Contacto -->
+  <section class="contacto" id="contacto" data-edit-seccion="Contacto">
+    <div class="container">
+      <div class="reveal" style="max-width: 720px; margin: 0 auto;">
+        <div class="eyebrow eyebrow-line eyebrow-light" style="justify-content: center;"><span data-edit="johnfer.contacto.etiqueta" data-edit-label="Etiqueta">Contacto</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="johnfer.contacto.titulo" data-edit-label="Título">Hablemos.</h2>
+        <p class="section-lead" style="margin: 0 auto;" data-edit="johnfer.contacto.intro" data-edit-label="Introducción">¿Tienes una propuesta, una pregunta o quieres hablar del método? Escríbeme o sígueme en redes.</p>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card reveal delay-1" href="tel:+573138894567">
+          <div class="icon-wrap"><i class="fas fa-phone"></i></div>
+          <div class="role">Teléfono</div>
+          <div class="value">+57 313 889 4567</div>
+        </a>
+        <a class="contact-card reveal delay-1" href="mailto:musico.laverde@gmail.com">
+          <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
+          <div class="role">Correo</div>
+          <div class="value">musico.laverde@<wbr>gmail.com</div>
+        </a>
+        <a class="contact-card reveal delay-2" href="https://www.instagram.com/johnferlaverde/" target="_blank" rel="noopener">
+          <div class="icon-wrap"><i class="fab fa-instagram"></i></div>
+          <div class="role">Instagram</div>
+          <div class="value">@johnferlaverde</div>
+        </a>
+        <a class="contact-card reveal delay-2" href="https://www.facebook.com/johnfer.l.r" target="_blank" rel="noopener">
+          <div class="icon-wrap"><i class="fab fa-facebook-f"></i></div>
+          <div class="role">Facebook</div>
+          <div class="value">Johnfer Laverde R</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Ecosistema -->
-  <section class="ecosistema" id="contacto">
+  <section class="ecosistema">
     <div class="reveal">
       <div class="eyebrow eyebrow-line"><span>Ecosistema</span></div>
       <p class="title">Una raíz, tres latidos.</p>
@@ -536,14 +786,14 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer data-edit-seccion="Pie de página">
     <div class="wordmark">Johnfer Laverde</div>
-    <p class="tagline">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
+    <p class="tagline" data-edit="johnfer.pie.frase" data-edit-label="Frase">"Forjando identidad cultural desde Cundinamarca para el mundo."</p>
     <div class="socials">
-      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.facebook.com/johnfer.l.r" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/johnferlaverde/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="tel:+573138894567" aria-label="Teléfono"><i class="fas fa-phone"></i></a>
+      <a href="mailto:musico.laverde@gmail.com" aria-label="Correo"><i class="fas fa-envelope"></i></a>
     </div>
     <div class="geo">
       <div class="topo"><svg><use href="#topo"/></svg></div>
@@ -553,9 +803,26 @@
     <div class="footer-bottom">© 2026 Johnfer Laverde — Músico · Director · Gestor Cultural</div>
   </footer>
 
+  <script src="v2/supabase-config.js"></script>
+  <script src="v2/sitio.js" data-pagina="johnfer" defer></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+    // Compartir el método: menú nativo del celular o, si no existe, copiar el enlace
+    const compartir = document.getElementById('compartir-metodo');
+    compartir.addEventListener('click', async () => {
+      const url = 'https://johnferlaverde.com/metodo/';
+      const etiqueta = compartir.querySelector('span');
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: 'Iniciación al Eufonio — Johnfer Laverde', text: 'Descarga gratis el libro Iniciación al Eufonio', url });
+          return;
+        }
+        await navigator.clipboard.writeText(url);
+        etiqueta.textContent = '¡Enlace copiado!';
+        setTimeout(() => { etiqueta.textContent = 'Compartir'; }, 2500);
+      } catch (e) { /* menú cancelado o portapapeles bloqueado */ }
+    });
     // Navbar scroll
     const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);

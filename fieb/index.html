@@ -53,7 +53,7 @@
        https://commons.wikimedia.org/wiki/File:Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg */
     background:
       linear-gradient(to bottom, rgba(244,237,224,1) 0%, rgba(244,237,224,1) 10%, rgba(244,237,224,0.78) 25%, rgba(244,237,224,0.95) 100%),
-      url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg/1920px-Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg') center 35%/cover;
+      var(--img) center 35%/cover;
     border-bottom: 1px solid rgba(26, 39, 68, 0.06);
   }
   .hero::before {
@@ -791,13 +791,13 @@
     </div>
   </nav>
 
-  <header class="hero" id="top">
+  <header class="hero" id="top" style="--img: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg/1920px-Un_joueur_d%27euphonium_en_r%C3%A9p%C3%A9tition.jpg');" data-edit-seccion="Inicio" data-edit-img="fieb.inicio.fondo" data-edit-label="Foto de fondo">
     <div class="motif-rays top-left"><svg><use href="#rays"/></svg></div>
     <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
     <div class="hero-content reveal">
-      <div class="eyebrow eyebrow-line hero-eyebrow"><span>Formación · Circulación · Inspiración</span></div>
+      <div class="eyebrow eyebrow-line hero-eyebrow"><span data-edit="fieb.inicio.etiqueta" data-edit-label="Texto sobre el logo">Formación · Circulación · Inspiración</span></div>
       <img src="../assets/logos/fieb_logo_light.png" alt="FIEB" class="hero-logo">
-      <p class="hero-quote">"Un espacio internacional para el eufonio y el bombardino, nacido desde Colombia."</p>
+      <p class="hero-quote" data-edit="fieb.inicio.frase" data-edit-label="Frase">"Un espacio internacional para el eufonio y el bombardino, nacido desde Colombia."</p>
       <div class="hero-actions">
         <a href="#inscripcion" class="btn btn-primary">Inscríbete <i data-lucide="arrow-right"></i></a>
         <a href="#historia" class="btn btn-outline">Más información</a>
@@ -805,92 +805,92 @@
     </div>
   </header>
 
-  <section class="historia" id="historia">
+  <section class="historia" id="historia" data-edit-seccion="Nuestra historia">
     <div class="container historia-grid">
       <div class="reveal">
-        <div class="eyebrow eyebrow-line eyebrow-fieb"><span>Nuestra historia</span></div>
-        <h2 class="section-title">Desde 2020,<br>un festival internacional.</h2>
+        <div class="eyebrow eyebrow-line eyebrow-fieb"><span data-edit="fieb.historia.etiqueta" data-edit-label="Etiqueta">Nuestra historia</span></div>
+        <h2 class="section-title" data-edit="fieb.historia.titulo" data-edit-label="Título">Desde 2020,<br>un festival internacional.</h2>
       </div>
       <div class="reveal delay-1">
-        <p>El Festival Internacional de Eufonios y Bombardinos (FIEB) es una iniciativa artística, pedagógica y cultural creada en 2020 por John Fernando Laverde Rodríguez, con el propósito de fortalecer los procesos de formación musical en Colombia y el mundo en torno al eufonio y el bombardino.</p>
-        <p>El FIEB surgió como respuesta a la crisis generada por la pandemia del COVID-19, desarrollándose inicialmente en formato virtual. Desde entonces ha evolucionado hacia un modelo presencial e híbrido, consolidándose como un espacio de alto impacto académico y artístico.</p>
+        <p data-edit="fieb.historia.parrafo1" data-edit-label="Párrafo 1">El Festival Internacional de Eufonios y Bombardinos (FIEB) es una iniciativa artística, pedagógica y cultural creada en 2020 por John Fernando Laverde Rodríguez, con el propósito de fortalecer los procesos de formación musical en Colombia y el mundo en torno al eufonio y el bombardino.</p>
+        <p data-edit="fieb.historia.parrafo2" data-edit-label="Párrafo 2">El FIEB surgió como respuesta a la crisis generada por la pandemia del COVID-19, desarrollándose inicialmente en formato virtual. Desde entonces ha evolucionado hacia un modelo presencial e híbrido, consolidándose como un espacio de alto impacto académico y artístico.</p>
       </div>
     </div>
   </section>
 
-  <section class="mv-section">
+  <section class="mv-section" data-edit-seccion="Misión y visión">
     <div class="container">
       <div class="reveal" style="max-width: 720px; margin: 0 auto 3rem; text-align: center;">
-        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Hacia dónde vamos</span></div>
-        <h2 class="section-title" style="text-align: center;">Misión y Visión.</h2>
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span data-edit="fieb.mision.etiqueta" data-edit-label="Etiqueta">Hacia dónde vamos</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fieb.mision.titulo" data-edit-label="Título">Misión y Visión.</h2>
       </div>
       <div class="mv-grid">
         <article class="mv-card reveal delay-1">
           <div class="icon-wrap"><i data-lucide="target"></i></div>
-          <h3>Misión</h3>
-          <p>Fortalecer los procesos de formación musical en eufonio y bombardino mediante espacios de enseñanza, circulación artística e intercambio internacional, promoviendo el desarrollo técnico, interpretativo y pedagógico en Colombia y el mundo.</p>
+          <h3 data-edit="fieb.mision.mision-titulo" data-edit-label="Misión · título">Misión</h3>
+          <p data-edit="fieb.mision.mision-texto" data-edit-label="Misión · texto">Fortalecer los procesos de formación musical en eufonio y bombardino mediante espacios de enseñanza, circulación artística e intercambio internacional, promoviendo el desarrollo técnico, interpretativo y pedagógico en Colombia y el mundo.</p>
         </article>
         <article class="mv-card reveal delay-2">
           <div class="icon-wrap"><i data-lucide="telescope"></i></div>
-          <h3>Visión</h3>
-          <p>Para el año 2030, el FIEB será reconocido como el principal festival y plataforma académica de eufonio y bombardino en Latinoamérica, articulando procesos formativos, investigación musical y circulación artística a nivel internacional.</p>
+          <h3 data-edit="fieb.mision.vision-titulo" data-edit-label="Visión · título">Visión</h3>
+          <p data-edit="fieb.mision.vision-texto" data-edit-label="Visión · texto">Para el año 2030, el FIEB será reconocido como el principal festival y plataforma académica de eufonio y bombardino en Latinoamérica, articulando procesos formativos, investigación musical y circulación artística a nivel internacional.</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- Inversión polar: Objetivo General en oscuro -->
-  <section class="inversion">
+  <section class="inversion" data-edit-seccion="Objetivo general">
     <div class="motif-dots"></div>
     <div class="motif-rays top-right" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
     <div class="container reveal">
-      <div class="eyebrow eyebrow-line"><span>Objetivo general</span></div>
+      <div class="eyebrow eyebrow-line"><span data-edit="fieb.objetivo.etiqueta" data-edit-label="Etiqueta">Objetivo general</span></div>
       <div class="inversion-icon"><i data-lucide="gem"></i></div>
-      <h2 class="section-title">Una voz para los instrumentos olvidados.</h2>
-      <blockquote>
+      <h2 class="section-title" data-edit="fieb.objetivo.titulo" data-edit-label="Título">Una voz para los instrumentos olvidados.</h2>
+      <blockquote data-edit="fieb.objetivo.cita" data-edit-label="Cita">
         "Generar espacios de formación, circulación e intercambio académico que fortalezcan el desarrollo técnico e interpretativo del eufonio y el bombardino."
       </blockquote>
-      <div class="credit">— FIEB · Manifiesto fundacional</div>
+      <div class="credit" data-edit="fieb.objetivo.firma" data-edit-label="Firma de la cita">— FIEB · Manifiesto fundacional</div>
     </div>
   </section>
 
-  <section id="lineas">
+  <section id="lineas" data-edit-seccion="Líneas estratégicas">
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Cuatro frentes</span></div>
-        <h2 class="section-title" style="text-align: center;">Líneas estratégicas.</h2>
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span data-edit="fieb.lineas.etiqueta" data-edit-label="Etiqueta">Cuatro frentes</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fieb.lineas.titulo" data-edit-label="Título">Líneas estratégicas.</h2>
       </div>
       <div class="lineas-grid">
         <article class="linea-card reveal delay-1">
           <div class="icon-wrap"><i data-lucide="graduation-cap"></i></div>
-          <h3>Formación</h3>
-          <p>Clases magistrales, talleres y procesos pedagógicos continuos.</p>
+          <h3 data-edit="fieb.lineas.1-titulo" data-edit-label="Línea 1 · título">Formación</h3>
+          <p data-edit="fieb.lineas.1-texto" data-edit-label="Línea 1 · texto">Clases magistrales, talleres y procesos pedagógicos continuos.</p>
         </article>
         <article class="linea-card reveal delay-2">
           <div class="icon-wrap"><i data-lucide="music-2"></i></div>
-          <h3>Circulación</h3>
-          <p>Conciertos, recitales y muestras artísticas al público.</p>
+          <h3 data-edit="fieb.lineas.2-titulo" data-edit-label="Línea 2 · título">Circulación</h3>
+          <p data-edit="fieb.lineas.2-texto" data-edit-label="Línea 2 · texto">Conciertos, recitales y muestras artísticas al público.</p>
         </article>
         <article class="linea-card reveal delay-3">
           <div class="icon-wrap"><i data-lucide="globe-2"></i></div>
-          <h3>Internacionalización</h3>
-          <p>Intercambio con maestros y artistas de diferentes países.</p>
+          <h3 data-edit="fieb.lineas.3-titulo" data-edit-label="Línea 3 · título">Internacionalización</h3>
+          <p data-edit="fieb.lineas.3-texto" data-edit-label="Línea 3 · texto">Intercambio con maestros y artistas de diferentes países.</p>
         </article>
         <article class="linea-card reveal delay-3">
           <div class="icon-wrap"><i data-lucide="book-open"></i></div>
-          <h3>Investigación</h3>
-          <p>Desarrollo de metodologías y fortalecimiento técnico instrumental.</p>
+          <h3 data-edit="fieb.lineas.4-titulo" data-edit-label="Línea 4 · título">Investigación</h3>
+          <p data-edit="fieb.lineas.4-texto" data-edit-label="Línea 4 · texto">Desarrollo de metodologías y fortalecimiento técnico instrumental.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="timeline-section" id="evolucion">
+  <section class="timeline-section" id="evolucion" data-edit-seccion="Trayectoria">
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>2020 — 2025</span></div>
-        <h2 class="section-title" style="text-align: center;">Trayectoria del festival.</h2>
-        <p class="section-lead" style="margin: 0 auto; text-align: center;">Recorre la línea de tiempo: cada año reúne sus maestros invitados, el programa, el concurso y la memoria de la edición.</p>
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span data-edit="fieb.trayectoria.etiqueta" data-edit-label="Etiqueta">2020 — 2025</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fieb.trayectoria.titulo" data-edit-label="Título">Trayectoria del festival.</h2>
+        <p class="section-lead" style="margin: 0 auto; text-align: center;" data-edit="fieb.trayectoria.intro" data-edit-label="Introducción">Recorre la línea de tiempo: cada año reúne sus maestros invitados, el programa, el concurso y la memoria de la edición.</p>
       </div>
 
       <div class="timeline-nav reveal delay-1" role="tablist" aria-label="Ediciones del festival">
@@ -904,12 +904,12 @@
   </section>
 
   <!-- Inscripción — formulario conectado a Supabase -->
-  <section class="inscripcion-section" id="inscripcion">
+  <section class="inscripcion-section" id="inscripcion" data-edit-seccion="Inscripción">
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span>Inscríbete</span></div>
-        <h2 class="section-title" style="text-align: center;">Únete a la VI edición.</h2>
-        <p class="section-lead" style="margin: 0 auto; text-align: center;">El FIEB prepara su sexta edición. Déjanos tus datos y te contactaremos con las fechas, la sede, los niveles y los cupos disponibles.</p>
+        <div class="eyebrow eyebrow-line eyebrow-fieb" style="justify-content: center;"><span data-edit="fieb.inscripcion.etiqueta" data-edit-label="Etiqueta">Inscríbete</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fieb.inscripcion.titulo" data-edit-label="Título">Únete a la VI edición.</h2>
+        <p class="section-lead" style="margin: 0 auto; text-align: center;" data-edit="fieb.inscripcion.intro" data-edit-label="Introducción">El FIEB prepara su sexta edición. Déjanos tus datos y te contactaremos con las fechas, la sede, los niveles y los cupos disponibles.</p>
       </div>
 
       <form class="form-card reveal delay-1" id="inscripcionForm" autocomplete="off">
@@ -1013,10 +1013,10 @@
     </div>
   </section>
 
-  <footer>
+  <footer data-edit-seccion="Pie de página">
     <div class="wordmark">FIEB</div>
-    <p class="tagline">Festival Internacional de Eufonios y Bombardinos</p>
-    <p class="tagline" style="font-size: 0.85rem; opacity: 0.55;">Colombia · creado en 2020 por John Fernando Laverde Rodríguez</p>
+    <p class="tagline" data-edit="fieb.pie.linea1" data-edit-label="Línea 1">Festival Internacional de Eufonios y Bombardinos</p>
+    <p class="tagline" style="font-size: 0.85rem; opacity: 0.55;" data-edit="fieb.pie.linea2" data-edit-label="Línea 2">Colombia · creado en 2020 por John Fernando Laverde Rodríguez</p>
     <div class="socials">
       <a href="https://www.facebook.com/profile.php?id=100063724441664" target="_blank" rel="noopener" aria-label="Facebook FIEB"><i class="fab fa-facebook-f"></i></a>
       <a href="#" aria-label="Instagram FIEB"><i class="fab fa-instagram"></i></a>
@@ -1033,6 +1033,7 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../v2/supabase-config.js"></script>
+  <script src="../v2/sitio.js" data-pagina="fieb" defer></script>
   <script>
     lucide.createIcons();
     const nav = document.getElementById('nav');

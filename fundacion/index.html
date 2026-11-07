@@ -56,7 +56,7 @@
     background:
       linear-gradient(to bottom, rgba(13,27,42,1) 0%, rgba(13,27,42,1) 10%, rgba(13,27,42,0.78) 25%, rgba(13,27,42,0.97) 100%),
       radial-gradient(ellipse at center, rgba(245,200,66,0.12), transparent 70%),
-      url('../assets/images/fundacion-hero-cultura-deporte.webp') center/cover;
+      var(--img) center/cover;
     border-bottom: 1px solid rgba(245, 200, 66, 0.12);
   }
   /* rayos */
@@ -474,11 +474,11 @@
     </div>
   </nav>
 
-  <header class="hero" id="top">
+  <header class="hero" id="top" style="--img: url('../assets/images/fundacion-hero-cultura-deporte.webp');" data-edit-seccion="Inicio" data-edit-img="fundacion.inicio.fondo" data-edit-label="Foto de fondo">
     <div class="motif-rays top-left"><svg><use href="#rays"/></svg></div>
     <div class="motif-rays bot-right"><svg><use href="#rays"/></svg></div>
     <div class="hero-content reveal">
-      <div class="eyebrow eyebrow-line hero-eyebrow"><span>Fundación Cultural Raíces Panches</span></div>
+      <div class="eyebrow eyebrow-line hero-eyebrow"><span data-edit="fundacion.inicio.etiqueta" data-edit-label="Texto sobre el logo">Fundación Cultural Raíces Panches</span></div>
       <img src="../assets/logos/fundacion_logo_gold.png" alt="Latido Panches" class="hero-logo">
       <div class="hero-actions">
         <a href="#proyectos" class="btn btn-primary">Conoce nuestros proyectos <i data-lucide="arrow-right"></i></a>
@@ -487,100 +487,100 @@
     </div>
   </header>
 
-  <section class="latido-block" id="manifesto">
+  <section class="latido-block" id="manifesto" data-edit-seccion="Manifiesto">
     <div class="motif-dots"></div>
     <div class="motif-rays top-left" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
     <div class="motif-rays bot-right" style="width: 320px; height: 320px;"><svg><use href="#rays"/></svg></div>
     <div class="container reveal">
-      <div class="eyebrow eyebrow-line"><span>Manifiesto</span></div>
+      <div class="eyebrow eyebrow-line"><span data-edit="fundacion.manifiesto.etiqueta" data-edit-label="Etiqueta">Manifiesto</span></div>
       <div class="latido-icon"><i data-lucide="heart-pulse"></i></div>
-      <h2 class="section-title">LATIDO PANCHES</h2>
-      <blockquote>
+      <h2 class="section-title" data-edit="fundacion.manifiesto.titulo" data-edit-label="Título">LATIDO PANCHES</h2>
+      <blockquote data-edit="fundacion.manifiesto.cita" data-edit-label="Cita">
         "Latido Panches es una plataforma de transformación social que nace desde el territorio para conectar la identidad ancestral, la música, la tecnología, el deporte y el medio ambiente como herramientas de desarrollo comunitario."
       </blockquote>
     </div>
   </section>
 
   <!-- Inversión polar: Quiénes Somos en claro (paleta Panches) -->
-  <section class="quienes-light" id="quienes">
+  <section class="quienes-light" id="quienes" data-edit-seccion="Quiénes somos">
     <div class="motif-chevrons"><svg><use href="#chevrons"/></svg></div>
     <div class="motif-chevrons-b"><svg><use href="#chevrons"/></svg></div>
     <div class="container quienes-grid">
       <div class="reveal">
-        <div class="eyebrow eyebrow-line"><span>Quiénes somos</span></div>
-        <h2 class="section-title">Una raíz, muchas formas de florecer.</h2>
-        <p>Latido Panches es la plataforma de acción de la Fundación Cultural Raíces Panches, creada para impulsar procesos culturales integrales desde el territorio.</p>
-        <p>Articulamos la formación artística, la innovación tecnológica, el deporte, el cuidado del medio ambiente y la participación comunitaria para generar verdaderos procesos de transformación social con impacto duradero.</p>
+        <div class="eyebrow eyebrow-line"><span data-edit="fundacion.quienes.etiqueta" data-edit-label="Etiqueta">Quiénes somos</span></div>
+        <h2 class="section-title" data-edit="fundacion.quienes.titulo" data-edit-label="Título">Una raíz, muchas formas de florecer.</h2>
+        <p data-edit="fundacion.quienes.parrafo1" data-edit-label="Párrafo 1">Latido Panches es la plataforma de acción de la Fundación Cultural Raíces Panches, creada para impulsar procesos culturales integrales desde el territorio.</p>
+        <p data-edit="fundacion.quienes.parrafo2" data-edit-label="Párrafo 2">Articulamos la formación artística, la innovación tecnológica, el deporte, el cuidado del medio ambiente y la participación comunitaria para generar verdaderos procesos de transformación social con impacto duradero.</p>
       </div>
       <article class="quienes-card reveal delay-1">
         <div class="motif-heart"><svg><use href="#heart"/></svg></div>
         <div class="icon-wrap"><i data-lucide="users"></i></div>
-        <h3>Comunidad e identidad</h3>
-        <p>Tejiendo redes desde la raíz ancestral para el futuro.</p>
+        <h3 data-edit="fundacion.quienes.tarjeta-titulo" data-edit-label="Tarjeta · título">Comunidad e identidad</h3>
+        <p data-edit="fundacion.quienes.tarjeta-texto" data-edit-label="Tarjeta · texto">Tejiendo redes desde la raíz ancestral para el futuro.</p>
       </article>
     </div>
   </section>
 
-  <section class="mv-section">
+  <section class="mv-section" data-edit-seccion="Misión y visión">
     <div class="container">
       <div class="reveal" style="max-width: 720px; margin: 0 auto 3rem; text-align: center;">
-        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span>Hacia dónde vamos</span></div>
-        <h2 class="section-title" style="text-align: center;">Misión y Visión.</h2>
+        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span data-edit="fundacion.mision.etiqueta" data-edit-label="Etiqueta">Hacia dónde vamos</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fundacion.mision.titulo" data-edit-label="Título">Misión y Visión.</h2>
       </div>
       <div class="mv-grid">
         <article class="mv-card reveal delay-1">
           <div class="icon-wrap"><i data-lucide="target"></i></div>
-          <h3>Misión</h3>
-          <p>Fortalecer el tejido social y cultural del territorio mediante procesos de formación, creación y circulación artística que integren la identidad ancestral, la música, la tecnología, el deporte y el cuidado del medio ambiente como herramientas de transformación social.</p>
+          <h3 data-edit="fundacion.mision.mision-titulo" data-edit-label="Misión · título">Misión</h3>
+          <p data-edit="fundacion.mision.mision-texto" data-edit-label="Misión · texto">Fortalecer el tejido social y cultural del territorio mediante procesos de formación, creación y circulación artística que integren la identidad ancestral, la música, la tecnología, el deporte y el cuidado del medio ambiente como herramientas de transformación social.</p>
         </article>
         <article class="mv-card reveal delay-2">
           <div class="icon-wrap"><i data-lucide="telescope"></i></div>
-          <h3>Visión</h3>
-          <p>Para el año 2035, la Fundación Cultural Raíces Panches será un referente en Colombia en el desarrollo de procesos integrales que articulen cultura, innovación, deporte y sostenibilidad ambiental.</p>
+          <h3 data-edit="fundacion.mision.vision-titulo" data-edit-label="Visión · título">Visión</h3>
+          <p data-edit="fundacion.mision.vision-texto" data-edit-label="Visión · texto">Para el año 2035, la Fundación Cultural Raíces Panches será un referente en Colombia en el desarrollo de procesos integrales que articulen cultura, innovación, deporte y sostenibilidad ambiental.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="pilares-section" id="proyectos">
+  <section class="pilares-section" id="proyectos" data-edit-seccion="Frentes de trabajo">
     <div class="motif-dots"></div>
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span>Objeto social</span></div>
-        <h2 class="section-title" style="text-align: center;">Cuatro frentes,<br>un mismo latido.</h2>
-        <p style="color: var(--latido-cream); opacity: 0.85; font-size: 1.1rem; max-width: 720px; margin: 0 auto;">Procesos culturales, tecnológicos, deportivos y ambientales que fortalecen la identidad territorial.</p>
+        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span data-edit="fundacion.frentes.etiqueta" data-edit-label="Etiqueta">Objeto social</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fundacion.frentes.titulo" data-edit-label="Título">Cuatro frentes,<br>un mismo latido.</h2>
+        <p style="color: var(--latido-cream); opacity: 0.85; font-size: 1.1rem; max-width: 720px; margin: 0 auto;" data-edit="fundacion.frentes.intro" data-edit-label="Introducción">Procesos culturales, tecnológicos, deportivos y ambientales que fortalecen la identidad territorial.</p>
       </div>
       <div class="pilares-grid">
         <article class="pilar-card reveal delay-1">
           <div class="icon-wrap"><i data-lucide="music-2"></i></div>
-          <h3>Cultura</h3>
-          <p>Formación artística, encuentros y creación colectiva desde la raíz ancestral.</p>
+          <h3 data-edit="fundacion.frentes.1-titulo" data-edit-label="Frente 1 · título">Cultura</h3>
+          <p data-edit="fundacion.frentes.1-texto" data-edit-label="Frente 1 · texto">Formación artística, encuentros y creación colectiva desde la raíz ancestral.</p>
         </article>
         <article class="pilar-card reveal delay-2">
           <div class="icon-wrap"><i data-lucide="cpu"></i></div>
-          <h3>Tecnología</h3>
-          <p>Alfabetización digital, herramientas creativas y nuevos formatos al servicio del territorio.</p>
+          <h3 data-edit="fundacion.frentes.2-titulo" data-edit-label="Frente 2 · título">Tecnología</h3>
+          <p data-edit="fundacion.frentes.2-texto" data-edit-label="Frente 2 · texto">Alfabetización digital, herramientas creativas y nuevos formatos al servicio del territorio.</p>
         </article>
         <article class="pilar-card reveal delay-3">
           <div class="icon-wrap"><i data-lucide="trophy"></i></div>
-          <h3>Deporte</h3>
-          <p>Actividad física y comunitaria como vehículo de convivencia y salud integral.</p>
+          <h3 data-edit="fundacion.frentes.3-titulo" data-edit-label="Frente 3 · título">Deporte</h3>
+          <p data-edit="fundacion.frentes.3-texto" data-edit-label="Frente 3 · texto">Actividad física y comunitaria como vehículo de convivencia y salud integral.</p>
         </article>
         <article class="pilar-card latido-verde reveal delay-3">
           <div class="icon-wrap"><i data-lucide="sprout"></i></div>
-          <h3>Medio ambiente</h3>
-          <p>Cuidado del entorno, prácticas sostenibles y conciencia ecológica desde el territorio panche.</p>
+          <h3 data-edit="fundacion.frentes.4-titulo" data-edit-label="Frente 4 · título">Medio ambiente</h3>
+          <p data-edit="fundacion.frentes.4-texto" data-edit-label="Frente 4 · texto">Cuidado del entorno, prácticas sostenibles y conciencia ecológica desde el territorio panche.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="contacto" id="contacto">
+  <section class="contacto" id="contacto" data-edit-seccion="Contacto">
     <div class="container">
       <div class="reveal" style="text-align: center; max-width: 720px; margin: 0 auto;">
-        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span>Únete</span></div>
-        <h2 class="section-title" style="text-align: center;">Hablemos.</h2>
-        <p style="color: var(--latido-cream); font-size: 1.05rem;">Escríbenos, síguenos o ven a un encuentro. Las puertas de la fundación están abiertas.</p>
+        <div class="eyebrow eyebrow-line eyebrow-latido" style="justify-content: center;"><span data-edit="fundacion.contacto.etiqueta" data-edit-label="Etiqueta">Únete</span></div>
+        <h2 class="section-title" style="text-align: center;" data-edit="fundacion.contacto.titulo" data-edit-label="Título">Hablemos.</h2>
+        <p style="color: var(--latido-cream); font-size: 1.05rem;" data-edit="fundacion.contacto.intro" data-edit-label="Introducción">Escríbenos, síguenos o ven a un encuentro. Las puertas de la fundación están abiertas.</p>
       </div>
       <div class="contact-grid">
         <a class="contact-card reveal delay-1" href="mailto:contacto@latidopanches.org">
@@ -633,10 +633,10 @@
     </div>
   </section>
 
-  <footer>
+  <footer data-edit-seccion="Pie de página">
     <div class="wordmark">Latido Panches</div>
-    <p class="tagline">Fundación Cultural Raíces Panches</p>
-    <p class="tagline" style="font-size: 0.85rem; opacity: 0.55;">Nocaima, Cundinamarca · Colombia</p>
+    <p class="tagline" data-edit="fundacion.pie.linea1" data-edit-label="Línea 1">Fundación Cultural Raíces Panches</p>
+    <p class="tagline" style="font-size: 0.85rem; opacity: 0.55;" data-edit="fundacion.pie.linea2" data-edit-label="Línea 2">Nocaima, Cundinamarca · Colombia</p>
     <div class="socials">
       <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -650,6 +650,8 @@
     <div class="footer-bottom">© 2026 Fundación Cultural Raíces Panches — Latido Panches</div>
   </footer>
 
+  <script src="../v2/supabase-config.js"></script>
+  <script src="../v2/sitio.js" data-pagina="fundacion" defer></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
